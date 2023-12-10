@@ -25,3 +25,16 @@
   width: 100%;
   left: 0;
 }
+
+.nav-item {
+  background-color: #2c9d30;
+}
+
+.nav-item a:hover {
+  background-color: #1e7921;
+}
+
+.nav-item a {
+  font-family: 'Times New Roman', Times, serif;
+  
+}
