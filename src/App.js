@@ -6,6 +6,7 @@ import ShortDetils from './components/ShortDetils/ShortDetils';
 import { CssBaseline, Switch, ThemeProvider, createTheme } from '@mui/material';
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import Childdiv from './components/Childdiv/Childdiv';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,17 +29,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="App">
-        <div className='darkmode-toggle pt-1'>
-          <Switch
-            checked={darkMode}
-            onChange={toggleDarkMode}
-            icon={<Brightness4Icon />}
-            checkedIcon={<WbSunnyIcon className={darkMode ? 'sunny-dark' : ''} />}
-          />
-        </div>
-        <Navbar />
+
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Home />
         <ShortDetils></ShortDetils>
+        <Childdiv></Childdiv>
       </div>
     </ThemeProvider>
   );

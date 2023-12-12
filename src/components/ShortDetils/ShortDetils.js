@@ -68,7 +68,7 @@ const ShortDetils = () => {
                     <a
                         key={data.id}
                         href="#"
-                        className='flex relative shadow-md  px-1   items-center duration-200    m-2 w-[100%] '
+                        className='flex relative shadow-md  px-1   items-center duration-200    mx-3 w-[100%] '
                         style={{ ...borderRadiusStyles[index], backgroundColor: bgColors[index]?.bgColor }}
 
                         onMouseEnter={(e) => { e.currentTarget.style.top = '-10px'; }}
@@ -77,7 +77,7 @@ const ShortDetils = () => {
 
                     >
                         <div><img className='p-1 mx-0 left-0 w-[100px] ' src={data.img} alt="" /></div>
-                        <div className='ms-2   '>
+                        <div className='ms-2 text-black pb-2  '>
                             <p className='font-bold font-serif'>{data.name} </p>
                             <p className='text-sm mt-1'> {data.detils}</p>
                         </div>
