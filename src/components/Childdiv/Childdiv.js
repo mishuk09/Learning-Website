@@ -1,26 +1,38 @@
 import React from 'react';
 import './Childdiv.css';
+import Picktrack from '../Picktrack/Picktrack';
+import Latesttutorial from '../Latesttutorial/Latesttutorial';
+import Seemore from '../Otherscomponent/Seemore';
+import element from './img/element.png';
+import Headline from '../Otherscomponent/Headline';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import Dsaquestion from '../SideBar/Dsaquestion';
 
 const Childdiv = () => {
     return (
         <div className='container mt-12'>
-            <p className='font-sans text-md text-blue-500'>Choose</p>
-            <h1 className=' mb-4 font-sans font-bold text-3xl '>Pick A Track</h1>
-            <div className=' flex  w-[100%] h-[1000px]'>
+            <div className='w-[70%]'><Headline short="Pick" parent='Pick a' child="Track">   </Headline></div>
+            <div className=' flex  w-[100%] h-[1000px] border-t border-slate-400'>
 
-                <div className='w-[70%] grid gap-2 grid-cols-2 h-52 p-2 bg-slate-200'>
-
-                    <div className='rounded flex bg-blue-500 h-[70px] w-[100%]'>
-                        <div className='w=[30%] h-[50px] rounded-full bg-white '></div>
-                        <div className='w=[70%] h-[50px]'></div>
-                    </div>
-                    <div className='rounded  bg-blue-500 h-[70px] w-[100%]'></div>
-                    <div className='rounded  bg-blue-500 h-[70px] w-[100%]'></div>
-                    <div className='rounded  bg-blue-500 h-[70px] w-[100%]'></div>
-                    <div className='rounded  bg-blue-500 h-[70px] w-[100%]'></div>
-                    <div className='rounded  bg-blue-500 h-[70px] w-[100%]'></div>
+                <div className='w-[70%]    py-2 pe-2 '>
+                    <Picktrack></Picktrack>
+                    <Latesttutorial></Latesttutorial>
                 </div>
-                <div className='w-[30%] h-52 bg-slate-400'></div>
+                <div className='w-[30%] h-[700px]  border-l border-slate-400'>
+
+                    <div className='w-[100%] h-40 rounded bg-slate-900  m-2 border border-slate-400 shadow-sm'>
+                        <Dsaquestion></Dsaquestion>
+                        {/* <h1 className='text-white mt-1 font-sans text-xl font-bold flex items-center justify-center'>DSA Interview Question</h1>
+                        <hr className='text-slate-400 mt-1'/>
+                        <div className=' flex items-center '>
+                        <FontAwesomeIcon className='text-green-600 p-2' icon={faQuestion} size='xl'/><span className='text-green-500 font-sans text-2xl'>What is Time Complexity?</span>
+                        </div>
+                        <span  className='mx-4 text-xs text-slate-200'><FontAwesomeIcon icon={faArrowRight} className='text-slate-200' />time complexity is the computational complexity that describes the amount of computer time it takes to run an algorithm</span> */}
+                    </div>
+                    <div></div>
+                    <div></div>
+                </div>
 
             </div>
         </div>
