@@ -8,6 +8,9 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import Childdiv from './components/Childdiv/Childdiv';
 import Library from './components/Library/Library';
+import Interview from './components/Interview/Interview';
+import Job from './components/Job/Job';
+import Article from './components/Article/Article';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -36,6 +39,9 @@ function App() {
         <ShortDetils></ShortDetils>
         <Childdiv></Childdiv>
         <Library></Library>
+        <Interview></Interview>
+        <Job></Job>
+        <Article></Article>
       </div>
     </ThemeProvider>
   );
