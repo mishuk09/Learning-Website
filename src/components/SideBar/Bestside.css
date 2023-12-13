@@ -1,0 +1,12 @@
+.marquee-div img:hover {
+    transform: scale(1.2);
+    transition: transform 0.4s ease;
+    animation-play-state: paused;
+}
+
+.marquee-div img {
+    border-radius: 5px;
+    width: 200px;
+    margin: 13px;
+    transition: transform 0.4s ease;
+}

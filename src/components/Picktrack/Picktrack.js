@@ -42,7 +42,7 @@ const Picktrack = () => {
     ]
 
     return (
-        <div className='grid gap-2 grid-cols-2'>
+        <div className='grid gap-2 grid-cols-3'>
             {
                 pickTrack.map((pick) => (
                     // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -51,7 +51,7 @@ const Picktrack = () => {
                         href="#"
                         className='rounded flex  justify-center items-center  bg-blue-500 h-[70px] w-[100%] transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-20 hover:bg-indigo-500 duration-300 '
                     >
-                        <div className='w-14 h-14 relative rounded-full bg-white flex items-center justify-center'>
+                        <div className='w-14 ms-1 h-14 relative rounded-full bg-white flex items-center justify-center'>
                             <img className='w-10  ' src={pick.img} alt="" />
                         </div>
 

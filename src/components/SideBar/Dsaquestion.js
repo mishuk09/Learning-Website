@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const QuestionSlider = ({ data, questionSize, questionColor, answerSize, answerColor }) => {
     const settings = {
-        dots: true,
+        // dots: true,
         infinite: true,
         speed: 100,
         slidesToShow: 1,
@@ -17,6 +17,7 @@ const QuestionSlider = ({ data, questionSize, questionColor, answerSize, answerC
     const questionStyle = {
         fontSize: questionSize || '20px',
         color: questionColor || 'black',
+         
     };
 
     const answerStyle = {
@@ -50,15 +51,15 @@ const Dsaquestion = () => {
     ];
 
     return (
-        <div className=''>
+        <div className='w-[100%] h-40 rounded bg-slate-900  m-2 border border-slate-400 shadow-sm'>
             <h1 className='text-white mt-1 font-sans text-xl font-bold flex items-center justify-center'>DSA Interview Question</h1>
             <hr className='text-slate-400 mt-1' />
-            <div className='text-white ms-10 w-[50%]  '>
+            <div className='text-white mt-3 mx-[33px] w-[80%]  '>
                 <QuestionSlider
                     data={questionsAndAnswers}
-                    questionSize='24px'
+                    questionSize='20px'
                     questionColor='#2c9d30'
-                    answerSize='18px'
+                    answerSize='13px'
                     answerColor='silver'
                 />
             </div>

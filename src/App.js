@@ -7,6 +7,7 @@ import { CssBaseline, Switch, ThemeProvider, createTheme } from '@mui/material';
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import Childdiv from './components/Childdiv/Childdiv';
+import Library from './components/Library/Library';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -34,6 +35,7 @@ function App() {
         <Home />
         <ShortDetils></ShortDetils>
         <Childdiv></Childdiv>
+        <Library></Library>
       </div>
     </ThemeProvider>
   );

@@ -80,7 +80,7 @@ const Latesttutorial = () => {
     ]
     return (
         <div className=' mt-10'>
-            <Headline className='w-[100%]' parent="Larest" child="Tutorial" short="Code"></Headline>
+            <Headline className='w-[100%]' parent="Latest" child="Tutorial" short="Code"></Headline>
             <div className="inline-grid grid-cols-6 gap-3">
                 {
                     tutotials.map((tutorial) => (
