@@ -3,14 +3,15 @@ import './App.css';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import ShortDetils from './components/ShortDetils/ShortDetils';
-import { CssBaseline, Switch, ThemeProvider, createTheme } from '@mui/material';
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Childdiv from './components/Childdiv/Childdiv';
 import Library from './components/Library/Library';
 import Interview from './components/Interview/Interview';
 import Job from './components/Job/Job';
 import Article from './components/Article/Article';
+import Dsaproblems from './components/Dsaproblems/Dsaproblems';
+import Footer from './components/Footer/Footer';
+import GoToTopButton from './components/GoToTopButton/GoToTopButton';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -36,12 +37,15 @@ function App() {
 
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Home />
+        <GoToTopButton></GoToTopButton>
         <ShortDetils></ShortDetils>
         <Childdiv></Childdiv>
         <Library></Library>
         <Interview></Interview>
         <Job></Job>
         <Article></Article>
+        <Dsaproblems></Dsaproblems>
+        <Footer></Footer>
       </div>
     </ThemeProvider>
   );
