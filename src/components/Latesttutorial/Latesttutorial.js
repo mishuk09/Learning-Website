@@ -7,9 +7,9 @@ import Tutorials from '../Otherscomponent/Tutorials/Tutorials';
 const Latesttutorial = () => {
     
     return (
-        <div className=' mt-10'>
+        <div className=' mt-14'>
             <Headline className='w-[100%]' parent="Latest" child="Tutorial" short="Code"></Headline>
-            <div className="inline-grid grid-cols-6 gap-3">
+            <div className="inline-grid grid-cols-6 gap-3 mt-4">
                 {
                     Tutorials.map((tutorial) => (
 
@@ -24,7 +24,7 @@ const Latesttutorial = () => {
                                 <div>
                                     <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
                                 </div>
-                                <div className='text-black mt-1 font-serif text-sm'>
+                                <div className='text-black mt-1 font-verdina text-sm'>
                                     {tutorial.title}
                                 </div>
                             </div>
@@ -40,3 +40,6 @@ const Latesttutorial = () => {
 };
 
 export default Latesttutorial;
+
+
+

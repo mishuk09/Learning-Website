@@ -50,49 +50,49 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         {
             id: 4,
             logo: html,
-            name: 'HTML',
+            name: 'Html',
             href: '/html',
 
         },
         {
             id: 5,
             logo: css,
-            name: 'CSS',
+            name: 'Css',
             href: '/css',
 
         },
         {
             id: 6,
             logo: js,
-            name: 'JAVASCRIPT',
+            name: 'Javascript',
             href: '/javascript',
 
         },
         {
             id: 7,
             logo: java,
-            name: 'JAVA',
+            name: 'Java',
             href: '/java',
 
         },
         {
             id: 8,
             logo: py,
-            name: 'PYTHON',
+            name: 'Python',
             href: '/python',
 
         },
         {
             id: 9,
             logo: react,
-            name: 'REACT',
+            name: 'React',
             href: '/react',
 
         },
         {
             id: 10,
             logo: nodejs,
-            name: 'NODE JS',
+            name: 'Node JS',
             href: '/nodejs',
 
         },
@@ -113,21 +113,21 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         {
             id: 13,
             logo: dsa,
-            name: 'DATA STRUCTURE',
+            name: 'Data Structure',
             href: '/datastructure',
 
         },
         {
             id: 14,
             logo: interview,
-            name: 'INTERVIEW',
+            name: 'Interview',
             href: '/html',
 
         },
         {
             id: 15,
             logo: jobs,
-            name: 'JOBS',
+            name: 'Jobs',
             href: '/jobs',
 
         }

@@ -11,7 +11,7 @@ const BasicComputer = [
     {
         id: 1,
         img: computer,
-        title: 'BASIC'
+        title: 'Basic'
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const BasicComputer = [
     {
         id: 3,
         img: settings,
-        title: 'COMPILER'
+        title: 'Compiler Design'
     },
     {
         id: 4,
@@ -41,7 +41,7 @@ const BasicComputer = [
     {
         id: 6,
         img: system,
-        title: 'SYSTEM DESIGN'
+        title: 'System Design'
     }
 
 

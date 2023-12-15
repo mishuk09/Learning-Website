@@ -11,27 +11,27 @@ const Webdevelopment = [
     {
         id: 1,
         img: html,
-        title: 'HTML'
+        title: 'Html'
     },
     {
         id: 2,
         img: css,
-        title: 'CSS'
+        title: 'Css'
     },
     {
         id: 3,
         img: javascript,
-        title: 'JAVASCRIPT'
+        title: 'Javascript'
     },
     {
         id: 4,
         img: react,
-        title: 'REACT JS'
+        title: 'React'
     },
     {
         id: 5,
         img: nodejs,
-        title: 'NODE JS'
+        title: 'Node JS'
     },
     {
         id: 6,
@@ -41,7 +41,7 @@ const Webdevelopment = [
     {
         id: 7,
         img: tailwind,
-        title: 'TAILWIND'
+        title: 'Tailwind'
     }
 
 ]

@@ -13,47 +13,47 @@ const interview = [
     {
         id: 1,
         img: google,
-        title: 'GOOGLE'
+        title: 'Google'
     },
     {
         id: 2,
         img: facebook,
-        title: 'FACEBOOK'
+        title: 'Facebook'
     },
     {
         id: 3,
         img: amazon,
-        title: 'AMAZON'
+        title: 'Amazon'
     },
     {
         id: 4,
         img: windows,
-        title: 'MICROSOFT'
+        title: 'Microsoft'
     },
     {
         id: 5,
         img: dell,
-        title: 'DELL'
+        title: 'Dell'
     },
     {
         id: 6,
         img: hp,
-        title: 'HP'
+        title: 'Hp'
     },
     {
         id: 7,
         img: uber,
-        title: 'UBER'
+        title: 'Uber'
     },
     {
         id: 8,
         img: adobe,
-        title: 'ADOBE'
+        title: 'Adobe'
     },
     {
         id: 9,
         img: twitter,
-        title: 'TWITTER'
+        title: 'Twitter'
     }
 
 ]

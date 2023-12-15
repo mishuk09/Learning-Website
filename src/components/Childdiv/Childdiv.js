@@ -13,22 +13,22 @@ import CompilerDiv from '../CompilerDiv/CompilerDiv';
 
 const Childdiv = () => {
     return (
-        <div className='container mt-12'>
-            <div className='w-[70%]'><Headline short="Pick" parent='Pick a' child="Track">   </Headline></div>
-            <div className=' flex  w-[100%] h-[800px] border-t border-slate-400'>
+        <div className='container mt-20'>
+            {/* <div className='w-[70%]'><Headline short="Pick" parent='Pick a' child="Track">   </Headline></div> */}
+            <div className=' flex    w-[100%] h-[930px] border-t border-slate-200'>
 
                 <div className='w-[70%]    py-2 pe-2 '>
                     <Picktrack></Picktrack>
-                    <CompilerDiv></CompilerDiv>
+                    <CompilerDiv  ></CompilerDiv>
                     <Latesttutorial></Latesttutorial>
-                  
+
                 </div>
-                <div className='w-[30%] h-[700px]  border-l border-slate-400'>
+                <div className='w-[30%] h-full  border-l border-slate-200'>
 
 
                     <Dsaquestion className=''></Dsaquestion>
                     <Bestside></Bestside>
-                   
+
 
                     <div></div>
                     <div></div>

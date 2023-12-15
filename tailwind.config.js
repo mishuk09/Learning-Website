@@ -9,6 +9,8 @@ module.exports = {
         nunito: ['Nunito', 'sans-serif'],
         'source-sans-3': ['"Source Sans Pro"', 'sans-serif'],
         verdina: ['Verdina', 'sans-serif'],
+        lato: ['Lato', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },

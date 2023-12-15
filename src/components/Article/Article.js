@@ -8,14 +8,14 @@ import TabPanel from '@mui/lab/TabPanel';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-const Article = () => { 
+const Article = () => {
     const [value, setValue] = React.useState('1');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
     return (
-        <div className='container mt-10'>
+        <div className='container mt-16'>
             <Headline parent='Article' child='Bloog' short='News' />
             <div className=' mt-4'>
                 <Box sx={{ width: '100%', typography: 'body1' }}>

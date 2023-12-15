@@ -31,37 +31,37 @@ const Tutorials = [
     {
         id: 4,
         img: html,
-        title: 'HTML'
+        title: 'Html'
     },
     {
         id: 5,
         img: css,
-        title: 'CSS'
+        title: 'Css'
     },
     {
         id: 6,
         img: javascript,
-        title: 'JAVASCRIPT'
+        title: 'Javascript'
     },
     {
         id: 7,
         img: java,
-        title: 'JAVA'
+        title: 'Java'
     },
     {
         id: 8,
         img: python,
-        title: 'PYTHON'
+        title: 'Python'
     },
     {
         id: 9,
         img: react,
-        title: 'REACT JS'
+        title: 'React'
     },
     {
         id: 10,
         img: nodejs,
-        title: 'NODE JS'
+        title: 'Node JS'
     },
     {
         id: 11,

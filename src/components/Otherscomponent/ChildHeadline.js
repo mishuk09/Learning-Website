@@ -6,7 +6,7 @@ const ChildHeadline = (props) => {
     return (
         < >
 
-            <div className='flex justify-between relative items-center pe-2   '> <h1 className=' mb-4 font-serif text-xl  '>{parent} <span className='text-green-500  '>{child} </span>  </h1> <Seemore ></Seemore></div>
+            <div className='flex justify-between relative items-center pe-2   '> <h1 className='  font-nutino text-xl  '>{parent} <span className='text-green-500  '>{child} </span>  </h1> <Seemore ></Seemore></div>
 
 
         </ >

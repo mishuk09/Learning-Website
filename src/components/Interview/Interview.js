@@ -3,66 +3,44 @@ import Headline from '../Otherscomponent/Headline';
 import interview from '../Otherscomponent/interview';
 
 const Interview = () => {
-    const scrollRef = useRef(null);
 
-    const scroll = (scrollOffset) => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollTo({
-                left: scrollRef.current.scrollLeft + scrollOffset,
-                behavior: 'smooth',
-            });
-        }
-    };
 
     return (
-        <div className='container mt-10 '>
-             <Headline   parent='Interview' child="Guid" short='Company'></Headline>
-        <div className=' px-5  mb-10 relative'>
-           
-            <div
-                ref={scrollRef}
-                className='flex gap-3    mt-2 overflow-hidden   w-full'
-                style={{ scrollBehavior: 'smooth', overflowX: 'auto' }}
-            >
-                {
-                    interview.map((tutorial) => (
+        <div className='container mt-16 '>
+            <Headline parent='Interview' child="Guid" short='Company'></Headline>
+            <div className=' px-5  mb-10 relative'>
 
-                        // eslint-disable-next-line jsx-a11y/anchor-has-content
+                <div className="flex gap-3 mt-4"
 
-                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        <a
-                            key={tutorial.id}
-                            href="#"
-                            className=' shadow-sm rounded     delay-50  hover:scale-110   duration-400'
-                        >
-                            <div className='w-[130px] h-36  rounded bg-slate-100 flex flex-col items-center justify-center'>
-                                <div>
-                                    <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
+
+                >
+                    {
+                        interview.map((tutorial) => (
+
+                            // eslint-disable-next-line jsx-a11y/anchor-has-content
+
+                            <a
+                                key={tutorial.id}
+                                href="#"
+                                className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
+                            >
+                                <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
+                                    <div>
+                                        <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
+                                    </div>
+                                    <div className='text-black mt-1 font-verdina text-sm'>
+                                        {tutorial.title}
+                                    </div>
                                 </div>
-                                <div className='text-black mt-1 font-serif text-sm'>
-                                    {tutorial.title}
-                                </div>
-                            </div>
 
-                        </a>
+                            </a>
 
 
-                    ))
-                }
+                        ))
+                    }
+                </div>
+
             </div>
-            <button
-                onClick={() => scroll(-150)} // Adjust the scroll amount as needed
-                className='absolute left-0 top-1/3  transform   bg-gray-200 p-2 rounded-full'
-            >
-                {'<'}
-            </button>
-            <button
-                onClick={() => scroll(150)} // Adjust the scroll amount as needed
-                className='absolute right-0 top-1/3 transform   bg-gray-200 p-2 rounded-full'
-            >
-                {'>'}
-            </button>
-        </div>
         </div>
     );
 };
