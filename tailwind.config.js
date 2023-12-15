@@ -4,8 +4,13 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        nunito: ['Nunito', 'sans-serif'],
+        'source-sans-3': ['"Source Sans Pro"', 'sans-serif'],
+        verdina: ['Verdina', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
-

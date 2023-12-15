@@ -1,3 +1,5 @@
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useEffect } from 'react';
 
 const GoToTopButton = () => {
@@ -28,18 +30,29 @@ const GoToTopButton = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    const buttonStyle = {
+        position: 'fixed',
+        bottom: '20px',
+        right: '10px',
+        zIndex: '999',
+        backgroundColor: '#007bff',
+        borderRadius: '5px',
+        paddingTop: '5px',
+        paddingBottom: '5px',
+        paddingLeft: '8px',
+        paddingRight: '8px',
+
+        cursor: 'pointer'
+    };
 
     return (
         <button
+            style={buttonStyle}
             onClick={scrollToTop}
-            className={`fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-2 rounded-full ${isVisible ? 'visible' : 'hidden'
+            className={`fixed    ${isVisible ? 'visible' : 'hidden'
                 }`}
         >
-            <img
-                src="/path/to/your-logo.png"
-                alt="Logo"
-                className="w-6 h-6"
-            />
+            <FontAwesomeIcon icon={faChevronUp} />
         </button>
     );
 };

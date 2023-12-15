@@ -78,8 +78,8 @@ const ShortDetils = () => {
                     >
                         <div><img className='p-1 mx-0 left-0 w-[100px] ' src={data.img} alt="" /></div>
                         <div className='ms-2 text-black pb-2  '>
-                            <p className='font-bold font-serif'>{data.name} </p>
-                            <p className='text-sm mt-1'> {data.detils}</p>
+                            <p className='font-bold font-source-sans-2'>{data.name} </p>
+                            <p className='text-sm font-nunito mt-1'> {data.detils}</p>
                         </div>
 
                     </a>

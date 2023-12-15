@@ -10,7 +10,7 @@ const Home = () => {
         <div className='container flex w-[100%]  h-[450px]'>
             <div className='w-[50%] headline-div mt-[80px]'>
                 <span className='absolute ms-[38%]'><img className='w-16' src={rocket} alt="" /></span>
-                <h1 className='text-5xl ms-2 font-sans'>Explore Your Coding Journey
+                <h1 className='text-5xl ms-2 font-source-sans-3'>Explore Your Coding Journey
                     With us...</h1>
 
 
@@ -22,7 +22,7 @@ const Home = () => {
 
                 </div>
                 <hr className='mt-2' />
-                <p className='mt-4 mx-3   font-thin whitespace-wrap'>Explore opportunities from across the globe to learn, showcase skills,
+                <p className='mt-4 mx-3 font-nunito   font-thin whitespace-wrap'>Explore opportunities from across the globe to learn, showcase skills,
                     gain CV points, & get hired by your dream company.</p>
 
 

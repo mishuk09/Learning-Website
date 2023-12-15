@@ -49,13 +49,13 @@ const Picktrack = () => {
                     <a
                         key={pick.id}
                         href="#"
-                        className='rounded flex  justify-center items-center  bg-blue-500 h-[70px] w-[100%] transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-20 hover:bg-indigo-500 duration-300 '
+                        className='rounded flex  justify-center items-center  bg-blue-500 h-[70px] w-[100%] transition ease-in-out delay-100 shadow-sm hover:shadow  hover:-translate-y-1 hover:scale-20 hover:bg-indigo-500 duration-300 '
                     >
                         <div className='w-14 ms-1 h-14 relative rounded-full bg-white flex items-center justify-center'>
                             <img className='w-10  ' src={pick.img} alt="" />
                         </div>
 
-                        <div className='w-[80%] ps-4 text-white text-2xl font-sans  '>
+                        <div className='w-[80%]  ps-4 text-white text-2xl  font-source-sans-3  '>
                             {pick.title}
                         </div>
 

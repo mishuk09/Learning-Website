@@ -1,21 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+/* Custom colors */
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #10b981;
+
+}
+
+
+
+
+
 .darkmode-toggle {
-
-
-  /* background-color: rgb(185, 179, 172); */
-  /* background-color: #007bff; */
-
   width: 2rem;
   height: 2rem;
-  /* position: fixed; */
-  /* right: 0px;
-  z-index: 999; */
-  /* bottom: 180px; */
-  /* border-radius: 50%; */
-
-
 }
 
 .sunny-dark {
   color: rgb(26, 6, 6);
-  /* Set the color for the sunny icon in dark mode */
+
 }

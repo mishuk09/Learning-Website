@@ -171,7 +171,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                         className=' px-2 py-2 text-slate-200 whitespace-nowrap justify-center items-center'
                     >
 
-                        <span className='flex flex-row justify-center items-center mx-2'>  <img className='w-4 h-4 me-1' src={navitem.logo} alt="" /> {navitem.name}</span>
+                        <span className='flex font-verdina flex-row justify-center items-center mx-2'>  <img className='w-4 h-4 me-1' src={navitem.logo} alt="" /> {navitem.name}</span>
 
                     </a>
                 ))}
