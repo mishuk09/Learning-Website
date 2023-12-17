@@ -140,7 +140,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         <div>
             <div className='  bg-slate-950 h-16 sm:h-[200px]  md:h-[200px] lg:h-16 '>
                 <div className='container h-16 sm:flex-col  lg:flex-row  flex justify-between items-center'>
-                    <div className='items-stretch sm:mt-2 lg:mt-0 '><img src={mainlogo} className='w-[250px]  ' alt="logo" /></div>
+                    <Link to='/'> <div className='items-stretch sm:mt-2 lg:mt-0 '><img src={mainlogo} className='w-[250px]  ' alt="logo" /></div></Link>
                     <div className=' text-center justify-center   sm:mt-2   lg:mt-0    items-center w-[100%]'> <input type="text" className='rounded w-[50%] h-7 px-2   outline-none' /> <button className='rounded mt-0 bg-white text-black text-sm h-7 px-4 '>  <FontAwesomeIcon icon={faMagnifyingGlass} /></button>  </div>
                     <div className='flex justify-between sm:mt-2 sm:w-[50%] lg:mt-0 lg:w-[70%]  items-center w-[60%]'>
                         <Link to='/allcourse'> <div className='me-3 pb-1  navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className=' fa-icon' icon={faBookOpenReader} /><br />  Learn </div></Link>

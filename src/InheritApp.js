@@ -8,19 +8,21 @@ import Interview from './components/LandingPage/Interview/Interview';
 import Job from './components/LandingPage/Job/Job';
 import Article from './components/LandingPage/Article/Article';
 import Dsaproblems from './components/LandingPage/Dsaproblems/Dsaproblems';
+import Dsa from './components/LandingPage/Dsa/Dsa';
 
 const InheritApp = () => {
     return (
         <div>
-             <Home />
-        <GoToTopButton></GoToTopButton>
-        <ShortDetils></ShortDetils>
-        <Childdiv></Childdiv>
-        <Library></Library>
-        <Interview></Interview>
-        <Job></Job>
-        <Article></Article>
-        <Dsaproblems></Dsaproblems>
+            <Home />
+            <GoToTopButton></GoToTopButton>
+            <ShortDetils></ShortDetils>
+            <Childdiv></Childdiv>
+            <Dsa></Dsa>
+            <Library></Library>
+            <Interview></Interview>
+            <Job></Job>
+            <Article></Article>
+            <Dsaproblems></Dsaproblems>
 
         </div>
     );
