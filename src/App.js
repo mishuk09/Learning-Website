@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-import Home from './components/Home/Home';
-import Navbar from './components/Navbar/Navbar';
-import ShortDetils from './components/ShortDetils/ShortDetils';
+import Navbar from './components/LandingPage/Navbar/Navbar';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import Childdiv from './components/Childdiv/Childdiv';
-import Library from './components/Library/Library';
-import Interview from './components/Interview/Interview';
-import Job from './components/Job/Job';
-import Article from './components/Article/Article';
-import Dsaproblems from './components/Dsaproblems/Dsaproblems';
-import Footer from './components/Footer/Footer';
-import GoToTopButton from './components/GoToTopButton/GoToTopButton';
+import Footer from './components/LandingPage/Footer/Footer';
+
+import AllcourseHomePage from './components/Allcourse/AllcourseHomePage';
+import { Route, Routes } from 'react-router-dom';
+import InheritApp from './InheritApp';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -36,15 +31,13 @@ function App() {
       <div className="App">
 
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        <Home />
-        <GoToTopButton></GoToTopButton>
-        <ShortDetils></ShortDetils>
-        <Childdiv></Childdiv>
-        <Library></Library>
-        <Interview></Interview>
-        <Job></Job>
-        <Article></Article>
-        <Dsaproblems></Dsaproblems>
+
+
+
+        <Routes>
+          <Route path='/' element={<InheritApp></InheritApp>}></Route>
+          <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
+        </Routes>
         <Footer></Footer>
       </div>
     </ThemeProvider>

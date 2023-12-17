@@ -1,9 +1,9 @@
 import React from 'react';
-import Headline from '../Otherscomponent/Headline';
-import ChildHeadline from '../Otherscomponent/ChildHeadline';
-import Tutorials from '../Otherscomponent/Tutorials/Tutorials';
-import Webdevelopment from '../Otherscomponent/Tutorials/Webdevelopment';
-import BasicComputer from '../Otherscomponent/Tutorials/BasicComputer';
+import Headline from '../../Otherscomponent/Headline';
+import ChildHeadline from '../../Otherscomponent/ChildHeadline';
+import Tutorials from '../../Otherscomponent/Tutorials/Tutorials';
+import Webdevelopment from '../../Otherscomponent/Tutorials/Webdevelopment';
+import BasicComputer from '../../Otherscomponent/Tutorials/BasicComputer';
 
 const Library = () => {
     return (

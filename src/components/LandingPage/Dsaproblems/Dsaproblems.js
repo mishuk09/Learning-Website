@@ -1,5 +1,5 @@
 import React from 'react';
-import Headline from '../Otherscomponent/Headline';
+import Headline from '../../Otherscomponent/Headline';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 

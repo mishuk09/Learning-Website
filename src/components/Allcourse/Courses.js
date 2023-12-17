@@ -1,20 +1,18 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import Seemore from '../Otherscomponent/Seemore';
 import Headline from '../Otherscomponent/Headline';
-import Tutorials from '../Otherscomponent/Tutorials/Tutorials';
+import Allcourses from '../Otherscomponent/Allcourses';
 
-const Latesttutorial = () => {
-    
+const Courses = () => {
     return (
-        <div className=' mt-14'>
-            <Headline className='w-[100%]' parent="Latest" child="Tutorial" short="Code"></Headline>
-            <div className="inline-grid grid-cols-6 gap-3 mt-4">
+        <div className='container mt-28'>
+            <Headline className='w-[100%]' parent="All" child="Course's" short="Course" showSeemore={false}></Headline>
+            <div className=" flex flex-wrap gap-3 mt-4">
                 {
-                    Tutorials.map((tutorial) => (
+                    Allcourses.map((tutorial) => (
 
                         // eslint-disable-next-line jsx-a11y/anchor-has-content
 
+                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
                         <a
                             key={tutorial.id}
                             href="#"
@@ -39,7 +37,4 @@ const Latesttutorial = () => {
     );
 };
 
-export default Latesttutorial;
-
-
-
+export default Courses;

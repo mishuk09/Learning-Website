@@ -4,7 +4,7 @@ import dsa from './img/dsa.png';
 import interview from './img/interview.png';
 import job from './img/job.png';
 import sql from './img/sql.png';
-import Headline from '../Otherscomponent/Headline';
+import Headline from '../../Otherscomponent/Headline';
 
 
 const Picktrack = () => {

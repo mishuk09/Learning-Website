@@ -1,6 +1,6 @@
 import React from 'react';
-import Headline from '../Otherscomponent/Headline';
-import Jobs from '../Otherscomponent/Job/Jobs';
+import Headline from '../../Otherscomponent/Headline';
+import Jobs from '../../Otherscomponent/Job/Jobs';
 
 const Job = () => {
     return (

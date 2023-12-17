@@ -21,6 +21,7 @@ import jobs from './img/job.png';
 import Switch from '@mui/material/Switch';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import { Link } from 'react-router-dom';
 
 
 
@@ -142,7 +143,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     <div className='items-stretch sm:mt-2 lg:mt-0 '><img src={mainlogo} className='w-[250px]  ' alt="logo" /></div>
                     <div className=' text-center justify-center   sm:mt-2   lg:mt-0    items-center w-[100%]'> <input type="text" className='rounded w-[50%] h-7 px-2   outline-none' /> <button className='rounded mt-0 bg-white text-black text-sm h-7 px-4 '>  <FontAwesomeIcon icon={faMagnifyingGlass} /></button>  </div>
                     <div className='flex justify-between sm:mt-2 sm:w-[50%] lg:mt-0 lg:w-[70%]  items-center w-[60%]'>
-                        <div className='me-3 pb-1  navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className=' fa-icon' icon={faBookOpenReader} /><br />  Learn </div>
+                        <Link to='/allcourse'> <div className='me-3 pb-1  navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className=' fa-icon' icon={faBookOpenReader} /><br />  Learn </div></Link>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon  ' icon={faBullseye} /><br />Practice</div>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon ' icon={faBriefcase} /><br />Jobs</div>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faPeopleArrows} /><br />Interview</div>
