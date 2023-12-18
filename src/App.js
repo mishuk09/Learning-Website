@@ -7,6 +7,7 @@ import Footer from './components/LandingPage/Footer/Footer';
 import AllcourseHomePage from './components/Allcourse/AllcourseHomePage';
 import { Route, Routes } from 'react-router-dom';
 import InheritApp from './InheritApp';
+import TutorialDetails from './components/TutorialDetails/TutorialDetails';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -24,6 +25,17 @@ function App() {
       },
     },
   });
+  const tutorials = [
+    {
+      id: 1,
+      headline: 'HTML Basics',
+      details: 'Learn the fundamentals of HTML.',
+      articleTitle: 'Introduction to HTML',
+      articleContent: 'This article covers the basics of HTML.',
+    },
+    // Add more tutorial objects as needed
+  ];
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -36,6 +48,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
+          <Route path='/html' element={<TutorialDetails></TutorialDetails>}></Route>
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
         </Routes>
         <Footer></Footer>

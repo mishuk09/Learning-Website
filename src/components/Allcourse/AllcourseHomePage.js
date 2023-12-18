@@ -6,6 +6,10 @@ import course from './img/course.png';
 import certificate from './img/certificate.png';
 import Courses from './Courses';
 import GoToTopButton from '../LandingPage/GoToTopButton/GoToTopButton';
+import Dsa from '../LandingPage/Dsa/Dsa';
+import Library from '../LandingPage/Library/Library';
+import Article from '../LandingPage/Article/Article';
+import Dsaproblems from '../LandingPage/Dsaproblems/Dsaproblems';
 
 
 const AllcourseHomePage = () => {
@@ -16,7 +20,13 @@ const AllcourseHomePage = () => {
         <div className=' '>
             <GoToTopButton></GoToTopButton>
             <HomePage headline={headline} description={description} image={tutorialimg} shortimg={bookimg} img1={course} img2={certificate} ></HomePage>
-            <Courses></Courses>
+            <Courses />
+            <Dsa />
+            <Library />
+            <Article />
+            <Dsaproblems/>
+
+
         </div>
     );
 };

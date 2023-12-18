@@ -3,6 +3,7 @@ import React from 'react';
 import Seemore from '../../Otherscomponent/Seemore';
 import Headline from '../../Otherscomponent/Headline';
 import Tutorials from '../../Otherscomponent/Tutorials/Tutorials';
+import { Link } from 'react-router-dom';
 
 const Latesttutorial = () => {
 
@@ -15,9 +16,9 @@ const Latesttutorial = () => {
 
                         // eslint-disable-next-line jsx-a11y/anchor-has-content
 
-                        <a
+                        <Link
                             key={tutorial.id}
-                            href="#"
+                            to='/html'
                             className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
                         >
                             <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
@@ -29,7 +30,7 @@ const Latesttutorial = () => {
                                 </div>
                             </div>
 
-                        </a>
+                        </Link>
 
 
                     ))

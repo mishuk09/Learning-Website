@@ -22,11 +22,11 @@ const Article = () => {
                     <TabContext value={value}>
                         <Box sx={{}}>
                             <TabList onChange={handleChange} aria-label="lab API tabs example">
-                                <Tab className='rounded border border-slate-300  h-[30px] px-2 ms-2' label="All" value="1" />
-                                <Tab className='rounded border border-slate-300  h-[30px] px-2 ms-2' label="Ai" value="2" />
-                                <Tab className='rounded border border-slate-300  h-[30px] px-2 ms-2' label="DSA" value="3" />
-                                <Tab className='rounded border border-slate-300  h-[30px] px-2 ms-2' label="Tech News" value="4" />
-                                <Tab className='rounded border border-slate-300  h-[30px] px-2 ms-2' label="Basic Computer" value="5" />
+                                <Tab className='rounded border border-slate-300 hover:bg-green-400 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="All" value="1" />
+                                <Tab className='rounded border border-slate-300 hover:bg-green-400 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="Ai" value="2" />
+                                <Tab className='rounded border border-slate-300 hover:bg-green-400 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="DSA" value="3" />
+                                <Tab className='rounded border border-slate-300 hover:bg-green-400 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="Tech News" value="4" />
+                                <Tab className='rounded border border-slate-300 hover:bg-green-400 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="Basic Computer" value="5" />
                             </TabList>
                         </Box>
                         <TabPanel className='  mt-2' value="1">

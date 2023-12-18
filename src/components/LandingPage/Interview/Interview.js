@@ -27,6 +27,7 @@ const Interview = () => {
             requestAnimationFrame(animateScroll);
         }
     };
+    
 
     // Easing function for smooth scroll animation
     const easeInOutQuad = (t, b, c, d) => {
@@ -62,13 +63,13 @@ const Interview = () => {
                 </div>
                 <button
                     className='absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-black p-2 rounded-full'
-                    onClick={() => scroll(-100)}
+                    onClick={() => scroll(-500)}
                 >
                     {'<'}
                 </button>
                 <button
                     className='absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-black p-2 rounded-full'
-                    onClick={() => scroll(100)}
+                    onClick={() => scroll(500)}
                 >
                     {'>'}
                 </button>
