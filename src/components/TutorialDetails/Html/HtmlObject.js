@@ -27,6 +27,18 @@ const HtmlObject = [
 
         ],
     },
+    {
+        id: 3,
+        title: 'Description Child',
+        icon: library,
+        links: [
+            { to: '#', text: 'What is  ' },
+            { to: '#', text: ' What is B' },
+            { to: '#', text: 'What is C' },
+            { to: '#', text: ' What is D' },
+
+        ],
+    },
 ]
 
 export default HtmlObject;

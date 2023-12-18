@@ -13,39 +13,17 @@ import HtmlObject from './HtmlObject';
 import ArticleComponent from '../TutorialsDetailsComponent/ArticleComponent/ArticleComponent';
 import DescriptionComponent from '../TutorialsDetailsComponent/DescriptionComponent/DescriptionComponent';
 import TutorialHeadlineFormat from '../TutorialsDetailsComponent/TutorialHeadlineFormat/TutorialHeadlineFormat';
+import TutorialDetilsFormat from '../TutorialsDetailsComponent/TutorialDetilsFormat/TutorialDetilsFormat';
 
 const Html = () => {
     return (
         <div className='container flex mt-10 gap-3 rounded'>
-            <div className='w-[20%] bg-slate-900 rounded h-full     '>
-                <TutorialHeadlineFormat></TutorialHeadlineFormat>
+            <div className='w-[20%] bg-slate-900 rounded h-full'>
+               <TutorialHeadlineFormat logo={html} name='HTML' description='Programming Language'/>
                 <div className='mt-2'>
-                    {
-                        HtmlObject.map((data) => (
-                            <Accordion key={data.id}>
-                                <AccordionSummary
-
-                                    style={{ backgroundColor: '#1E293B', color: '#fff' }}
-                                    expandIcon={<ExpandMoreIcon style={{ color: "#fff" }} />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                >
-                                    <Typography className='flex  '> <img className='w-6 me-2' src={library} alt="" /> {data.title}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails  style={{ backgroundColor: '#1E293A', color: '#fff', }}>
-                                    <Typography>
-                                        <div className='flex flex-col bg-slate-700 w-full p-1'>
-                                            {
-                                                data.links.map((link) => (
-                                                    <Link to={link.to} className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} /> {link.text}</Link>
-                                                ))
-                                            }
-                                        </div>
-                                    </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))
-                    }
+                    {HtmlObject.map((data) => (
+                        <TutorialDetilsFormat key={data.id} title={data.title} icon={data.icon} links={data.links} />
+                    ))}
                 </div>
             </div>
             <DescriptionComponent />
