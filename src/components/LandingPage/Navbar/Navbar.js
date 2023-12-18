@@ -148,7 +148,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon ' icon={faBriefcase} /><br />Jobs</div>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faPeopleArrows} /><br />Interview</div>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faCode} /><br />Online IDE</div>
-                        <div className='me-3 pb-1  darkmode-toggle   items-center text-center text-sm text-white'>
+                        <div className=' pb-1  darkmode-toggle   items-center text-center text-sm text-white'>
                             <Switch
                                 className='items-center text-center '
                                 checked={darkMode}

@@ -37,6 +37,7 @@ const Tutorials = [
     {
         id: 5,
         img: css,
+        link: '/css',
         title: 'Css'
     },
     {

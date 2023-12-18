@@ -18,7 +18,7 @@ const Latesttutorial = () => {
 
                         <Link
                             key={tutorial.id}
-                            to='/html'
+                            to={tutorial.link}
                             className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
                         >
                             <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>

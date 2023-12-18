@@ -8,6 +8,8 @@ import AllcourseHomePage from './components/Allcourse/AllcourseHomePage';
 import { Route, Routes } from 'react-router-dom';
 import InheritApp from './InheritApp';
 import TutorialDetails from './components/TutorialDetails/TutorialDetails';
+import Css from './components/TutorialDetails/Css/Css';
+import Html from './components/TutorialDetails/Html/Html';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -48,7 +50,9 @@ function App() {
 
         <Routes>
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
-          <Route path='/html' element={<TutorialDetails></TutorialDetails>}></Route>
+          {/* <Route path='/html' element={<TutorialDetails></TutorialDetails>}></Route> */}
+          <Route path='/html' element={<Html />}></Route>
+          <Route path='/css' element={<Css></Css>}></Route>
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
         </Routes>
         <Footer></Footer>
