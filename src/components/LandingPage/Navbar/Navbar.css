@@ -36,5 +36,21 @@
 
 .nav-item a {
   font-family: 'Times New Roman', Times, serif;
-  
+
+}
+
+
+.input-container {
+  position: relative;
+  width: 50%;
+  /* Adjust as needed */
+}
+
+.typing-animation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 8px;
+  /* Adjust as needed */
+  pointer-events: none;
 }

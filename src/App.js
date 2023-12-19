@@ -52,7 +52,7 @@ function App() {
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
           {/* <Route path='/html' element={<TutorialDetails></TutorialDetails>}></Route> */}
           <Route path='/html' element={<Html />}></Route>
-          <Route path='/css' element={<Css></Css>}></Route>
+          <Route path='/css' element={<Css></Css    >}></Route>
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
         </Routes>
         <Footer></Footer>

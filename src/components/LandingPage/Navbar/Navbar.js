@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import mainlogo from './img/mainlogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,6 +22,7 @@ import Switch from '@mui/material/Switch';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { Link } from 'react-router-dom';
+import Typical from 'react-typical';
 
 
 
@@ -133,7 +134,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
         }
 
-    ]
+    ];
 
 
     return (
@@ -141,13 +142,45 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <div className='  bg-slate-950 h-16 sm:h-[200px]  md:h-[200px] lg:h-16 '>
                 <div className='container h-16 sm:flex-col  lg:flex-row  flex justify-between items-center'>
                     <Link to='/'> <div className='items-stretch sm:mt-2 lg:mt-0 '><img src={mainlogo} className='w-[250px]  ' alt="logo" /></div></Link>
-                    <div className=' text-center justify-center   sm:mt-2   lg:mt-0    items-center w-[100%]'> <input type="text" className='rounded w-[50%] h-7 px-2   outline-none' /> <button className='rounded mt-0 bg-white text-black text-sm h-7 px-4 '>  <FontAwesomeIcon icon={faMagnifyingGlass} /></button>  </div>
-                    <div className='flex justify-between sm:mt-2 sm:w-[50%] lg:mt-0 lg:w-[70%]  items-center w-[60%]'>
+
+                    <div className='text-center justify-center sm:mt-2 lg:mt-0 items-center w-[70%]'>
+
+                        <Typical
+
+                            className='absolute pt-1 px-[90px] text-sm text-slate-700'
+                            steps={['Search', 500, 'Search for Expecting Data', 2000]}
+                            loop={Infinity}
+                            wrapper="p"
+                        />
+                        <input
+                            type="text"
+                            className='rounded w-[50%] h-7 px-2 outline-none'
+
+                        />
+                        <button
+                            className='rounded mt-0 bg-white text-black text-sm h-7 px-4'
+
+                        >
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </button>
+                    </div>
+
+
+                    <div className='flex justify-between sm:mt-2 sm:w-[50%] lg:mt-0 lg:w-[100%]  items-center w-[60%]'>
+
+
+
+
                         <Link to='/allcourse'> <div className='me-3 pb-1  navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className=' fa-icon' icon={faBookOpenReader} /><br />  Learn </div></Link>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon  ' icon={faBullseye} /><br />Practice</div>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon ' icon={faBriefcase} /><br />Jobs</div>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faPeopleArrows} /><br />Interview</div>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faCode} /><br />Online IDE</div>
+
+                        <div className='me-3 px-2 py-1 rounded  border    items-center text-center text-sm text-slate-300'> Class 12</div>
+
+                        <div className='me-3  px-2 py-1 rounded  border   items-center text-center text-sm text-white'> <span className='text-sm me-2 text-slate-300'>অ/A</span>  <span className='hidden'>বাং</span><span>EN</span></div>
+
                         <div className=' pb-1  darkmode-toggle   items-center text-center text-sm text-white'>
                             <Switch
                                 className='items-center text-center '
