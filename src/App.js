@@ -10,6 +10,7 @@ import InheritApp from './InheritApp';
 import TutorialDetails from './components/TutorialDetails/TutorialDetails';
 import Css from './components/TutorialDetails/Css/Css';
 import Html from './components/TutorialDetails/Html/Html';
+import TwelveClass from './components/TwelveClass/TwelveClass';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -53,9 +54,10 @@ function App() {
           {/* <Route path='/html' element={<TutorialDetails></TutorialDetails>}></Route> */}
           <Route path='/html' element={<Html />}></Route>
           <Route path='/css' element={<Css></Css    >}></Route>
+          <Route path='/twelveclass' element={<TwelveClass />}></Route>
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
         </Routes>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </div>
     </ThemeProvider>
   );

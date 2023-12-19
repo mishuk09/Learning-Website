@@ -11,6 +11,7 @@ module.exports = {
         verdina: ['Verdina', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
         sans: ['Inter', 'sans-serif'],
+        'noto-sans-bengali': ['Noto Sans Bengali', 'sans-serif'],
       },
     },
   },
