@@ -77,7 +77,7 @@ const TwelveClass = () => {
                     <h1 className='text-slate-100 text-5xl font-bold'>Start <span className='text-green-600'>Learning</span> </h1>
                     <p className='text-slate-300 text-2xl'>Choose your desired Subject and begin learning</p>
                 </div>
-                <div className='absolute text-slate-200  font-noto-sans-bengali   font-bold rounded top-[450px] grid grid-cols-4 gap-3  p-3  justify-between  container  bg-slate-950 wi-[100%] h-[500px] left-1/2 transform -translate-x-1/2 -translate-y-1/2' >
+                <div className='absolute text-slate-200 border font-noto-sans-bengali   font-bold rounded top-[450px] grid grid-cols-4 gap-3  p-3  justify-between  container  bg-slate-950 wi-[100%] h-[500px] left-1/2 transform -translate-x-1/2 -translate-y-1/2' >
                     {subjects.map((subject) => (
                         // eslint-disable-next-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid
                         <a
@@ -95,7 +95,7 @@ const TwelveClass = () => {
                     }
                 </div>
             </div>
-            <div className=' bg-gradient-to-b from-black to-slate-700'>
+            <div className='  bg-gradient-to-b from-slate-700 to-black'>
                 <div className='  '>
                     <Ict />
                 </div>

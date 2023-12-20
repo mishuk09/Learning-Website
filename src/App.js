@@ -57,7 +57,7 @@ function App() {
           <Route path='/twelveclass' element={<TwelveClass />}></Route>
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
         </Routes>
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
       </div>
     </ThemeProvider>
   );
