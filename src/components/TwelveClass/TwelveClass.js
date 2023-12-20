@@ -5,6 +5,7 @@ import math from './img/math.png';
 import chemistry from './img/chemistry.png';
 import physic from './img/physic.png';
 import Ict from './Ict/Ict';
+import Article from '../LandingPage/Article/Article';
 
 const TwelveClass = () => {
     const subjects = [
@@ -99,9 +100,9 @@ const TwelveClass = () => {
                 <div className='  '>
                     <Ict />
                 </div>
-
             </div>
-
+            <Article />
+                    
 
 
         </div>

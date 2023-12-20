@@ -1,8 +1,8 @@
 import React from 'react';
-import html from './img/html.png';
 import library from './img/library.png';
 
-const HtmlObject = [
+const SecondUniteObject = [
+
     {
         id: 1,
         title: 'Introduction',
@@ -13,7 +13,7 @@ const HtmlObject = [
             { to: '#', text: 'What is C' },
             { to: '#', text: ' What is D' },
 
-        ],              
+        ],
     },
     {
         id: 2,
@@ -41,4 +41,4 @@ const HtmlObject = [
     },
 ]
 
-export default HtmlObject;
+export default SecondUniteObject;

@@ -10,6 +10,8 @@ import four from './img/four.png';
 import first from './img/first.png';
 import six from './img/six.png';
 import './Ict.css';
+import Article from '../../LandingPage/Article/Article';
+import { Link } from 'react-router-dom';
 
 const Ict = () => {
     const interviewRef = useRef(null);
@@ -48,13 +50,13 @@ const Ict = () => {
         {
             id: 1,
             img: first,
-            link: '/',
+            link: '/firstunite',
             title: "তথ্য ও যোগাযোগ প্রযুক্তি",
         },
         {
             id: 2,
             img: second,
-            link: '/',
+            link: '/secondunite',
             title: "কমিউনিকেশন সিস্টেমস ও কম্পিউটার নেটওয়ার্কিং"
         },
         {
@@ -108,10 +110,10 @@ const Ict = () => {
                 <div className='px-5 my-10   relative  '>
                     <div className='   grid grid-flow-col auto-cols-max gap-3 mt-4 overflow-hidden  ' ref={interviewRef}>
                         {units.map((unit) => (
-                            // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                            <a
+
+                            <Link
                                 key={unit.id}
-                                href='#'
+                                to={unit.link}
                                 className='bg-slate-800 hover:bg-slate-700 p-3 shadow-sm rounded transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-40 duration-400'
                             >
                                 <div className='  rounded    flex flex-col items-center justify-center'>
@@ -122,7 +124,7 @@ const Ict = () => {
                                         {unit.title}
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                     <button
@@ -139,6 +141,8 @@ const Ict = () => {
                     </button>
                 </div>
             </div>
+
+            {/* <Article />  */}
         </div>
     );
 };

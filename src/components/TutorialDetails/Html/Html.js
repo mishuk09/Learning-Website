@@ -24,7 +24,7 @@ const Html = () => {
                     {HtmlObject.map((data) => (
                         <TutorialDetilsFormat key={data.id} title={data.title} icon={data.icon} links={data.links} />
                     ))}
-                </div>
+                </div>  
             </div>
             <DescriptionComponent />
             <ArticleComponent />
