@@ -1,7 +1,7 @@
+import React from 'react';
+import library from '../../img/library.png'
 
-import library from '../../img/library.png';
-
-const SecondUniteObject = [
+const FiveUniteObject = [
 
     {
         id: 1,
@@ -41,4 +41,4 @@ const SecondUniteObject = [
     },
 ]
 
-export default SecondUniteObject;
+export default FiveUniteObject;

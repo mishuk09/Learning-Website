@@ -1,7 +1,7 @@
-
+import React from 'react';
 import library from '../../img/library.png';
 
-const SecondUniteObject = [
+const ThirdUniteObject = [
 
     {
         id: 1,
@@ -39,6 +39,8 @@ const SecondUniteObject = [
 
         ],
     },
+
+
 ]
 
-export default SecondUniteObject;
+export default ThirdUniteObject;

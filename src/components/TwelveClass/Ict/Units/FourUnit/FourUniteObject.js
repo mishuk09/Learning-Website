@@ -1,7 +1,6 @@
-
 import library from '../../img/library.png';
 
-const SecondUniteObject = [
+const FourUniteObject = [
 
     {
         id: 1,
@@ -41,4 +40,4 @@ const SecondUniteObject = [
     },
 ]
 
-export default SecondUniteObject;
+export default FourUniteObject;

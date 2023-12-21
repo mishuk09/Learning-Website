@@ -22,7 +22,7 @@ const TutorialDetilsFormat = (props) => {
                 id="panel1a-header"
             >
                 <Typography className='flex'>
-                    <img className='w-6 me-2' src={icon} alt="" />
+                    <img className='w-6  me-2' src={icon} alt="" />
                     {title}
                 </Typography>
             </AccordionSummary>

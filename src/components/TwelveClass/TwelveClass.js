@@ -73,7 +73,7 @@ const TwelveClass = () => {
 
     return (
         <div>
-            <div className='bg-gradient-to-b from-black to-slate-700  relative w-full h-[450px]'>
+            <div className='bg-gradient-to-b from-black to-slate-900  relative w-full h-[450px]'>
                 <div className='font-nunito flex flex-col items-center text-center justify-center pt-14'>
                     <h1 className='text-slate-100 text-5xl font-bold'>Start <span className='text-green-600'>Learning</span> </h1>
                     <p className='text-slate-300 text-2xl'>Choose your desired Subject and begin learning</p>
@@ -96,7 +96,7 @@ const TwelveClass = () => {
                     }
                 </div>
             </div>
-            <div className='  bg-gradient-to-b from-slate-700 to-black'>
+            <div className='  bg-gradient-to-b from-slate-900 to-black'>
                 <div className='  '>
                     <Ict />
                 </div>

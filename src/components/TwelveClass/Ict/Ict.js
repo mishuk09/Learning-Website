@@ -62,25 +62,25 @@ const Ict = () => {
         {
             id: 3,
             img: third,
-            link: '/',
+            link: '/thirdunite',
             title: "সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস"
         },
         {
             id: 4,
             img: four,
-            link: '/',
+            link: '/fourunite',
             title: "ওয়েব ডিজাইন পরিচিতি ও HTML"
         },
         {
             id: 5,
             img: fifth,
-            link: '/',
+            link: '/fiveunite',
             title: "প্রোগ্রামিং ভাষা ও C Programming"
         },
         {
             id: 6,
             img: six,
-            link: '/',
+            link: '/sixunite',
             title: "ডেটাবেজ  ম্যানেজমেন্ট সিস্টেম"
         },
     ]

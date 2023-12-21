@@ -177,12 +177,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faPeopleArrows} /><br />Interview</div>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faCode} /><br />Online IDE</div>
 
-                        <Link to='/twelveclass'>  <div className='me-3 hover:scale-105 duration-300 hover:text-slate-400 px-2 py-1 rounded  border    items-center text-center text-sm text-slate-300'>Class 12
+                        <Link to='/twelveclass'>  <div className='me-3 hover:scale-105 duration-300   px-2 py-1 rounded  border    items-center text-center text-sm text-slate-300'>Class 12
                         </div></Link>
 
 
-                        <div onClick={changeLanguage} className='me-3 cursor-pointer   hover:scale-105 duration-300 hover:text-slate-400 px-2 py-1 rounded border items-center text-center text-sm text-white'>
-                            <span className='text-sm me-2 hover:text-slate-400 text-slate-300'>অ/A</span>
+                        <div onClick={changeLanguage} className='me-3   overflow-hidden cursor-pointer   hover:scale-105 duration-300   px-2 py-1 rounded border items-center text-center text-sm text-white'>
+                            <span className='text-sm me-2   text-slate-300'>অ/A</span>
                             {language ? <span>EN</span> : <span className=' '>বাং</span>}
                         </div>
                         <div className=' pb-1  darkmode-toggle   items-center text-center text-sm text-white'>

@@ -12,6 +12,11 @@ import Css from './components/TutorialDetails/Css/Css';
 import Html from './components/TutorialDetails/Html/Html';
 import TwelveClass from './components/TwelveClass/TwelveClass';
 import FirstUnit from './components/TwelveClass/Ict/Units/FirstUnit/FirstUnit';
+import SecondUnite from './components/TwelveClass/Ict/Units/SecondUnit/SecondUnite';
+import ThirdUnite from './components/TwelveClass/Ict/Units/ThirdUnit/ThirdUnite';
+import FourUnite from './components/TwelveClass/Ict/Units/FourUnit/FourUnite';
+import FiveUnite from './components/TwelveClass/Ict/Units/FiveUnit/FiveUnite';
+import SixUnite from './components/TwelveClass/Ict/Units/SixUnit/SixUnite';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -56,6 +61,11 @@ function App() {
           <Route path='/html' element={<Html />}></Route>
           <Route path='/css' element={<Css></Css    >}></Route>
           <Route path='/firstunite' element={<FirstUnit />}></Route>
+          <Route path='/secondunite' element={<SecondUnite />}></Route>
+          <Route path='/thirdunite' element={<ThirdUnite />}></Route>
+          <Route path='/fourunite' element={<FourUnite />}></Route>
+          <Route path='/fiveunite' element={<FiveUnite />}></Route>
+          <Route path='/sixunite' element={<SixUnite />}></Route>
           <Route path='/twelveclass' element={<TwelveClass />}></Route>
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
         </Routes>

@@ -1,5 +1,5 @@
 import React from 'react';
-import second from './img/second.png';
+import second from '../../img/second.png';
 import TutorialHeadlineFormat from '../../../../TutorialDetails/TutorialsDetailsComponent/TutorialHeadlineFormat/TutorialHeadlineFormat';
 import SecondUniteObject from './SecondUniteObject';
 import TutorialDetilsFormat from '../../../../TutorialDetails/TutorialsDetailsComponent/TutorialDetilsFormat/TutorialDetilsFormat';
@@ -23,4 +23,4 @@ const SecondUnite = () => {
     );
 };
 
-export default SecondUnite;
+export default SecondUnite; 
