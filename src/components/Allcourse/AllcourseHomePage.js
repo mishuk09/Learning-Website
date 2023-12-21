@@ -19,7 +19,7 @@ const AllcourseHomePage = () => {
     return (
         <div className=' '>
             <GoToTopButton></GoToTopButton>
-            <HomePage headline={headline} description={description} image={tutorialimg} shortimg={bookimg} img1={course} img2={certificate} ></HomePage>
+            <HomePage headline={headline} showHeadButton={true} description={description} image={tutorialimg} shortimg={bookimg} img1={course} img2={certificate} ></HomePage>
             <Courses />
             <Dsa />
             <Library />

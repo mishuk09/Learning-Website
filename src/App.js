@@ -17,6 +17,8 @@ import ThirdUnite from './components/TwelveClass/Ict/Units/ThirdUnit/ThirdUnite'
 import FourUnite from './components/TwelveClass/Ict/Units/FourUnit/FourUnite';
 import FiveUnite from './components/TwelveClass/Ict/Units/FiveUnit/FiveUnite';
 import SixUnite from './components/TwelveClass/Ict/Units/SixUnit/SixUnite';
+import OnlineIDE from './components/OnlineIDE/OnlineIDE';
+import Interview from './components/Interview/Interview';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -57,9 +59,22 @@ function App() {
 
         <Routes>
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
-          {/* <Route path='/html' element={<TutorialDetails></TutorialDetails>}></Route> */}
+
+
+          {/* ALLCourse ROUTES */}
+          <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
+
+          {/* Interview ROUTES */}
+          <Route path='/interview' element={<Interview />}></Route>
+
+          {/* Online IDE ROUTES */}
+          <Route path='/onlineide' element={<OnlineIDE />}></Route>
+
+          {/* Tutorials ROUTES */}
           <Route path='/html' element={<Html />}></Route>
           <Route path='/css' element={<Css></Css    >}></Route>
+
+          {/* Twelve CLass ROUTES */}
           <Route path='/firstunite' element={<FirstUnit />}></Route>
           <Route path='/secondunite' element={<SecondUnite />}></Route>
           <Route path='/thirdunite' element={<ThirdUnite />}></Route>
@@ -67,7 +82,9 @@ function App() {
           <Route path='/fiveunite' element={<FiveUnite />}></Route>
           <Route path='/sixunite' element={<SixUnite />}></Route>
           <Route path='/twelveclass' element={<TwelveClass />}></Route>
-          <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
+
+
+
         </Routes>
         <Footer></Footer>
       </div>

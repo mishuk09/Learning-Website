@@ -5,7 +5,7 @@ import Allcourses from '../Otherscomponent/Allcourses';
 const Courses = () => {
     return (
         <div className='container mt-28'>
-            <Headline className='w-[100%]' parent="All" child="Course's" short="Course" showSeemore={false}></Headline>
+            <Headline className='w-[100%]' parent="Start" child="Learning" short="Course" showSeemore={false}></Headline>
             <div className=" flex flex-wrap gap-3 mt-4">
                 {
                     Allcourses.map((tutorial) => (

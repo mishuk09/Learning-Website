@@ -2,7 +2,7 @@ import React from 'react';
 import Seemore from './Seemore';
 
 const Headline = (props) => {
-    const { parent, child, short ,showSeemore} = props;
+    const { parent, child, short, showSeemore } = props;
     return (
         < >
             <p className='font-nutino text-md text-blue-500'>{short}</p>

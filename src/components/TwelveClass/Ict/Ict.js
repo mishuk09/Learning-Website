@@ -127,6 +127,32 @@ const Ict = () => {
                             </Link>
                         ))}
                     </div>
+                    {/* <div className="inline-grid grid-cols-6 gap-32 mt-4">
+                        {
+                            units.map((tutorial) => (
+
+                                // eslint-disable-next-line jsx-a11y/anchor-has-content
+
+                                <Link
+                                    key={tutorial.id}
+                                    to={tutorial.link}
+                                    className='bg-slate-800 hover:bg-slate-700 p-3 shadow-sm rounded transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-40 duration-400 w-[200px]'
+                                >
+                                    <div className=' rounded text-center     flex flex-col items-center justify-center'>
+                                        <div>
+                                            <img className='w-[130px] rounded 'src={tutorial.img} alt="" />
+                                        </div>
+                                        <div className='text-white mt-2 font-nunito  '>
+                                            {tutorial.title}
+                                        </div>
+                                    </div>
+
+                                </Link>
+
+
+                            ))
+                        }
+                    </div> */}
                     <button
                         className='absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-black p-2 rounded-full'
                         onClick={() => scroll(-500)}
