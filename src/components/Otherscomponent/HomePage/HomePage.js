@@ -19,7 +19,22 @@ const HomePage = ({ headline, description, image, shortimg, img1, img2, showImgD
                     </div>}
 
                 {showInterviewDiv &&
-                    <div></div>
+                    <div className="grid grid-cols-2 gap-3 mt-4">
+                        <div className="w-[100%] font-bold  flex  rounded-md  h-[60px] bg-slate-100 border">
+                            <div className='w-[20%] bg-green-600 rounded-l-md text-white items-center justify-center flex flex-col'>
+                                <FontAwesomeIcon className='  'size='xl' icon={faCode} />
+                            </div>
+                            <div className='w-[80%] ps-2 items-start justify-center flex flex-col'>
+                                Interview Preparation
+                                <p className='text-sm font-thin'>Ready yourself for success.       </p>
+                            </div></div>
+                        <div className="w-[100%] font-bold  rounded-md  h-[60px] bg-slate-200 border">Online Coding IDE
+                            <p className='text-sm font-thin'>Crafting solutions in virtual light</p></div>
+                        <div className="col-span-2 font-bold rounded-md   w-[100%] h-[60px] bg-slate-200 border">Assessing Proficiencies
+                            <p className='text-sm font-thin'>Assess strengths, elevate skills,
+                                Achieve excellence in every test</p></div>
+
+                    </div>
                 }
 
                 <hr className='mt-2' />
