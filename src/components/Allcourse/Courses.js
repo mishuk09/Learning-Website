@@ -9,12 +9,8 @@ const Courses = () => {
             <div className=" flex flex-wrap gap-3 mt-4">
                 {
                     Allcourses.map((tutorial) => (
-
-                        // eslint-disable-next-line jsx-a11y/anchor-has-content
-
                         // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        <a
-                            key={tutorial.id}
+                        <a key={tutorial.id}
                             href="#"
                             className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
                         >
@@ -26,12 +22,8 @@ const Courses = () => {
                                     {tutorial.title}
                                 </div>
                             </div>
-
                         </a>
-
-
-                    ))
-                }
+                    ))}
             </div>
         </div>
     );

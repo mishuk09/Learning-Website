@@ -3,11 +3,9 @@ import './App.css';
 import Navbar from './components/LandingPage/Navbar/Navbar';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Footer from './components/LandingPage/Footer/Footer';
-
 import AllcourseHomePage from './components/Allcourse/AllcourseHomePage';
 import { Route, Routes } from 'react-router-dom';
 import InheritApp from './InheritApp';
-import TutorialDetails from './components/TutorialDetails/TutorialDetails';
 import Css from './components/TutorialDetails/Css/Css';
 import Html from './components/TutorialDetails/Html/Html';
 import TwelveClass from './components/TwelveClass/TwelveClass';
@@ -18,7 +16,7 @@ import FourUnite from './components/TwelveClass/Ict/Units/FourUnit/FourUnite';
 import FiveUnite from './components/TwelveClass/Ict/Units/FiveUnit/FiveUnite';
 import SixUnite from './components/TwelveClass/Ict/Units/SixUnit/SixUnite';
 import OnlineIDE from './components/OnlineIDE/OnlineIDE';
-import Interview from './components/Interview/Interview';
+import InterviewDiv from './components/Interview/InterviewDiv';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -65,7 +63,7 @@ function App() {
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
 
           {/* Interview ROUTES */}
-          <Route path='/interview' element={<Interview />}></Route>
+          <Route path='/interview' element={<InterviewDiv />}></Route>
 
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>

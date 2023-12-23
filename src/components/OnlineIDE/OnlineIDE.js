@@ -57,6 +57,7 @@ const OnlineIDE = () => {
                         <input
                             type="text"
                             className='rounded w-[50%] h-9 px-2 me-2 outline-none'
+                            placeholder='Search Desire Coding Compiler...'
                         />
                         <button
                             className='rounded bg-white text-black text-sm h-9 px-4'
