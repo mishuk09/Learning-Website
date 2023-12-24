@@ -1,6 +1,6 @@
 import { faBookOpen, faBug, faCode, faFilePdf, faGear, faMagnifyingGlass, faNewspaper, faRunning, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Headline from '../Otherscomponent/Headline';
 import OnlineIDEObject from './OnlineIDEObject';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,19 @@ import GoToTopButton from '../LandingPage/GoToTopButton/GoToTopButton';
 
 const OnlineIDE = () => {
     const interviewRef = useRef(null);
+    
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        const placeholderText = 'Search Desired Coding Compiler...';
+        let index = 0;
+        const intervalId = setInterval(() => {
+            index = (index + 1) % (placeholderText.length + 1);
+            inputRef.current.placeholder = placeholderText.slice(0, index);
+        }, 150);
+
+        return () => clearInterval(intervalId);
+    }, []);
 
 
     const scroll = (scrollOffset) => {
@@ -50,12 +63,14 @@ const OnlineIDE = () => {
 
 
             <div className='bg-black pb-10'>
-                <div className='flex flex-col items-center pt-4 justify-center text-left'>
+                <div className='container flex flex-col items-center pt-4 justify-center text-left'>
                     <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' beat/>
                     <h1 className='text-white text-5xl font-bold font-nunito'>Online Coding <span className='text-green-500'>Compilers</span> </h1>
                     <div className='flex mt-4 items-center justify-center sm:mt-2 lg:mt-0 w-[70%]'>
                         <input
                             type="text"
+                            id="searchInput"
+                            ref={inputRef}
                             className='rounded w-[50%] h-9 px-2 me-2 outline-none'
                             placeholder='Search Desire Coding Compiler...'
                         />

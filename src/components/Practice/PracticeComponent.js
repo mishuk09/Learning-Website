@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Headline from '../Otherscomponent/Headline';
-import interview from '../Otherscomponent/interview';
+import interview from '../Otherscomponent/interviewObject';
 
 const PracticeComponent = () => {
     const interviewRef = useRef(null);

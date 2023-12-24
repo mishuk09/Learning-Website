@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
 import mainlogo from './img/mainlogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -149,7 +149,18 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         text3: false,
     });
 
+    const inputRef = useRef(null);
 
+    useEffect(() => {
+        const placeholderText = 'Search Your Desired Topic...';
+        let index = 0;
+        const intervalId = setInterval(() => {
+            index = (index + 1) % (placeholderText.length + 1);
+            inputRef.current.placeholder = placeholderText.slice(0, index);
+        }, 150);
+
+        return () => clearInterval(intervalId);
+    }, []);
 
 
     return (
@@ -160,6 +171,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     <div className='flex items-center justify-center sm:mt-2 lg:mt-0 w-[70%]'>
                         <input
                             type="text"
+                            id="searchInput"
+                            ref={inputRef}
                             className='rounded w-[50%] h-7 px-2 me-2 outline-none'
                         />
                         <button

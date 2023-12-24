@@ -67,7 +67,7 @@ function App() {
           {/* Practice ROUTES */}
           <Route path='/practice' element={<Practice />}></Route>
           {/* Interview ROUTES */}
-          <Route path='/interview' element={<Interview />}></Route>
+          <Route path='/interview' element={<InterviewDiv />}></Route>
 
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>

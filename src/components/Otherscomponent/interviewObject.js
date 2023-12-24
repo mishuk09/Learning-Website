@@ -9,7 +9,7 @@ import uber from './Tutorials/img/uber.png';
 import twitter from './Tutorials/img/twitter.png';
 import adobe from './Tutorials/img/adobe.png';
 
-const interview = [
+const interviewObject = [
     {
         id: 1,
         img: google,
@@ -58,4 +58,4 @@ const interview = [
 
 ]
 
-export default interview;
+export default interviewObject;
