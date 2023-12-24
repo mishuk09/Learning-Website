@@ -9,7 +9,7 @@ const HomePage = ({ headline, description, image, shortimg, img1, img2, showImgD
                 <span className='absolute ms-[43%] mt-[-5px]'><img className='w-16' src={shortimg} alt="" /></span>
 
                 <h1 className='text-5xl ms-2 font-source-sans-3'>{headline}</h1>
-                {showHeadButton &&  
+                {showHeadButton &&
                     <div className='flex container mt-5 font-nutino text-slate-600'>
                         <div className='me-3 hover:-translate-y-1 hover:scale-110 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-1' icon={faBookOpen} />Free Course</div>
                         <div className='me-3 hover:-translate-y-1 hover:scale-110 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-1' icon={faFilePdf} />PDF</div>
@@ -20,6 +20,20 @@ const HomePage = ({ headline, description, image, shortimg, img1, img2, showImgD
 
                 {showInterviewDiv &&
                     <div className="grid grid-cols-2 text-black font-nunito gap-2 mt-4">
+                       
+                        <div>
+                            <a href="#codingpractice">
+                                <div className="w-[100%] cursor-pointer hover:-translate-y-1 duration-300 font-bold  flex  rounded-md  h-[60px] bg-slate-100 border">
+                                    <div className='w-[20%] bg-green-600 rounded-l-md text-white items-center justify-center flex flex-col'>
+                                        <FontAwesomeIcon className='  ' size='xl' icon={faCode} />
+                                    </div>
+                                    <div className='w-[80%] ps-2 items-start justify-center flex flex-col'>
+                                        Coding Practice
+                                        <p className='text-sm font-thin'>Crafting solutions in virtual light       </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                         <div className="w-[100%] cursor-pointer hover:-translate-y-1 duration-300 font-bold  flex  rounded-md  h-[60px] bg-slate-100 border">
                             <div className='w-[20%] bg-green-600 rounded-l-md text-white items-center justify-center flex flex-col'>
                                 <FontAwesomeIcon className='  ' size='xl' icon={faPeopleArrows} />
@@ -29,15 +43,7 @@ const HomePage = ({ headline, description, image, shortimg, img1, img2, showImgD
                                 <p className='text-sm font-thin'>Ready yourself for success.       </p>
                             </div>
                         </div>
-                        <div className="w-[100%] cursor-pointer hover:-translate-y-1 duration-300 font-bold  flex  rounded-md  h-[60px] bg-slate-100 border">
-                            <div className='w-[20%] bg-green-600 rounded-l-md text-white items-center justify-center flex flex-col'>
-                                <FontAwesomeIcon className='  ' size='xl' icon={faCode} />
-                            </div>
-                            <div className='w-[80%] ps-2 items-start justify-center flex flex-col'>
-                                Online Coding IDE
-                                <p className='text-sm font-thin'>Crafting solutions in virtual light       </p>
-                            </div>
-                        </div>
+
                         <div className="col-span-2  cursor-pointer hover:-translate-y-1 duration-300 w-[100%] font-bold  flex  rounded-md  h-[60px] bg-slate-100 border">
                             <div className='w-[10%] bg-green-600 rounded-l-md text-white items-center justify-center flex flex-col'>
                                 <FontAwesomeIcon className='  ' size='xl' icon={faBrain} />
@@ -48,7 +54,7 @@ const HomePage = ({ headline, description, image, shortimg, img1, img2, showImgD
                                     Achieve excellence in every test</p>
                             </div>
                         </div>
-                        
+
                     </div>
                 }
 

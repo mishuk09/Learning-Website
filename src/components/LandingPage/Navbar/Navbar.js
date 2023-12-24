@@ -172,7 +172,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     <div className='flex justify-between sm:mt-2 sm:w-[50%] lg:mt-0 lg:w-[100%]  items-center w-[60%]'>
 
                         <Link to='/allcourse'> <div className='me-3 pb-1  navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className=' fa-icon' icon={faBookOpenReader} /><br />  Learn </div></Link>
-                        <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon  ' icon={faBullseye} /><br />Practice</div>
+                        <Link to='/practice'>
+                            <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon  ' icon={faBullseye} /><br />Practice</div>
+                        </Link>
                         <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon ' icon={faBriefcase} /><br />Jobs</div>
                         <Link to='interview'>
                             <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faPeopleArrows} /><br />Interview</div>

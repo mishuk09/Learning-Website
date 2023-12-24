@@ -51,7 +51,7 @@ const OnlineIDE = () => {
 
             <div className='bg-black pb-10'>
                 <div className='flex flex-col items-center pt-4 justify-center text-left'>
-                    <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' />
+                    <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' beat/>
                     <h1 className='text-white text-5xl font-bold font-nunito'>Online Coding <span className='text-green-500'>Compilers</span> </h1>
                     <div className='flex mt-4 items-center justify-center sm:mt-2 lg:mt-0 w-[70%]'>
                         <input

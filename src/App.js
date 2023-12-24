@@ -17,6 +17,8 @@ import FiveUnite from './components/TwelveClass/Ict/Units/FiveUnit/FiveUnite';
 import SixUnite from './components/TwelveClass/Ict/Units/SixUnit/SixUnite';
 import OnlineIDE from './components/OnlineIDE/OnlineIDE';
 import InterviewDiv from './components/Interview/InterviewDiv';
+import Practice from './components/Practice/Practice';
+import Interview from './components/LandingPage/Interview/Interview';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -62,8 +64,10 @@ function App() {
           {/* ALLCourse ROUTES */}
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
 
+          {/* Practice ROUTES */}
+          <Route path='/practice' element={<Practice />}></Route>
           {/* Interview ROUTES */}
-          <Route path='/interview' element={<InterviewDiv />}></Route>
+          <Route path='/interview' element={<Interview />}></Route>
 
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>
