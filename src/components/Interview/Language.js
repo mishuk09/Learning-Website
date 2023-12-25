@@ -7,15 +7,12 @@ import css from './img/css.png';
 import javascript from './img/javascript.png';
 import java from './img/java.png';
 import python from './img/python.png';
-import react from './img/react.png';
-import nodejs from './img/nodejs.png';
-import sql from './img/sql.png';
-import dbms from './img/dbms.png';
 import php from './img/php.png';
 
-const Tutorials = [
+const Language = [
     {
         id: 1,
+        link: '/cinterview',
         img: c,
         title: 'C'
     },
@@ -60,27 +57,7 @@ const Tutorials = [
         id: 9,
         img: python,
         title: 'Python'
-    },
-    {
-        id: 10,
-        img: react,
-        title: 'React'
-    },
-    {
-        id: 11,
-        img: nodejs,
-        title: 'Node JS'
-    },
-    {
-        id: 12,
-        img: sql,
-        title: 'SQL'
-    },
-    {
-        id: 13,
-        img: dbms,
-        title: 'DBMS'
-    },
-]
+    }
 
-export default Tutorials;
+]
+export default Language;

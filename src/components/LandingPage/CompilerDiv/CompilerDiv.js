@@ -49,7 +49,7 @@ const CompilerDiv = () => {
                             opacity: 0.2,
                         }}
                     />
-                    {/* Content */}
+                  
 
                 </div>
 

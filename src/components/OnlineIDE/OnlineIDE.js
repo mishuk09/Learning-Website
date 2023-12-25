@@ -14,7 +14,7 @@ import GoToTopButton from '../LandingPage/GoToTopButton/GoToTopButton';
 
 const OnlineIDE = () => {
     const interviewRef = useRef(null);
-    
+
     const inputRef = useRef(null);
 
     useEffect(() => {
@@ -64,7 +64,7 @@ const OnlineIDE = () => {
 
             <div className='bg-black pb-10'>
                 <div className='container flex flex-col items-center pt-4 justify-center text-left'>
-                    <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' beat/>
+                    <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' beat />
                     <h1 className='text-white text-5xl font-bold font-nunito'>Online Coding <span className='text-green-500'>Compilers</span> </h1>
                     <div className='flex mt-4 items-center justify-center sm:mt-2 lg:mt-0 w-[70%]'>
                         <input
@@ -96,7 +96,8 @@ const OnlineIDE = () => {
                     <p className='font-nutino text-md text-blue-500'>Compiler</p>
                     <div className='flex justify-between relative items-center pe-2   '> <h1 className='text-slate-200 font-nunito   font-bold text-5xl  '>Compiler For<span className='text-green-500  '> Coder </span>  </h1>  </div>
                     <div className='px-5 my-10   relative  '>
-                        <div className="inline-grid grid-cols-6 gap-3 mt-2">
+                        <div className='  grid grid-flow-col auto-cols-max gap-3 mt-4 overflow-hidden  ' ref={interviewRef}>
+
                             {
                                 OnlineIDEObject.map((tutorial) => (
 
@@ -140,7 +141,6 @@ const OnlineIDE = () => {
 
 
             </div>
-            <GoToTopButton />
             <Courses />
             <Dsa />
             <Library />

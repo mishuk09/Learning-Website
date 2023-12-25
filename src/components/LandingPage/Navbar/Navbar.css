@@ -71,3 +71,9 @@
     opacity: 1;
   }
 }
+
+
+/* Navbar.css or your CSS file */
+.NavLink-active {
+  color: blue;
+}

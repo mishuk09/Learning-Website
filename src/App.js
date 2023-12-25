@@ -19,6 +19,9 @@ import OnlineIDE from './components/OnlineIDE/OnlineIDE';
 import InterviewDiv from './components/Interview/InterviewDiv';
 import Practice from './components/Practice/Practice';
 import Interview from './components/LandingPage/Interview/Interview';
+import C from './components/Interview/InterviewDetils/C/C';
+import GoToTopButton from './components/LandingPage/GoToTopButton/GoToTopButton';
+import UserLogin from './components/LandingPage/Navbar/UserLogin';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -54,11 +57,14 @@ function App() {
       <div className="App">
 
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-
+        <GoToTopButton />
 
 
         <Routes>
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
+
+          {/* Userlogin ROUTES */}
+          <Route path='/userlogin' element={<UserLogin />}></Route>
 
 
           {/* ALLCourse ROUTES */}
@@ -68,6 +74,8 @@ function App() {
           <Route path='/practice' element={<Practice />}></Route>
           {/* Interview ROUTES */}
           <Route path='/interview' element={<InterviewDiv />}></Route>
+          <Route path='/cinterview' element={<C />}></Route>
+          <Route path='/c++interview' element={<InterviewDiv />}></Route>
 
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>

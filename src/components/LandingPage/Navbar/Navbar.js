@@ -22,8 +22,6 @@ import Switch from '@mui/material/Switch';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { Link } from 'react-router-dom';
-import Typical from 'react-typical';
-import { isVisible } from '@testing-library/user-event/dist/utils';
 
 
 
@@ -193,6 +191,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                             <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faPeopleArrows} /><br />Interview</div>
 
                         </Link>
+
+
+
                         <Link to='/onlineide'>   <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faCode} /><br />Online IDE</div>
                         </Link>
                         <Link to='/twelveclass'>  <div className='me-3 hover:scale-105 duration-300   px-2 py-1 rounded  border    items-center text-center text-sm text-slate-300'>Class 12
@@ -212,9 +213,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                                 checkedIcon={<WbSunnyIcon className={darkMode ? 'sunny-dark' : ''} />}
                             />
                         </div>
-                        <div className='me-3  ms-3 items-center   text-center   text-white'> <FontAwesomeIcon icon={faUser} size='2xl' /></div>
+                        <Link to='/userlogin'>
+                            <div className='me-3  ms-3 items-center   text-center   text-white'> <FontAwesomeIcon icon={faUser} size='2xl' /></div>
 
-
+                        </Link>
                     </div>
                 </div>
             </div>

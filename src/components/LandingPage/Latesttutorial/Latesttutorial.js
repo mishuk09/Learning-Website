@@ -10,7 +10,7 @@ const Latesttutorial = () => {
     return (
         <div className=' mt-14'>
             <Headline className='w-[100%]' parent="Latest" child="Tutorial" short="Code" showSeemore={true}></Headline>
-            <div className="inline-grid grid-cols-6 gap-3 mt-4">
+            <div className="inline-grid grid-cols-7 gap-3 mt-4">
                 {
                     Tutorials.map((tutorial) => (
 

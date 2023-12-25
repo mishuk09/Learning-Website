@@ -6,19 +6,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faCode, faEnvelope, faGears, faHeadset, faLayerGroup, faMap, faPeopleGroup, } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import bgelement from './img/bgelement.png';
+import bgdesign from './img/bgdesign.png';
 const Footer = () => {
     const divStyle = {
         width: '100%', // Adjusted to fill the width of its container
         height: '240px',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundImage: `url(${bgelement})`,
+        backgroundImage: `url(${bgdesign})`,
+        // opacity:0.5,
     };
     return (
         <div >
             <div className='w-full h-[500px] bg-cover bg-center' style={divStyle}>
 
-                
+
             </div>
             <div className='bg-slate-950  w-full h-[200px]'>
                 <div className='container flex items-center justify-center text-center'>

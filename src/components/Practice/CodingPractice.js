@@ -12,7 +12,7 @@ const CodingPractice = () => {
             title: "Coding Challenges",
             describe: 'Choose subjects, adjust the challenge level, or even opt for questions tailored to certain companies for a more focused study approach!',
 
-            link: '/ghf',
+            link: '/ ',
             backgroundImage: `url(${compiler})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -22,7 +22,7 @@ const CodingPractice = () => {
             id: 2,
             title: "Online Compiler",
             describe: 'Access our user-friendly online compiler for seamless code execution, testing, and debugging across multiple programming languages',
-            link: '/ghf',
+            link: '/onlineide',
             backgroundImage: `url(${dsapblm})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
