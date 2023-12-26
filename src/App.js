@@ -22,6 +22,8 @@ import Interview from './components/LandingPage/Interview/Interview';
 import C from './components/Interview/InterviewDetils/C/C';
 import GoToTopButton from './components/LandingPage/GoToTopButton/GoToTopButton';
 import UserLogin from './components/LandingPage/Navbar/UserLogin';
+import Signin from './components/LandingPage/Navbar/Signin';
+import Signup from './components/LandingPage/Navbar/Signup';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -64,7 +66,9 @@ function App() {
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
 
           {/* Userlogin ROUTES */}
-          <Route path='/userlogin' element={<UserLogin />}></Route>
+          {/* <Route path='/userlogin' element={<UserLogin />}></Route> */}
+          <Route path='/userlogin' element={<Signin />}></Route>
+          <Route path='/usersignup' element={<Signup />}></Route>
 
 
           {/* ALLCourse ROUTES */}

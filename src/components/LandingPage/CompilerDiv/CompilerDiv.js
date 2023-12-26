@@ -25,9 +25,9 @@ const CompilerDiv = () => {
                     </div>
                 </div>
                 {/* <div className='h-36 w-[25%] border-t border-r border-b bg-black flex items-center justify-center' style={codStyle} > <button className='bg-green-600 p-2 rounded text-white'> CODE NOW </button></div> */}
-                <div style={{ position: 'relative', width: '25%' }}>
+                <div style={{ position: 'relative', width: '25%' }} >
                     {/* Background with opacity */}
-                    <div className='h-36 w-full border-t border-r border-b bg-black flex items-center justify-center'>
+                    <div className='h-36 w-full border-t border-r border-b bg-black flex items-center justify-center' >
                         <Link to='/onlineide'>
                             <button className='bg-green-600 py-2 px-3 font-bold duration-300 rounded text-white hover:bg-green-800'>
                                 &lt;/   CODE NOW &gt;
@@ -49,7 +49,6 @@ const CompilerDiv = () => {
                             opacity: 0.2,
                         }}
                     />
-                  
 
                 </div>
 
