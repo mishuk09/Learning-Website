@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import { Facebook, GitHub, Google, Twitter } from '@mui/icons-material';
 
 function Copyright(props) {
     return (
@@ -117,12 +118,65 @@ export default function Signup() {
                     >
                         Sign Up
                     </Button>
-                    <Grid container justifyContent="flex-end">
-                        <Grid item>
-                            Already have an account?
-                            <Link to='/userlogin' variant="body2">
-                                Sign in
-                            </Link>
+                    <Grid container direction="column" alignItems="center">
+
+                        <Grid container direction="column" alignItems="center">
+                            <Grid item>
+                                Already have an account?
+                                <Link to='/userlogin' variant="body2">
+                                    Sign in
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                               Or Sign With
+                                 
+                            </Grid>
+                            <Grid container justifyContent="center" style={{ marginTop: '20px' }}>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<Google />}
+                                    fullWidth
+                                    onClick={() => {
+                                        // Handle Google button click
+                                    }}
+                                    sx={{ width: '100%', marginBottom: '7px' }}
+                                >
+                                    Google
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<GitHub />}
+                                    fullWidth
+                                    onClick={() => {
+                                        // Handle GitHub button click
+                                    }}
+                                    sx={{ width: '100%', marginBottom: '7px' }}
+                                >
+                                    GitHub
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<Facebook />}
+                                    fullWidth
+                                    onClick={() => {
+                                        // Handle Facebook button click
+                                    }}
+                                    sx={{ width: '100%', marginBottom: '7px' }}
+                                >
+                                    Facebook
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<Twitter />}
+                                    fullWidth
+                                    onClick={() => {
+                                        // Handle Twitter button click
+                                    }}
+                                    sx={{ width: '100%', marginBottom: '7px' }}
+                                >
+                                    Twitter
+                                </Button>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Box>
