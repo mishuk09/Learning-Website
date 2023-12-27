@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { getAuth } from 'firebase/auth';
 import app from '../../Firebase/Firebase.init';
 const auth = getAuth(app)
@@ -47,7 +47,7 @@ export default function Signin() {
 
 
     const handleSubmit = event => {
-        createUserWithEmailAndPassword(auth, email, password)
+      signInWithEmailAndPassword(auth, email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);

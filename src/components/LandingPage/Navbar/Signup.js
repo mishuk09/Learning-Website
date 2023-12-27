@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,9 +10,12 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { Facebook, GitHub, Google, Twitter } from '@mui/icons-material';
+import { createUserWithEmailAndPassword, FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
+import app from '../../Firebase/Firebase.init';
+const auth = getAuth(app)
 
 function Copyright(props) {
     return (
@@ -29,17 +32,88 @@ function Copyright(props) {
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
+
 
 export default function Signup() {
-    const handleSubmit = (event) => {
+    const googleprovider = new GoogleAuthProvider();
+    const githubprovider = new GithubAuthProvider();
+    const facebookprovider = new FacebookAuthProvider();
+    const twitterprovider = new TwitterAuthProvider();
+
+    const [user, setUser] = useState({});
+
+    const handleGoogleSignin = () => {
+        signInWithPopup(auth, googleprovider)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                console.log(user)
+            })
+            .catch(error => {
+                console.log("Error", error);
+            })
+    }
+    const handleGithubSignin = () => {
+        signInWithPopup(auth, githubprovider)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                console.log(user)
+            })
+            .catch(error => {
+                console.log("Error", error);
+            })
+    }
+    const handleFacebookSignin = () => {
+        signInWithPopup(auth, facebookprovider)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                console.log(user)
+            })
+            .catch(error => {
+                console.log("Error", error);
+            })
+    }
+    const handleTwitterSignin = () => {
+        signInWithPopup(auth, twitterprovider)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                console.log(user)
+            })
+            .catch(error => {
+                console.log("Error", error);
+            })
+    }
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const getEmail = (event) => {
+        setEmail(event.target.value);
+
+    }
+    const getPassword = (event) => {
+        setPassword(event.target.value);
+
+    }
+
+
+    const handleSubmit = event => {
+
+        
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error('Error creating user:', error.message);
+            });
+
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
+    }
+
 
     return (
 
@@ -59,7 +133,7 @@ export default function Signup() {
                 <Typography component="h1" variant="h5">
                     Sign up
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -86,6 +160,8 @@ export default function Signup() {
                             <TextField
                                 required
                                 fullWidth
+                                onBlur={getEmail}
+
                                 id="email"
                                 label="Email Address"
                                 name="email"
@@ -96,6 +172,8 @@ export default function Signup() {
                             <TextField
                                 required
                                 fullWidth
+                                onBlur={getPassword}
+
                                 name="password"
                                 label="Password"
                                 type="password"
@@ -128,50 +206,47 @@ export default function Signup() {
                                 </Link>
                             </Grid>
                             <Grid item>
-                               Or Sign With
-                                 
+                                Or Sign With
+
                             </Grid>
                             <Grid container justifyContent="center" style={{ marginTop: '20px' }}>
                                 <Button
                                     variant="contained"
+                                    onClick={handleGoogleSignin}
                                     startIcon={<Google />}
                                     fullWidth
-                                    onClick={() => {
-                                        // Handle Google button click
-                                    }}
                                     sx={{ width: '100%', marginBottom: '7px' }}
                                 >
                                     Google
                                 </Button>
                                 <Button
                                     variant="contained"
+                                    onClick={handleGithubSignin}
                                     startIcon={<GitHub />}
                                     fullWidth
-                                    onClick={() => {
-                                        // Handle GitHub button click
-                                    }}
+
                                     sx={{ width: '100%', marginBottom: '7px' }}
                                 >
                                     GitHub
                                 </Button>
                                 <Button
                                     variant="contained"
+                                    onClick={handleFacebookSignin}
+
                                     startIcon={<Facebook />}
                                     fullWidth
-                                    onClick={() => {
-                                        // Handle Facebook button click
-                                    }}
+
                                     sx={{ width: '100%', marginBottom: '7px' }}
                                 >
                                     Facebook
                                 </Button>
                                 <Button
                                     variant="contained"
+                                    onClick={handleTwitterSignin}
+
                                     startIcon={<Twitter />}
                                     fullWidth
-                                    onClick={() => {
-                                        // Handle Twitter button click
-                                    }}
+
                                     sx={{ width: '100%', marginBottom: '7px' }}
                                 >
                                     Twitter
