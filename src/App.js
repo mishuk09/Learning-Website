@@ -24,6 +24,7 @@ import GoToTopButton from './components/LandingPage/GoToTopButton/GoToTopButton'
 import UserLogin from './components/LandingPage/Navbar/UserLogin';
 import Signin from './components/LandingPage/Navbar/Signin';
 import Signup from './components/LandingPage/Navbar/Signup';
+import Dashbord from './components/Authentication/Dashbord';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -64,6 +65,10 @@ function App() {
 
         <Routes>
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
+
+          {/* Authentication */}
+
+          <Route path='/dashbord' element={<Dashbord />}></Route>
 
           {/* Userlogin ROUTES */}
           {/* <Route path='/userlogin' element={<UserLogin />}></Route> */}

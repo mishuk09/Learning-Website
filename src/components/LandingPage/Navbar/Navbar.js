@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
 import mainlogo from './img/mainlogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpenReader, faBriefcase, faBullseye, faC, faCode, faDatabase, faLayerGroup, faMagnifyingGlass, faPeopleArrows, faServer, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpenReader, faBriefcase, faBullseye, faC, faCode, faDatabase, faLayerGroup, faMagnifyingGlass, faPeopleArrows, faServer, faUser, faUserPen } from '@fortawesome/free-solid-svg-icons';
 import html from './img/html.png';
 import css from './img/css.png';
 import js from './img/js.png';
@@ -22,10 +22,15 @@ import Switch from '@mui/material/Switch';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { getAuth } from 'firebase/auth';
+import app from '../../Firebase/Firebase.init';
 
-
+const auth = getAuth(app);
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
+
+    const [user] = useAuthState(auth);
     const navItem = [
         {
             id: 1,
@@ -214,7 +219,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                             />
                         </div>
                         <Link to='/userlogin'>
-                            <div className='me-3  ms-3 items-center   text-center   text-white'> <FontAwesomeIcon className='hover:text-green-500  duration-300 hover:scale-100' icon={faUser} size='2xl' /></div>
+                            {
+                                user?.uid ?
+                                    <Link to='/dashbord'><FontAwesomeIcon className='text-blue-500 ms-4 ' icon={faUserPen} size='xl' /> </Link> :
+                                    <div className='me-3  ms-3 items-center   text-center   text-white'> <FontAwesomeIcon className='hover:text-green-500  duration-300 hover:scale-100' icon={faUser} size='2xl' /></div>
+
+                            }
+
 
                         </Link>
                     </div>
@@ -225,7 +236,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 {navItem.map((navitem) => (
                     <a
                         key={navitem.id}
-                        href={navitem.href} 
+                        href={navitem.href}
                         className=' px-2 py-2 text-slate-200 whitespace-nowrap justify-center items-center'
                     >
 

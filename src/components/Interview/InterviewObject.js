@@ -62,7 +62,7 @@ export default function InterviewObject() {
     };
 
     return (
-        <Box sx={{ bgcolor: 'background.paper', width: 1300, borderRadius: '5px' }}>
+        <Box sx={{ bgcolor: 'background.paper', width: '100%', borderRadius: '5px' }}>
             <AppBar position="static">
                 <Tabs
                     value={value}

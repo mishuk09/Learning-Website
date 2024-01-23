@@ -11,31 +11,25 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 import app from '../../Firebase/Firebase.init';
-const auth = getAuth(app)
+import { Google } from '@mui/icons-material';
+const auth = getAuth(app);
 
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
- 
+
+
 export default function Signin() {
-     
+    const [signInWithGoogle, user] = useSignInWithGoogle(auth);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [islogin, setIslogin] = useState(false);
+
     const getEmail = (event) => {
         setEmail(event.target.value);
 
@@ -47,10 +41,13 @@ export default function Signin() {
 
 
     const handleSubmit = event => {
-      signInWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(auth, email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user);
+                setEmail('');
+                setPassword('');
+                setIslogin(true);
+
+
             })
             .catch(error => {
                 console.error('Error creating user:', error.message);
@@ -59,7 +56,9 @@ export default function Signin() {
         event.preventDefault();
     }
 
-
+    if (islogin) {
+        return <Navigate to='/dashbord' />
+    }
     return (
 
         <Container component="main" maxWidth="xs">
@@ -126,10 +125,23 @@ export default function Signin() {
                                 Sign Up
                             </Link>
                         </Grid>
+                        <Grid container justifyContent="center" style={{ marginTop: '20px' }}>
+                            <Button
+                                variant="contained"
+                                // onClick={() => signInWithGoogle()}
+                                startIcon={<Google />}
+                                fullWidth
+                                sx={{ width: '100%', marginBottom: '7px' }}
+                            >
+                                Google
+                            </Button>
+
+
+                        </Grid>
                     </Grid>
                 </Box>
             </Box>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
+
         </Container>
 
     );
