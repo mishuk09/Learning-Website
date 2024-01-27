@@ -62,7 +62,7 @@ const OnlineIDE = () => {
         <div>
 
 
-            <div className='bg-black pb-10'>
+            <div className='bg-slate-950 pb-10'>
                 <div className='container flex flex-col items-center pt-4 justify-center text-left'>
                     <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' beat />
                     <h1 className='text-white text-5xl font-bold font-nunito'>Online Coding <span className='text-green-500'>Compilers</span> </h1>

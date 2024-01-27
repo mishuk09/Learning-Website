@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
 import mainlogo from './img/mainlogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpenReader, faBriefcase, faBullseye, faC, faCode, faDatabase, faLayerGroup, faMagnifyingGlass, faPeopleArrows, faServer, faUser, faUserPen } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpenReader, faBriefcase, faBullseye, faC, faCode, faDatabase, faLayerGroup, faMagnifyingGlass, faNewspaper, faPeopleArrows, faServer, faUser, faUserPen } from '@fortawesome/free-solid-svg-icons';
 import html from './img/html.png';
 import css from './img/css.png';
 import js from './img/js.png';
@@ -200,6 +200,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
 
                         <Link to='/onlineide'>   <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faCode} /><br />Online IDE</div>
+                        </Link>
+                        <Link to='/blogs'>   <div className='me-3 pb-1 navbar-icon items-center text-center text-sm text-white'><FontAwesomeIcon className='fa-icon' icon={faNewspaper} /><br />Articles</div>
                         </Link>
                         <Link to='/twelveclass'>  <div className='me-3 hover:scale-105 duration-300   px-2 py-1 rounded  border    items-center text-center text-sm text-slate-300'>Class 12
                         </div></Link>

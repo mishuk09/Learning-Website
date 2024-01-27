@@ -32,6 +32,8 @@ import UserDashbord from './components/Authentication/UserDashbord';
 import Login from './components/LandingPage/Navbar/Login';
 import Auth from './components/Authentication/Auth';
 import UserProfile from './components/LandingPage/Navbar/UserProfile';
+import Blog from './components/Blog/AddBlog';
+import Blogs from './components/Blog/Blogs';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -96,6 +98,14 @@ function App() {
             <Dashbord />
           </RequireAuth>}></Route>
 
+
+
+          {/* Blog ROUTES */}
+          <Route path='/addblog' element={<RequireAuth>
+            <Blog />
+          </RequireAuth>}></Route>
+
+
           {/* Userlogin ROUTES */}
           {/* <Route path='/userlogin' element={<UserLogin />}></Route> */}
           <Route path='/adminlogin' element={<Signin />}></Route>
@@ -116,6 +126,7 @@ function App() {
 
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>
+          <Route path='/blogs' element={<Blogs />}></Route>
 
           {/* Tutorials ROUTES */}
           <Route path='/html' element={<Html />}></Route>
