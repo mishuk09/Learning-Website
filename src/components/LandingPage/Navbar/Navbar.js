@@ -25,6 +25,7 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 import app from '../../Firebase/Firebase.init';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const auth = getAuth(app);
 
@@ -165,7 +166,6 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         return () => clearInterval(intervalId);
     }, []);
 
-
     return (
         <div>
             <div className='  bg-slate-950 h-16 sm:h-[200px]  md:h-[200px] lg:h-16 '>
@@ -218,7 +218,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                                 checkedIcon={<WbSunnyIcon className={darkMode ? 'sunny-dark' : ''} />}
                             />
                         </div>
-                        <Link to='/userlogin'>
+                        <Link to='/auth'>
                             {
                                 user?.uid ?
                                     <Link to='/dashbord'><FontAwesomeIcon className='text-blue-500 ms-4 ' icon={faUserPen} size='xl' /> </Link> :

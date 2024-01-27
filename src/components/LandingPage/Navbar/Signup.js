@@ -11,34 +11,17 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
-import { Facebook, GitHub, Google, Twitter } from '@mui/icons-material';
-import { createUserWithEmailAndPassword, FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider } from 'firebase/auth';
+import { GitHub, Google } from '@mui/icons-material';
+import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { getAuth } from 'firebase/auth';
 import app from '../../Firebase/Firebase.init';
 const auth = getAuth(app)
-
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
-
 
 
 export default function Signup() {
     const googleprovider = new GoogleAuthProvider();
     const githubprovider = new GithubAuthProvider();
-    const facebookprovider = new FacebookAuthProvider();
-    const twitterprovider = new TwitterAuthProvider();
+
 
     const [user, setUser] = useState({});
 
@@ -64,28 +47,6 @@ export default function Signup() {
                 console.log("Error", error);
             })
     }
-    const handleFacebookSignin = () => {
-        signInWithPopup(auth, facebookprovider)
-            .then(result => {
-                const user = result.user;
-                setUser(user);
-                console.log(user)
-            })
-            .catch(error => {
-                console.log("Error", error);
-            })
-    }
-    const handleTwitterSignin = () => {
-        signInWithPopup(auth, twitterprovider)
-            .then(result => {
-                const user = result.user;
-                setUser(user);
-                console.log(user)
-            })
-            .catch(error => {
-                console.log("Error", error);
-            })
-    }
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -101,7 +62,7 @@ export default function Signup() {
 
     const handleSubmit = event => {
 
-        
+
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 const user = result.user;
@@ -229,34 +190,13 @@ export default function Signup() {
                                 >
                                     GitHub
                                 </Button>
-                                <Button
-                                    variant="contained"
-                                    onClick={handleFacebookSignin}
 
-                                    startIcon={<Facebook />}
-                                    fullWidth
-
-                                    sx={{ width: '100%', marginBottom: '7px' }}
-                                >
-                                    Facebook
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    onClick={handleTwitterSignin}
-
-                                    startIcon={<Twitter />}
-                                    fullWidth
-
-                                    sx={{ width: '100%', marginBottom: '7px' }}
-                                >
-                                    Twitter
-                                </Button>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Box>
             </Box>
-            <Copyright sx={{ mt: 5 }} />
+
         </Container>
 
     );

@@ -18,15 +18,24 @@ import SixUnite from './components/TwelveClass/Ict/Units/SixUnit/SixUnite';
 import OnlineIDE from './components/OnlineIDE/OnlineIDE';
 import InterviewDiv from './components/Interview/InterviewDiv';
 import Practice from './components/Practice/Practice';
-import Interview from './components/LandingPage/Interview/Interview';
+// import Interview from './components/LandingPage/Interview/Interview';
 import C from './components/Interview/InterviewDetils/C/C';
 import GoToTopButton from './components/LandingPage/GoToTopButton/GoToTopButton';
-import UserLogin from './components/LandingPage/Navbar/UserLogin';
+// import UserLogin from './components/LandingPage/Navbar/UserLogin';
 import Signin from './components/LandingPage/Navbar/Signin';
 import Signup from './components/LandingPage/Navbar/Signup';
 import Dashbord from './components/Authentication/Dashbord';
+import RequireAuth from './components/Authentication/RequireAuth';
+import UserDashbord from './components/Authentication/UserDashbord';
+// import PassLogin from './components/Authentication/Passportjs/PassLogin';
+// import Ss from './components/LandingPage/Navbar/Ss';
+import Login from './components/LandingPage/Navbar/Login';
+import Auth from './components/Authentication/Auth';
+import UserProfile from './components/LandingPage/Navbar/UserProfile';
+// import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
+
   const [darkMode, setDarkMode] = useState(false);
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -59,21 +68,40 @@ function App() {
       <CssBaseline />
       <div className="App">
 
+
+
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <GoToTopButton />
+
+
+
 
 
         <Routes>
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
 
           {/* Authentication */}
+          <Route path='auth' element={<Auth />}></Route>
+          <Route path='user' element={<UserProfile />}></Route>
+          <Route path='userdashbord' element={<UserDashbord />}></Route>
 
-          <Route path='/dashbord' element={<Dashbord />}></Route>
+          {/* <Route path='/ss' element={<Ss />}></Route> */}
+          {/* <Route path='/sss' element={<SignupForm />}></Route> */}
+
+          <Route path='/userlogin' element={<Login />}></Route>
+          {/* <Route path='/userdashbord' element={<RequireAuth>
+            <UserDashbord />
+          </RequireAuth>}></Route> */}
+          <Route path='/dashbord' element={<RequireAuth>
+            <Dashbord />
+          </RequireAuth>}></Route>
 
           {/* Userlogin ROUTES */}
           {/* <Route path='/userlogin' element={<UserLogin />}></Route> */}
-          <Route path='/userlogin' element={<Signin />}></Route>
+          <Route path='/adminlogin' element={<Signin />}></Route>
           <Route path='/usersignup' element={<Signup />}></Route>
+
+          {/* <Route path='/passlogin' element={<PassLogin />}></Route> */}
 
 
           {/* ALLCourse ROUTES */}

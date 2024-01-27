@@ -17,6 +17,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 import app from '../../Firebase/Firebase.init';
 import { Google } from '@mui/icons-material';
+import { Alert } from '@mui/material';
 const auth = getAuth(app);
 
 
@@ -25,10 +26,14 @@ const auth = getAuth(app);
 
 export default function Signin() {
     const [signInWithGoogle, user] = useSignInWithGoogle(auth);
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [islogin, setIslogin] = useState(false);
+
+    const [error, setError] = useState(null);
+
+
+
 
     const getEmail = (event) => {
         setEmail(event.target.value);
@@ -39,26 +44,31 @@ export default function Signin() {
 
     }
 
-
+    // This class for user login
     const handleSubmit = event => {
         signInWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setEmail('');
                 setPassword('');
                 setIslogin(true);
+                setError(null);
 
 
             })
             .catch(error => {
                 console.error('Error creating user:', error.message);
+                setError("Invalid Email/Password")
+
             });
 
         event.preventDefault();
-    }
+    };
 
-    if (islogin) {
+
+    if (islogin || user) {
         return <Navigate to='/dashbord' />
     }
+
     return (
 
         <Container component="main" maxWidth="xs">
@@ -77,6 +87,8 @@ export default function Signin() {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
+
+
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                     <TextField
                         margin="normal"
@@ -113,6 +125,57 @@ export default function Signin() {
                     >
                         Sign In
                     </Button>
+                    {error && (
+                        <Alert severity="error" sx={{ mt: 2 }}>
+                            {error}
+                        </Alert>
+                    )}
+
+
+
+                </Box>
+
+                {/* <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                    <TextField
+                        margin="normal"
+                        onBlur={getEmail}
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        onBlur={getPassword}
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox value="remember" color="primary" />}
+                        label="Remember me"
+                    />
+                    <Button
+                        // onClick={handleFormSubmit}
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
+                        Sign In
+                    </Button>
+                    {error && (
+                        <Alert severity="error" sx={{ mt: 2 }}>
+                            {error}
+                        </Alert>
+                    )}
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">
@@ -128,7 +191,7 @@ export default function Signin() {
                         <Grid container justifyContent="center" style={{ marginTop: '20px' }}>
                             <Button
                                 variant="contained"
-                                // onClick={() => signInWithGoogle()}
+                                onClick={() => signInWithGoogle()}
                                 startIcon={<Google />}
                                 fullWidth
                                 sx={{ width: '100%', marginBottom: '7px' }}
@@ -139,7 +202,8 @@ export default function Signin() {
 
                         </Grid>
                     </Grid>
-                </Box>
+                </Box> */}
+
             </Box>
 
         </Container>
