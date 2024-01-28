@@ -21,8 +21,8 @@ const InheritApp = () => {
             <Library></Library>
             <Interview></Interview>
             <Job></Job>
-            <Article></Article>
             <Dsaproblems></Dsaproblems>
+            <Article></Article>
 
         </div>
     );
