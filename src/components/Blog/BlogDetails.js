@@ -1,3 +1,5 @@
+import { faArrowLeftLong, faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -95,8 +97,16 @@ const BlogDetails = () => {
                         <img className='w-full rounded mt-4' src={blog.photourl} alt="" />
                         <div className='text-justify pt-10 font-nunito text-xl' dangerouslySetInnerHTML={{ __html: blog.content }} />
                         {/* Navigation to previous and next blogs */}
-                        {prevBlog && <Link to={`/blogsdetails/${prevBlog._id}`}>Previous Blog</Link>}
-                        {nextBlog && <Link to={`/blogsdetails/${nextBlog._id}`}>Next Blog</Link>}
+                        <div className="flex justify-between mt-10 mb-3">
+                            <div className="rounded-full bg-green-500 text-white px-3 py-1">
+                                {prevBlog && <Link to={`/blogsdetails/${prevBlog._id}`}><FontAwesomeIcon className="me-2" icon={faArrowLeftLong} />Prev</Link>}
+                            </div>
+                            <div className="rounded-full bg-green-500 text-white px-3 py-1">
+                                {nextBlog && <Link to={`/blogsdetails/${nextBlog._id}`}>Next <FontAwesomeIcon className="ms-2" icon={faArrowRightLong} /></Link>}
+                            </div>
+
+                        </div>
+
                     </div>
                     <div className='w-[20%] border lg:block xs:hidden bg-white rounded h-[400px]'></div>
                 </div>
