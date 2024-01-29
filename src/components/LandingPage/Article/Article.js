@@ -76,29 +76,31 @@ const Article = () => {
                                 <Tab className='rounded border border-slate-300 hover:bg-green-500 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="Tech News" value="4" />
                                 <Tab className='rounded border border-slate-300 hover:bg-green-500 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="Basic Computer" value="5" />
                             </TabList>
+
                         </Box>
                         <TabPanel className='  mt-2' value="1">
 
                             {
                                 currentBlogs.map((blog) => (
-                                    <div className='m-3 rounded pb-2  shadow-sm  border w-full h-full border-slate-400'>
+                                    <div onClick={() => navigateToServiceDetail(blog._id)} className='m-3 rounded pb-2 cursor-pointer shadow-sm  border w-full h-full border-slate-400'>
                                         <div className='mx-3 mt-2 font-bold'>{blog.title}</div>
-                                        <div className='px-2 py-2 mx-2 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[99%] h-22 '  >
-                                        <p
-                                                        className='text-gray-700 font-nunito text-justify overflow-hidden text-base'
-                                                        style={{
-                                                            display: '-webkit-box',
-                                                            WebkitLineClamp: 2,
-                                                            WebkitBoxOrient: 'vertical',
-                                                            overflow: 'hidden',
-                                                            textOverflow: 'ellipsis'
-                                                        }}
-                                                        dangerouslySetInnerHTML={{ __html: blog.content }}
-                                                    >
+                                        <div className='px-2 py-2 mx-2 mt-1 flex flex-col justify-end rounded-sm   border-slate-400 w-[99%] h-22 '  >
+                                            <p
+                                                className='text-slate-600 font-nunito text-justify overflow-hidden text-base'
+                                                style={{
+                                                    display: '-webkit-box',
+                                                    WebkitLineClamp: 2,
+                                                    WebkitBoxOrient: 'vertical',
+                                                    overflow: 'hidden',
+                                                    textOverflow: 'ellipsis'
+                                                }}
+                                                dangerouslySetInnerHTML={{ __html: blog.content }}
+                                            >
 
-                                                    </p>
-                                            <p className='rounded-sm  pt-2 pb-3 align-bottom text-sm     border-slate-400 w-[100%] h-4'> 
-                                            <FontAwesomeIcon className='text-green-500' icon={faTag} /> {blog.category}
+                                            </p>
+
+                                            <p className='rounded-sm  pt-2 pb-3 align-bottom text-sm     border-slate-400 w-[100%] h-4'>
+                                                <FontAwesomeIcon className='text-green-500' icon={faTag} /> {blog.category}
                                             </p>
                                         </div>
                                     </div>
