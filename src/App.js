@@ -36,6 +36,7 @@ import Blog from './components/Blog/AddBlog';
 import Blogs from './components/Blog/Blogs';
 import BlogDetails from './components/Blog/BlogDetails';
 import AddData from './components/TwelveClass/AddData';
+import Compiler from './components/LandingPage/CompilerDiv/Compiler';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -134,6 +135,7 @@ function App() {
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>
+          <Route path='/compiler' element={<Compiler />}></Route>
 
           {/* Tutorials ROUTES */}
           <Route path='/html' element={<Html />}></Route>

@@ -15,15 +15,18 @@ const OnlineIDEObject = [
     {
         id: 1,
         img: c,
+        link: '/compiler',
         title: 'C'
     },
     {
         id: 1,
         img: cc,
+        link: '/compiler',
         title: 'C'
     },
     {
         id: 6,
+        link: '/compiler',
         img: csharp,
         title: 'C#'
     },
@@ -31,34 +34,38 @@ const OnlineIDEObject = [
     {
         id: 1,
         img: html,
-        link: '/html',
+        link: '/compiler',
         title: 'Html'
     },
     {
         id: 2,
         img: css,
-        link: '/css',
+        link: '/compiler',
         title: 'Css'
     },
     {
         id: 3,
         img: javascript,
+        link: '/compiler',
         title: 'Javascript'
     },
     {
         id: 4,
         img: java,
+        link: '/compiler',
         title: 'Java'
     },
     {
         id: 5,
         img: python,
+        link: '/compiler',
         title: 'Python'
     },
 
     {
         id: 5,
         img: php,
+        link: '/compiler',
         title: 'Python'
     },
 
