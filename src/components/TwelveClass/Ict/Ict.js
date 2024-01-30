@@ -114,7 +114,7 @@ const Ict = () => {
                             <Link
                                 key={unit.id}
                                 to={unit.link}
-                                className='bg-slate-800 hover:bg-slate-700 p-3 shadow-sm rounded transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-40 duration-400'
+                                className='bg-slate-800 hover:bg-slate-700 p-3 shadow-sm rounded transition ease-in-out delay-50   hover:scale-40 duration-400'
                             >
                                 <div className='  rounded    flex flex-col items-center justify-center'>
                                     <div>

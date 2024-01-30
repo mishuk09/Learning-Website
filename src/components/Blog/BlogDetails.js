@@ -76,13 +76,15 @@ const BlogDetails = () => {
                     <div className='w-[20%] flex flex-col xs:hidden md:block md:w-[40%] lg:w-[30%] border bg-white rounded h-auto p-2'>
                         {/* Sidebar with other blogs */}
                         {
-                            getblog.map((unite) => (
+                            getblog.slice(0, 10).map((unite) => (
                                 // <Link key={unite._id} to={`/blogsdetails/${unite._id}`} className='w-[100%] flex h-32 hover:shadow border-b' onClick={(e) => { e.preventDefault(); navigateToServiceDetail(unite._id); }}>
                                 <Link key={unite._id} to={`/blogsdetails/${unite._id}`} className='w-[100%] flex h-32 hover:shadow border-b' onClick={(e) => { e.preventDefault(); navigateToServiceDetail(unite._id); }}>
                                     <div className='w-[40%] h-32 flex items-center'>
                                         <img className='w-full rounded' src={unite.photourl} alt="" />
                                     </div>
-                                    <div className='ps-2 w-[60%] font-bold flex items-center'>
+                                    <div className='ps-3 w-[60%] font-bold flex flex-col    text-start justify-center'>
+                                        <p className="text-sm font-semibold text-[#6574f8]">{unite.category}</p>
+
                                         {unite.title}
                                     </div>
                                 </Link>
@@ -94,6 +96,7 @@ const BlogDetails = () => {
                         {/* Main content of the selected blog */}
                         <p className='font-verdina font-bold text-4xl mt-6 tracking-wide'>{blog.title}</p>
                         <p className='mt-1 text-slate-600 text-sm'>Date: <span>{blog.date}</span></p>
+                        <hr />
                         <img className='w-full rounded mt-4' src={blog.photourl} alt="" />
                         <div className='text-justify pt-10 font-nunito text-xl' dangerouslySetInnerHTML={{ __html: blog.content }} />
                         {/* Navigation to previous and next blogs */}

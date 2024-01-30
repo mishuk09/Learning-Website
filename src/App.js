@@ -35,6 +35,7 @@ import UserProfile from './components/LandingPage/Navbar/UserProfile';
 import Blog from './components/Blog/AddBlog';
 import Blogs from './components/Blog/Blogs';
 import BlogDetails from './components/Blog/BlogDetails';
+import AddData from './components/TwelveClass/AddData';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -104,6 +105,9 @@ function App() {
           {/* Blog ROUTES */}
           <Route path='/addblog' element={<RequireAuth>
             <Blog />
+          </RequireAuth>}></Route>
+          <Route path='/addtwelve' element={<RequireAuth>
+            <AddData />
           </RequireAuth>}></Route>
 
           <Route path='/blogsdetails/:blogid' element={<BlogDetails />}></Route>
