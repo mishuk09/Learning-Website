@@ -250,7 +250,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
             <div className='  w-[100%] flex nav-item   overflow-x-hidden'>
                 {navItem.map((navitem) => (
-                    <a
+                    <Link
                         key={navitem.id}
                         href={navitem.href}
                         className=' px-2 py-2 text-slate-200 whitespace-nowrap justify-center items-center'
@@ -258,7 +258,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
                         <span className='flex font-verdina flex-row justify-center items-center mx-2'>  <img className='w-4 h-4 me-1' src={navitem.logo} alt="" /> {navitem.name}</span>
 
-                    </a>
+                    </Link>
                 ))}
             </div>
         </div>
