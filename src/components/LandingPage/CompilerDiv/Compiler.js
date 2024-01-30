@@ -1,6 +1,13 @@
 import { faC, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
+// import { Controlled as CodeMirror } from 'react-codemirror2';
+// import 'codemirror/lib/codemirror.css';
+// import 'codemirror/theme/material.css';
+// import 'codemirror/mode/clike/clike';
+// require('codemirror/mode/xml/xml');
+// require('codemirror/mode/javascript/javascript');
+
 
 const Compiler = () => {
     const [code, setCode] = useState('');
@@ -33,17 +40,11 @@ const Compiler = () => {
     };
 
     return (
-        <div className='bg-slate-50 p-6'>
+        <div className=' p-6'>
             <h2 className='pt-6 text-center font-bold text-4xl'>CSEHacks Online IDE</h2>
-
-
-
-            <div className='w-full flex'>
+            <div className='w-full flex rounded bg-slate-100 mb-2 py-1 px-1 mt-6'>
                 <div>
-
-
                     <label>
-
                         <select className='px-2 py-2 rounded-md border' value={language} onChange={(e) => setLanguage(e.target.value)}>
                             <option value="c"><FontAwesomeIcon icon={faC} /> C</option>
                             <option value="cpp"><FontAwesomeIcon icon={faC} /> C++</option>
@@ -65,8 +66,6 @@ const Compiler = () => {
                             <option value="scala">Scala</option>
                             <option value="perl">Perl</option>
                             <option value="lua">Lua</option>
-
-
                         </select>
                     </label>
                 </div>
@@ -78,32 +77,35 @@ const Compiler = () => {
                         Run <FontAwesomeIcon className='ms-2' icon={faChevronRight} />
                     </button>
                 </div>
-
-
-
-
             </div>
-            <div className='flex'>
-            <div className='w-[60%] shadow mt-2 p-2 border border-gray-300 rounded-md'>
-                <label className='w-full'>
-                    <textarea
-                        className='w-full min-h-[400px] max-h-[400px] p-2 bg-gray-100 border border-gray-300 rounded-md'
-                        
+            <div className='flex rounded bg-slate-100'>
+                <div className='w-[60%]   p-2   rounded-md'>
+                    <label className='w-full'>
+                        <textarea
+                            className='w-full p-1 min-h-[400px] outline-none max-h-[400px]  bg-white     rounded-md'
+
+                            value={code}
+                            onChange={(e) => setCode(e.target.value)}
+                        />
+                    </label>
+                    {/* <CodeMirror
+                        className='w-full p-1 min-h-[400px] outline-none max-h-[400px] bg-white rounded-md'
                         value={code}
-                        onChange={(e) => setCode(e.target.value)}
-                    />
-                </label>
-            </div>
-            <div className='w-[40%]'>
-
-                <div className=''>
-                    <div className='w-[100%] bg-slate-400 min-h-[400px]  max-h-[400px]'>
+                        onBeforeChange={(editor, data, value) => setCode(value)}
+                        options={{
+                            lineNumbers: true,
+                            mode: language,
+                            theme: 'material',
+                        }}
+                    /> */}
+                </div>
+                <div className='w-[40%]     rounded-md p-2'>
+                    <div className='w-full p-1 min-h-[400px] max-h-[400px]  bg-white     rounded-md'>
                         <h3>Result:</h3>
                         <pre>{result}</pre>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     );
 };
