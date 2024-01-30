@@ -1,12 +1,16 @@
+import AceEditor from 'react-ace';
 import { faC, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// import 'ace-builds/src-noconflict/mode-java';
+// import 'ace-builds/src-noconflict/theme-github';
+// import 'ace-builds/src-noconflict/ext-language_tools';
+// import 'ace-builds/src-noconflict/snippets';
+// import 'ace-builds/src-min-noconflict/ext-language_tools';
+import MonacoEditor from 'react-monaco-editor';
+
 import { useState } from 'react';
-// import { Controlled as CodeMirror } from 'react-codemirror2';
-// import 'codemirror/lib/codemirror.css';
-// import 'codemirror/theme/material.css';
-// import 'codemirror/mode/clike/clike';
-// require('codemirror/mode/xml/xml');
-// require('codemirror/mode/javascript/javascript');
+
 
 
 const Compiler = () => {
@@ -80,14 +84,39 @@ const Compiler = () => {
             </div>
             <div className='flex rounded bg-slate-100'>
                 <div className='w-[60%]   p-2   rounded-md'>
-                    <label className='w-full'>
-                        <textarea
-                            className='w-full p-1 min-h-[400px] outline-none max-h-[400px]  bg-white     rounded-md'
 
+                    {/* <textarea
+                        className='w-full p-1 min-h-[400px] outline-none max-h-[400px]  bg-white     rounded-md'
+
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                    /> */}
+
+                    <MonacoEditor
+                        width="100%"
+                        height="400"
+                        language="javascript" // or the language of your choice
+                        theme="vs-dark" // or another theme
+                        value={code}
+                        onChange={(newCode) => setCode(newCode)}
+                    />
+
+
+                    {/* <AceEditor
+                            mode={language}
+                            theme='github'
+                            onChange={(value) => setCode(value)} // Use this onChange for AceEditor
+                          
+                            editorProps={{ $blockScrolling: true }}
+                            setOptions={{
+                                enableBasicAutocompletion: true,
+                                enableLiveAutocompletion: true,
+                                enableSnippets: true,
+                            }}
                             value={code}
-                            onChange={(e) => setCode(e.target.value)}
-                        />
-                    </label>
+                            className='w-full p-1 min-h-[400px] outline-none max-h-[400px] bg-white rounded-md'
+                        /> */}
+
                     {/* <CodeMirror
                         className='w-full p-1 min-h-[400px] outline-none max-h-[400px] bg-white rounded-md'
                         value={code}
