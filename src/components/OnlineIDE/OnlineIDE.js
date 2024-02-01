@@ -63,12 +63,6 @@ const OnlineIDE = () => {
             handleSearch();
         }
     };
- 
-
-
-
-
-
 
     const interviewRef = useRef(null);
 
@@ -120,6 +114,9 @@ const OnlineIDE = () => {
     const handleNavigatePage = (id) => {
         navigate(`/ideformat/${id}`);
     };
+    const handleNavigatePagee = (id) => {
+        navigate(`/ideformat/${id}`);
+    };
 
     return (
         <div>
@@ -147,11 +144,11 @@ const OnlineIDE = () => {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                    <div className='border rounded  mt-3'>
+                    <div className='  rounded   text-center  mt-3'>
                         {showSearchList &&
                             products.map((product) => (
-                                <div className='text-white border-b px-2 w-[200px] cursor-pointer pb-2 ' key={product.title}>
-                                    <a onClick={() => handleNavigatePage(product.value)}   >{product.title}</a>
+                                <div className='text-white border-b flex items-center text-center justify-center hover:border hover:rounded hover:bg-blue-500 duration-300  border-blue-800 px-2 w-[500px] cursor-pointer py-1' key={product.title}>
+                                    <a onClick={() => handleNavigatePage(product.value)} className='flex items-center text-center justify-center' >{product.title}</a>
                                 </div>
                             ))}
 
@@ -183,8 +180,8 @@ const OnlineIDE = () => {
                                     <a
                                         key={tutorial.id}
                                         to={tutorial.link}
-                                        onClick={() => handleNavigatePage(tutorial.value)}
-                                        className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
+                                        onClick={() => handleNavigatePagee(tutorial.value)}
+                                        className='shadow-sm rounded  transition ease-in-out delay-50'
                                     >
                                         <div className='w-[130px] h-36 rounded bg-slate-900 hover:bg-slate-800 flex flex-col items-center justify-center'>
                                             <div>
