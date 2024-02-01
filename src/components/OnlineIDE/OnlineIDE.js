@@ -179,9 +179,11 @@ const OnlineIDE = () => {
 
                                     // eslint-disable-next-line jsx-a11y/anchor-has-content
 
-                                    <Link
+                                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                                    <a
                                         key={tutorial.id}
                                         to={tutorial.link}
+                                        onClick={() => handleNavigatePage(tutorial.value)}
                                         className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
                                     >
                                         <div className='w-[130px] h-36 rounded bg-slate-900 hover:bg-slate-800 flex flex-col items-center justify-center'>
@@ -193,7 +195,7 @@ const OnlineIDE = () => {
                                             </div>
                                         </div>
 
-                                    </Link>
+                                    </a>
 
 
                                 ))

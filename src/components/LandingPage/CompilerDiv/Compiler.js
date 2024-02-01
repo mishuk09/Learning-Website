@@ -11,7 +11,7 @@ const Compiler = () => {
     const [result, setResult] = useState(null);
     const [initialButtonState, setInitialButtonState] = useState(true);
 
-const language='python3'
+    const language = 'python3'
     const executeCode = async () => {
         try {
             setIsLoading(true);
@@ -43,7 +43,7 @@ const language='python3'
         }
     };
 
-    
+
     return (
         <div className=' p-6'>
             <h2 className='pt-6 text-center font-bold text-4xl'>CSEHacks All in One Online IDE</h2>
@@ -96,6 +96,7 @@ const language='python3'
                 </div>
             </div>
             <div className='flex rounded bg-slate-100'>
+                
                 <div className='w-[60%]   p-2   rounded-md'>
                     <MonacoEditor
                         width="100%"
