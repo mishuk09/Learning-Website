@@ -11,7 +11,6 @@ const IdeFormatter = () => {
     const [language, setLanguage] = useState('');
     const [result, setResult] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
     const [initialButtonState, setInitialButtonState] = useState(true);
 
 
@@ -20,7 +19,7 @@ const IdeFormatter = () => {
         try {
             setIsLoading(true);
             setInitialButtonState(false);
-            const response = await fetch('http://localhost:5000/compiler/executee', {
+            const response = await fetch('http://localhost:5000/compiler/execute', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,9 +37,10 @@ const IdeFormatter = () => {
 
             const data = await response.json();
             setResult(data.output);
+            
         } catch (error) {
             console.error('Error executing code:', error);
-            setError(error);
+            
         } finally {
             setIsLoading(false);
             setInitialButtonState(true);
@@ -106,13 +106,11 @@ const IdeFormatter = () => {
                         className='w-full text-sm p-1 min-h-[400px] max-h-[400px] text-slate-300'
                         style={{ backgroundColor: '#1e1e1e' }}
                     >
-                        {result ? (
+                        {result ?  
                             <pre>{result}</pre>
-                        ) : error ? (
-                            <div style={{ color: 'red' }}>{error.message}</div>
-                        ) : (
+                         :  
                             <h3>Click Run button to see Output!</h3>
-                        )}
+                        }
                     </div>
                 </div>
             </div>

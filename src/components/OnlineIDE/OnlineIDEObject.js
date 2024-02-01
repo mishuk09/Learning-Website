@@ -22,10 +22,10 @@ const OnlineIDEObject = [
     {
         id: 2,
         img: cc,
-        title: 'C',
+        title: 'C++',
         link: '/compiler',
-        name: 'C Compiler',
-        value: 'c'
+        name: 'C++ Compiler',
+        value: 'cpp'
     },
     {
         id: 3,
@@ -73,7 +73,7 @@ const OnlineIDEObject = [
         title: 'Python',
         link: '/compiler',
         name: 'Python Compiler',
-        value: 'python'
+        value: 'python3'
     },
     {
         id: 9,

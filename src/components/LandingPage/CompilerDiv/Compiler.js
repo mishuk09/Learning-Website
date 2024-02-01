@@ -1,17 +1,22 @@
-import { faC, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faC, faChevronRight, faGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MonacoEditor from 'react-monaco-editor';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Compiler = () => {
     const [code, setCode] = useState('');
-    const [language, setLanguage] = useState('');
+    // const [language, setLanguage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const [result, setResult] = useState(null);
+    const [initialButtonState, setInitialButtonState] = useState(true);
 
+const language='python3'
     const executeCode = async () => {
         try {
-            const response = await fetch('http://localhost:5000/compiler/executee', {
+            setIsLoading(true);
+            setInitialButtonState(false);
+            const response = await fetch('http://localhost:5000/compiler/execute', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,13 +37,18 @@ const Compiler = () => {
         } catch (error) {
             console.error('Error executing code:', error);
         }
+        finally {
+            setIsLoading(false);
+            setInitialButtonState(true);
+        }
     };
 
+    
     return (
         <div className=' p-6'>
             <h2 className='pt-6 text-center font-bold text-4xl'>CSEHacks All in One Online IDE</h2>
             <div className='w-full flex rounded bg-slate-100 mb-2 py-1 px-1 mt-6'>
-                <div>
+                {/* <div>
                     <label>
                         <select className='px-2 py-2 rounded-md border' value={language} onChange={(e) => setLanguage(e.target.value)}>
                             <option value="c"><FontAwesomeIcon icon={faC} /> C</option>
@@ -63,14 +73,25 @@ const Compiler = () => {
                             <option value="lua">Lua</option>
                         </select>
                     </label>
-                </div>
+                </div> */}
                 <div className='mx-2'>
                     <button
                         style={{ backgroundColor: '#e91e63' }}
                         className='  text-white px-4 py-2 rounded-md'
                         onClick={executeCode}
+                        disabled={!code.trim() || !language || isLoading || !initialButtonState}
                     >
-                        Run <FontAwesomeIcon className='ms-2' icon={faChevronRight} />
+                        Run  {result && !result ? (
+                            <FontAwesomeIcon className='ms-2' icon={faChevronRight} />
+                        ) : (
+                            <>
+                                {isLoading ? (
+                                    <FontAwesomeIcon className='ms-2' icon={faGear} spin />
+                                ) : (
+                                    <FontAwesomeIcon className='ms-2' icon={faChevronRight} />
+                                )}
+                            </>
+                        )}
                     </button>
                 </div>
             </div>
