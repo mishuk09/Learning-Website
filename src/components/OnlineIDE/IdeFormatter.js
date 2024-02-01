@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom';
 import { faChevronRight, faGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MonacoEditor from 'react-monaco-editor';
+import OnlineIDEObject from './OnlineIDEObject';
 
 const IdeFormatter = () => {
+    const { value } = useParams();
     const [code, setCode] = useState('');
     const [language, setLanguage] = useState('');
     const [result, setResult] = useState(null);
@@ -12,6 +14,8 @@ const IdeFormatter = () => {
     const [error, setError] = useState(null);
     const [initialButtonState, setInitialButtonState] = useState(true);
 
+
+    const selectedObject = OnlineIDEObject.find(obj => obj.value === value);
     const executeCode = async () => {
         try {
             setIsLoading(true);
@@ -43,19 +47,20 @@ const IdeFormatter = () => {
         }
     };
 
-    const { ideid } = useParams();
+
 
     useEffect(() => {
-        setLanguage(ideid);
-    }, [ideid]);
+        setLanguage(value);
+    }, [value]);
 
     return (
         <div className='p-6'>
-            <h2 className='pt-6 text-center font-bold text-4xl'>{ideid.toUpperCase()} Online IDE</h2>
-            <div className='w-full flex rounded bg-slate-100 mb-2 py-1 px-1 mt-6'>
+            <h2 className='pt-6 text-center font-bold text-4xl'>{value.toUpperCase()} Online IDE</h2>
+            <div style={{ backgroundColor: '#1e1e1e' }} className='w-full flex rounded  mb-2 py-1 px-1 mt-6'>
                 <div>
-                    <div className='mx-2'>
-                        <p className='bg-blue-500 text-white px-4 py-2 rounded-md'>{ideid}</p>
+                    <div className='mx-2 flex items-center text-center bg-blue-500 text-white ps-1 pe-2 py-1 rounded-md'>
+                        <img src={selectedObject.img} className='w-8' alt="" />
+                        <p className='ms-2'> {value} </p>
                     </div>
                 </div>
                 <div className='mx-2'>
@@ -64,13 +69,13 @@ const IdeFormatter = () => {
                         className='text-white px-4 py-2 rounded-md'
                         onClick={executeCode}
                         disabled={!code.trim() || !language || isLoading || !initialButtonState}
-                    >
-                        {result ? (
+                    >Run
+                        {result && !result ? (
                             <FontAwesomeIcon className='ms-2' icon={faChevronRight} />
                         ) : (
                             <>
                                 {isLoading ? (
-                                    <FontAwesomeIcon icon={faGear} />
+                                    <FontAwesomeIcon className='ms-2' icon={faGear} spin />
                                 ) : (
                                     <FontAwesomeIcon className='ms-2' icon={faChevronRight} />
                                 )}

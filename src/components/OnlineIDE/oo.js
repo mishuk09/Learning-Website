@@ -1,57 +1,22 @@
-import React, { useState } from 'react'
-import './App.css';
-import { BsSearch } from 'react-icons/bs';
+import React from 'react';
+import OnlineIDEObject from 'path-to-your-OnlineIDEObject'; // Replace 'path-to-your-OnlineIDEObject' with the actual path
 
-function App() {
-    const productList = ["blue pant"
-        , "black pant"
-        , "blue shirt"
-        , "black shoes"
-        , "brown shoes"
-        , "white pant"
-        , "white shoes"
-        , "red shirt"
-        , "gray pant"
-        , "white shirt"
-        , "golden shoes"
-        , "dark pant"
-        , "pink shirt"
-        , "yellow pant"];
-    const [products, setProducts] = useState(productList);
-    const [searchVal, setSearchVal] = useState("");
-    function handleSearchClick() {
-        if (searchVal === "") { setProducts(productList); return; }
-        const filterBySearch = productList.filter((item) => {
-            if (item.toLowerCase()
-                .includes(searchVal.toLowerCase())) { return item; }
-        })
-        setProducts(filterBySearch);
-    }
-    const mystyle = {
-        marginLeft: "600px",
-        marginTop: "20px",
-        fontWeight: "700"
-    };
+const TargetPage = ({ match }) => {
+  const { value } = match.params;
 
-    return (
-        <div>
-            <div style={mystyle}>
-                <input onChange={e => setSearchVal(e.target.value)}>
-                </input>
-                <BsSearch onClick={handleSearchClick} />
-            </div>
-            <div>
+  // Find the object based on the value
+  const selectedObject = OnlineIDEObject.find(obj => obj.value === value);
 
-                {products.map((product) => {
-                    return (
-                        <div style={mystyle}>{product}</div>
-                    )
-                })
-                }
+  if (!selectedObject) {
+    return <div>Object not found</div>;
+  }
 
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <h1>{selectedObject.name}</h1>
+      {/* Render other details or components based on the selectedObject */}
+    </div>
+  );
+};
 
-export default App;
+export default TargetPage;

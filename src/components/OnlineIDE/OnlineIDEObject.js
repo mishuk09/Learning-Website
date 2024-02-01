@@ -10,66 +10,79 @@ import c from '../Otherscomponent/Tutorials/img/c.svg';
 import php from '../Otherscomponent/Tutorials/img/php.png';
 import cc from '../Otherscomponent/Tutorials/img/cc.png';
 
-
 const OnlineIDEObject = [
     {
         id: 1,
         img: c,
+        title: 'C',
+        name: 'C Compiler',
         link: '/compiler',
-        title: 'C'
-    },
-    {
-        id: 1,
-        img: cc,
-        link: '/compiler',
-        title: 'C'
-    },
-    {
-        id: 6,
-        link: '/compiler',
-        img: csharp,
-        title: 'C#'
-    },
-
-    {
-        id: 1,
-        img: html,
-        link: '/compiler',
-        title: 'Html'
+        value: 'c'
     },
     {
         id: 2,
-        img: css,
+        img: cc,
+        title: 'C',
         link: '/compiler',
-        title: 'Css'
+        name: 'C Compiler',
+        value: 'c'
     },
     {
         id: 3,
-        img: javascript,
+        img: csharp,
+        title: 'C#',
         link: '/compiler',
-        title: 'Javascript'
+        name: 'C# Compiler',
+        value: 'csharp'
     },
     {
         id: 4,
+        img: html,
+        title: 'Html',
+        link: '/compiler',
+        name: 'Html Compiler',
+        value: 'html'
+    },
+    {
+        id: 5,
+        img: css,
+        title: 'Css',
+        link: '/compiler',
+        name: 'Css Compiler',
+        value: 'css'
+    },
+    {
+        id: 6,
+        img: javascript,
+        title: 'Javascript',
+        link: '/compiler',
+        name: 'Javascript Compiler',
+        value: 'javascript'
+    },
+    {
+        id: 7,
         img: java,
+        title: 'Java',
         link: '/compiler',
-        title: 'Java'
+        name: 'Java Compiler',
+        value: 'java'
     },
     {
-        id: 5,
+        id: 8,
         img: python,
+        title: 'Python',
         link: '/compiler',
-        title: 'Python'
+        name: 'Python Compiler',
+        value: 'python'
     },
-
     {
-        id: 5,
+        id: 9,
         img: php,
+        title: 'PHP',
         link: '/compiler',
-        title: 'Python'
-    },
-
-
-]
+        name: 'PHP Compiler',
+        value: 'php'
+    }
+];
 
 export default OnlineIDEObject;

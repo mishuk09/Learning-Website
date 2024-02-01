@@ -14,40 +14,40 @@ import GoToTopButton from '../LandingPage/GoToTopButton/GoToTopButton';
 
 const OnlineIDE = () => {
 
-    const languageList = [
-        { title: 'C Compiler', link: '/c', value: 'c' },
-        { title: 'C++ Compiler', link: '/cpp', value: 'cpp' },
-        { title: 'Java Compiler', link: '/java', value: 'java' },
-        { title: 'Python Compiler', link: '/python3', value: 'python3' },
-        { title: 'Ruby Compiler', link: '/ruby', value: 'ruby' },
-        { title: 'C# Compiler', link: '/csharp', value: 'csharp' },
-        { title: 'PHP Compiler', link: '/php', value: 'php' },
-        { title: 'Swift Compiler', link: '/swift', value: 'swift' },
-        { title: 'JavaScript Compiler', link: '/javascript', value: 'javascript' },
-        { title: 'TypeScript Compiler', link: '/typescript', value: 'typescript' },
-        { title: 'HTML Compiler', link: '/html', value: 'html' },
-        { title: 'CSS Compiler', link: '/css', value: 'css' },
-        { title: 'SCSS Compiler', link: '/scss', value: 'scss' },
-        { title: 'Bash Compiler', link: '/bash', value: 'bash' },
-        { title: 'Go Compiler', link: '/go', value: 'go' },
-        { title: 'Kotlin Compiler', link: '/kotlin', value: 'kotlin' },
-        { title: 'Rust Compiler', link: '/rust', value: 'rust' },
-        { title: 'Scala Compiler', link: '/scala', value: 'scala' },
-        { title: 'Perl Compiler', link: '/perl', value: 'perl' },
-        { title: 'Lua Compiler', link: '/lua', value: 'lua' },
-    ];
+    // const languageList = [
+    //     { title: 'C Compiler', link: '/c', value: 'c' },
+    //     { title: 'C++ Compiler', link: '/cpp', value: 'cpp' },
+    //     { title: 'Java Compiler', link: '/java', value: 'java' },
+    //     { title: 'Python Compiler', link: '/python3', value: 'python3' },
+    //     { title: 'Ruby Compiler', link: '/ruby', value: 'ruby' },
+    //     { title: 'C# Compiler', link: '/csharp', value: 'csharp' },
+    //     { title: 'PHP Compiler', link: '/php', value: 'php' },
+    //     { title: 'Swift Compiler', link: '/swift', value: 'swift' },
+    //     { title: 'JavaScript Compiler', link: '/javascript', value: 'javascript' },
+    //     { title: 'TypeScript Compiler', link: '/typescript', value: 'typescript' },
+    //     { title: 'HTML Compiler', link: '/html', value: 'html' },
+    //     { title: 'CSS Compiler', link: '/css', value: 'css' },
+    //     { title: 'SCSS Compiler', link: '/scss', value: 'scss' },
+    //     { title: 'Bash Compiler', link: '/bash', value: 'bash' },
+    //     { title: 'Go Compiler', link: '/go', value: 'go' },
+    //     { title: 'Kotlin Compiler', link: '/kotlin', value: 'kotlin' },
+    //     { title: 'Rust Compiler', link: '/rust', value: 'rust' },
+    //     { title: 'Scala Compiler', link: '/scala', value: 'scala' },
+    //     { title: 'Perl Compiler', link: '/perl', value: 'perl' },
+    //     { title: 'Lua Compiler', link: '/lua', value: 'lua' },
+    // ];
 
 
-    const [products, setProducts] = useState(languageList);
+    const [products, setProducts] = useState(OnlineIDEObject);
     const [searchVal, setSearchVal] = useState("");
     const [showSearchList, setShowSearchList] = useState(false);
 
     const handleSearch = () => {
         if (searchVal === "") {
-            setProducts(languageList);
+            setProducts(OnlineIDEObject);
             setShowSearchList(false);
         } else {
-            const filterBySearch = languageList.filter((item) =>
+            const filterBySearch = OnlineIDEObject.filter((item) =>
                 item.title.toLowerCase().includes(searchVal.toLowerCase())
             );
             setProducts(filterBySearch);
@@ -63,14 +63,7 @@ const OnlineIDE = () => {
             handleSearch();
         }
     };
-
-    const mystyle = {
-        marginLeft: "600px",
-        marginTop: "20px",
-        fontWeight: "700"
-    };
-
-
+ 
 
 
 
