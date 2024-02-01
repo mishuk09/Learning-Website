@@ -1,21 +1,12 @@
-import AceEditor from 'react-ace';
 import { faC, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-// import 'ace-builds/src-noconflict/mode-java';
-// import 'ace-builds/src-noconflict/theme-github';
-// import 'ace-builds/src-noconflict/ext-language_tools';
-// import 'ace-builds/src-noconflict/snippets';
-// import 'ace-builds/src-min-noconflict/ext-language_tools';
 import MonacoEditor from 'react-monaco-editor';
 
 import { useState } from 'react';
 
-
-
 const Compiler = () => {
     const [code, setCode] = useState('');
-    const [language, setLanguage] = useState('python');
+    const [language, setLanguage] = useState('');
     const [result, setResult] = useState(null);
 
     const executeCode = async () => {
@@ -45,7 +36,7 @@ const Compiler = () => {
 
     return (
         <div className=' p-6'>
-            <h2 className='pt-6 text-center font-bold text-4xl'>CSEHacks Online IDE</h2>
+            <h2 className='pt-6 text-center font-bold text-4xl'>CSEHacks All in One Online IDE</h2>
             <div className='w-full flex rounded bg-slate-100 mb-2 py-1 px-1 mt-6'>
                 <div>
                     <label>
@@ -75,7 +66,8 @@ const Compiler = () => {
                 </div>
                 <div className='mx-2'>
                     <button
-                        className='bg-blue-500 text-white px-4 py-2 rounded-md'
+                        style={{ backgroundColor: '#e91e63' }}
+                        className='  text-white px-4 py-2 rounded-md'
                         onClick={executeCode}
                     >
                         Run <FontAwesomeIcon className='ms-2' icon={faChevronRight} />
@@ -84,54 +76,68 @@ const Compiler = () => {
             </div>
             <div className='flex rounded bg-slate-100'>
                 <div className='w-[60%]   p-2   rounded-md'>
-
-                    {/* <textarea
-                        className='w-full p-1 min-h-[400px] outline-none max-h-[400px]  bg-white     rounded-md'
-
-                        value={code}
-                        onChange={(e) => setCode(e.target.value)}
-                    /> */}
-
                     <MonacoEditor
                         width="100%"
-                        height="400"
-                        language="javascript" // or the language of your choice
-                        theme="vs-dark" // or another theme
+                        height={400}
+                        language={language}
+                        theme="vs-dark"
                         value={code}
                         onChange={(newCode) => setCode(newCode)}
-                    />
-
-
-                    {/* <AceEditor
-                            mode={language}
-                            theme='github'
-                            onChange={(value) => setCode(value)} // Use this onChange for AceEditor
-                          
-                            editorProps={{ $blockScrolling: true }}
-                            setOptions={{
-                                enableBasicAutocompletion: true,
-                                enableLiveAutocompletion: true,
-                                enableSnippets: true,
-                            }}
-                            value={code}
-                            className='w-full p-1 min-h-[400px] outline-none max-h-[400px] bg-white rounded-md'
-                        /> */}
-
-                    {/* <CodeMirror
-                        className='w-full p-1 min-h-[400px] outline-none max-h-[400px] bg-white rounded-md'
-                        value={code}
-                        onBeforeChange={(editor, data, value) => setCode(value)}
                         options={{
-                            lineNumbers: true,
-                            mode: language,
-                            theme: 'material',
+                            // General Editor Settings
+                            fontSize: 14,
+                            fontFamily: 'Fira Code, monospace',
+                            fontWeight: 'normal', // 'normal' or 'bold'
+                            lineHeight: 20,
+                            automaticLayout: true,
+                            wordWrap: 'on', // 'off', 'on', or 'wordWrapColumn'
+                            wordWrapColumn: 80, // Number of characters before wrapping
+
+                            // Text Configuration
+                            tabSize: 4, // Number of spaces per tab
+                            insertSpaces: true, // Insert spaces when pressing Tab
+                            trimAutoWhitespace: true, // Trim trailing whitespace on each save
+
+                            // Render Options
+                            lineNumbers: 'on', // 'on', 'off', or 'relative'
+                            renderIndentGuides: true,
+                            renderLineHighlight: 'all', // 'none', 'gutter', or 'all'
+                            rulers: [80], // Show a vertical line at a specific column
+                            renderWhitespace: 'all', // 'none', 'boundary', or 'all'
+
+                            // Scrollbar Configuration
+                            scrollbar: {
+                                vertical: 'visible', // 'visible', 'hidden', 'hidden-hover', or 'visible-hover'
+                                horizontal: 'visible', // 'visible', 'hidden', 'hidden-hover', or 'visible-hover'
+                            },
+
+                            // Minimap Configuration
+                            minimap: {
+                                enabled: false, // Show or hide the minimap
+                                renderCharacters: false, // Render actual characters in the minimap
+                            },
+
+                            // Folding
+                            folding: true, // Enable code folding
+
+                            // Suggest Configuration
+                            suggest: {
+                                snippets: true, // Enable or disable snippets in suggestions
+                            },
+
+                            // Accessibility
+                            accessibilitySupport: 'auto', // 'auto', 'off', or 'on'
+
+                            // More options can be found in the official documentation
                         }}
-                    /> */}
+                    />
                 </div>
                 <div className='w-[40%]     rounded-md p-2'>
-                    <div className='w-full p-1 min-h-[400px] max-h-[400px]  bg-white     rounded-md'>
-                        <h3>Result:</h3>
-                        <pre>{result}</pre>
+                    <div className='w-full text-sm p-1 min-h-[400px] max-h-[400px]  text-slate-300' style={{ backgroundColor: '#1e1e1e' }}>
+                        {
+                            result ? <pre>{result}</pre> :
+                                <h3>Click Run button to see Output!</h3>
+                        }
                     </div>
                 </div>
             </div>

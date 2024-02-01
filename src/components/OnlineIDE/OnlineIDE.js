@@ -1,9 +1,9 @@
 import { faBookOpen, faBug, faCode, faFilePdf, faGear, faMagnifyingGlass, faNewspaper, faRunning, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Headline from '../Otherscomponent/Headline';
 import OnlineIDEObject from './OnlineIDEObject';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Tutorials from '../Otherscomponent/Tutorials/Tutorials';
 import Courses from '../Allcourse/Courses';
 import Dsa from '../LandingPage/Dsa/Dsa';
@@ -13,6 +13,70 @@ import Article from '../LandingPage/Article/Article';
 import GoToTopButton from '../LandingPage/GoToTopButton/GoToTopButton';
 
 const OnlineIDE = () => {
+
+    const languageList = [
+        { title: 'C Compiler', link: '/c', value: 'c' },
+        { title: 'C++ Compiler', link: '/cpp', value: 'cpp' },
+        { title: 'Java Compiler', link: '/java', value: 'java' },
+        { title: 'Python Compiler', link: '/python3', value: 'python3' },
+        { title: 'Ruby Compiler', link: '/ruby', value: 'ruby' },
+        { title: 'C# Compiler', link: '/csharp', value: 'csharp' },
+        { title: 'PHP Compiler', link: '/php', value: 'php' },
+        { title: 'Swift Compiler', link: '/swift', value: 'swift' },
+        { title: 'JavaScript Compiler', link: '/javascript', value: 'javascript' },
+        { title: 'TypeScript Compiler', link: '/typescript', value: 'typescript' },
+        { title: 'HTML Compiler', link: '/html', value: 'html' },
+        { title: 'CSS Compiler', link: '/css', value: 'css' },
+        { title: 'SCSS Compiler', link: '/scss', value: 'scss' },
+        { title: 'Bash Compiler', link: '/bash', value: 'bash' },
+        { title: 'Go Compiler', link: '/go', value: 'go' },
+        { title: 'Kotlin Compiler', link: '/kotlin', value: 'kotlin' },
+        { title: 'Rust Compiler', link: '/rust', value: 'rust' },
+        { title: 'Scala Compiler', link: '/scala', value: 'scala' },
+        { title: 'Perl Compiler', link: '/perl', value: 'perl' },
+        { title: 'Lua Compiler', link: '/lua', value: 'lua' },
+    ];
+
+
+    const [products, setProducts] = useState(languageList);
+    const [searchVal, setSearchVal] = useState("");
+    const [showSearchList, setShowSearchList] = useState(false);
+
+    const handleSearch = () => {
+        if (searchVal === "") {
+            setProducts(languageList);
+            setShowSearchList(false);
+        } else {
+            const filterBySearch = languageList.filter((item) =>
+                item.title.toLowerCase().includes(searchVal.toLowerCase())
+            );
+            setProducts(filterBySearch);
+            setShowSearchList(true);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        setSearchVal(e.target.value);
+        if (e.target.value === "") {
+            setShowSearchList(false);
+        } else {
+            handleSearch();
+        }
+    };
+
+    const mystyle = {
+        marginLeft: "600px",
+        marginTop: "20px",
+        fontWeight: "700"
+    };
+
+
+
+
+
+
+
+
     const interviewRef = useRef(null);
 
     const inputRef = useRef(null);
@@ -58,6 +122,12 @@ const OnlineIDE = () => {
         return (-c / 2) * (t * (t - 2) - 1) + b;
     };
 
+    const navigate = useNavigate();
+
+    const handleNavigatePage = (id) => {
+        navigate(`/ideformat/${id}`);
+    };
+
     return (
         <div>
 
@@ -69,16 +139,29 @@ const OnlineIDE = () => {
                     <div className='flex mt-4 items-center justify-center sm:mt-2 lg:mt-0 w-[70%]'>
                         <input
                             type="text"
+                            // onChange={e => setSearchVal(e.target.value)}
+                            onChange={handleInputChange}
                             id="searchInput"
                             ref={inputRef}
                             className='rounded w-[50%] h-9 px-2 me-2 outline-none'
                             placeholder='Search Desire Coding Compiler...'
                         />
+
                         <button
+                            onClick={handleSearch}
                             className='rounded bg-white text-black text-sm h-9 px-4'
                         >
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
+                    </div>
+                    <div className='border rounded  mt-3'>
+                        {showSearchList &&
+                            products.map((product) => (
+                                <div className='text-white border-b px-2 w-[200px] cursor-pointer pb-2 ' key={product.title}>
+                                    <a onClick={() => handleNavigatePage(product.value)}   >{product.title}</a>
+                                </div>
+                            ))}
+
                     </div>
                     <div className='flex items-center text-center justify-center  container mt-5 font-nutino text-slate-600'>
                         <div className='me-3 hover:-translate-y-1 hover:scale-105 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-2  ' icon={faCode} />Code</div>

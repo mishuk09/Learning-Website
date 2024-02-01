@@ -37,6 +37,7 @@ import Blogs from './components/Blog/Blogs';
 import BlogDetails from './components/Blog/BlogDetails';
 import AddData from './components/TwelveClass/AddData';
 import Compiler from './components/LandingPage/CompilerDiv/Compiler';
+import IdeFormatter from './components/OnlineIDE/IdeFormatter';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -136,6 +137,7 @@ function App() {
           <Route path='/onlineide' element={<OnlineIDE />}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>
           <Route path='/compiler' element={<Compiler />}></Route>
+          <Route path='/ideformat/:ideid' element={<IdeFormatter />}></Route>
 
           {/* Tutorials ROUTES */}
           <Route path='/html' element={<Html />}></Route>
