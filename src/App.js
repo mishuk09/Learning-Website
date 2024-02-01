@@ -38,6 +38,7 @@ import BlogDetails from './components/Blog/BlogDetails';
 import AddData from './components/TwelveClass/AddData';
 import Compiler from './components/LandingPage/CompilerDiv/Compiler';
 import IdeFormatter from './components/OnlineIDE/IdeFormatter';
+import ManageBlog from './components/Blog/ManageBlog';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -105,14 +106,19 @@ function App() {
 
 
           {/* Blog ROUTES */}
+          <Route path='/blogs' element={<Blogs />}></Route>
           <Route path='/addblog' element={<RequireAuth>
             <Blog />
           </RequireAuth>}></Route>
           <Route path='/addtwelve' element={<RequireAuth>
             <AddData />
           </RequireAuth>}></Route>
-
           <Route path='/blogsdetails/:blogid' element={<BlogDetails />}></Route>
+          <Route path='/manageblog' element={
+            <RequireAuth>
+              <ManageBlog />
+            </RequireAuth>
+          }></Route>
 
 
           {/* Userlogin ROUTES */}
@@ -135,8 +141,8 @@ function App() {
 
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>
-          <Route path='/blogs' element={<Blogs />}></Route>
-          <Route path='/compiler' element={<Compiler />}></Route>
+
+          {/* <Route path='/compiler' element={<Compiler />}></Route> */}
           <Route path='/ideformat/:value' element={<IdeFormatter />}></Route>
 
           {/* Tutorials ROUTES */}
