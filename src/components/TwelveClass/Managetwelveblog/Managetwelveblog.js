@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Allblogs from './ManageBlog/Allblogs';
-
-import Editblog from './ManageBlog/Editblog';
-import Deleteblog from './ManageBlog/Deleteblog';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePen, faLayerGroup, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-import AddBlog from './ManageBlog/Addblog';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Abouttwelvedata from './Abouttwelvedata';
+import Adddata from './Adddata';
+import Editdata from './Editdata';
+import Deletedata from './Deletedata';
 
-const ManageBlog = () => {
-   
+const Managetwelveblog = () => {
     const [show, setShow] = useState(1);
     const blogitems = [
         {
@@ -20,17 +18,17 @@ const ManageBlog = () => {
         {
             id: 2,
             icon: <FontAwesomeIcon icon={faPlus} />,
-            title: 'Add Blog'
+            title: 'Add Data'
         },
         {
             id: 3,
             icon: <FontAwesomeIcon icon={faFilePen} />,
-            title: 'Edit Blog'
+            title: 'Edit Data'
         },
         {
             id: 4,
             icon: <FontAwesomeIcon icon={faTrash} />,
-            title: 'Delete Blog'
+            title: 'Delete Data'
         }
 
     ]
@@ -48,7 +46,7 @@ const ManageBlog = () => {
                 <div className="text-gray-100 text-xl">
                     <div className="p-2.5 mt-1 flex items-center">
 
-                        <h1 className="font-bold text-gray-200 text-3xl ml-3">Blogs Dashbord</h1>
+                        <h1 className="font-bold text-gray-200 text-3xl ml-3">12 Class Dashbord</h1>
                         <i
                             className="bi bi-x cursor-pointer ml-28 lg:hidden"
                             onclick="openSidebar()"
@@ -74,7 +72,7 @@ const ManageBlog = () => {
             </div>
             <div className='w-[75%] '>
                 {
-                    show === 1 ? <Allblogs /> : show === 2 ? <AddBlog /> : show === 3 ? <Editblog /> : <Deleteblog />
+                    show === 1 ? <Abouttwelvedata/> : show === 2 ? <Adddata /> : show === 3 ? <Editdata /> : <Deletedata />
                 }
 
             </div>
@@ -83,4 +81,4 @@ const ManageBlog = () => {
     );
 };
 
-export default ManageBlog;
+export default Managetwelveblog;

@@ -17,7 +17,7 @@ const Practice = () => {
                     description='Absolutely! Imagine a fun zone where you learn and practice to become amazing at things that help you grow in life. It is like playing to become a master at real-life skills!' image={interviewimg}></HomePage>
 
             </div>
-            <div className='container'>
+            <div className='container'> 
                 <CodingPractice />
                 <PracticeComponent />
                 <div className='mt-20 mb-10'>

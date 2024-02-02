@@ -39,6 +39,7 @@ import AddData from './components/TwelveClass/AddData';
 import Compiler from './components/LandingPage/CompilerDiv/Compiler';
 import IdeFormatter from './components/OnlineIDE/IdeFormatter';
 import ManageBlog from './components/Blog/ManageBlog';
+import Managetwelveblog from './components/TwelveClass/Managetwelveblog/Managetwelveblog';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -110,9 +111,7 @@ function App() {
           <Route path='/addblog' element={<RequireAuth>
             <Blog />
           </RequireAuth>}></Route>
-          <Route path='/addtwelve' element={<RequireAuth>
-            <AddData />
-          </RequireAuth>}></Route>
+
           <Route path='/blogsdetails/:blogid' element={<BlogDetails />}></Route>
           <Route path='/manageblog' element={
             <RequireAuth>
@@ -150,6 +149,9 @@ function App() {
           <Route path='/css' element={<Css></Css    >}></Route>
 
           {/* Twelve CLass ROUTES */}
+          <Route path='/managetwelveblog' element={<RequireAuth>
+            <Managetwelveblog />
+          </RequireAuth>}></Route>
           <Route path='/firstunite' element={<FirstUnit />}></Route>
           <Route path='/secondunite' element={<SecondUnite />}></Route>
           <Route path='/thirdunite' element={<ThirdUnite />}></Route>
