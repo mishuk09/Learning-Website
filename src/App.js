@@ -40,6 +40,7 @@ import Compiler from './components/LandingPage/CompilerDiv/Compiler';
 import IdeFormatter from './components/OnlineIDE/IdeFormatter';
 import ManageBlog from './components/Blog/ManageBlog';
 import Managetwelveblog from './components/TwelveClass/Managetwelveblog/Managetwelveblog';
+import Edit from './components/Blog/ManageBlog/Edit';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -107,6 +108,8 @@ function App() {
 
 
           {/* Blog ROUTES */}
+
+          <Route path='/editblog/:id' element={<Edit />}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>
           <Route path='/addblog' element={<RequireAuth>
             <Blog />
