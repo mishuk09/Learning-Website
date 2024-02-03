@@ -1,11 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faBrain, faCode, faComputerMouse, faMagnifyingGlass, faNewspaper, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Box, Pagination, Stack, Typography } from '@mui/material';
+import { Pagination, Stack, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Switch from '@mui/material/Switch';
 
 
 const Blogs = () => {
+    const [query, setQuery] = useState('');
+    const [results, setResults] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+
+
     const inputRef = useRef(null);
     const [blogs, setBlogPosts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -59,11 +79,64 @@ const Blogs = () => {
         setCurrentPage(value);
     };
 
+
+
+    const handleSearch = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch(`http://localhost:5000/blog/search/${query}`);
+            if (response.ok) {
+                const data = await response.json();
+                setResults(data);
+            } else {
+                console.error('Error searching blogs');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        if (query.trim() !== '') {
+            handleSearch();
+        } else {
+            setResults([]);
+        }
+    }, [query]);
+
+
+
+
+    const [open, setOpen] = React.useState(false);
+    const [fullWidth, setFullWidth] = React.useState(true);
+    const [maxWidth, setMaxWidth] = React.useState('sm');
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleMaxWidthChange = (event) => {
+        setMaxWidth(
+            // @ts-expect-error autofill of arbitrary value is not handled.
+            event.target.value,
+        );
+    };
+
+    const handleFullWidthChange = (event) => {
+        setFullWidth(event.target.checked);
+    };
+
     return (
         <div className='bg-slate-50'>
             <div className='bg-slate-950 pb-10'>
                 <div className='contaner'>
-                    <div className='container flex flex-col items-center  pt-4 justify-center text-left'>
+                    <div className='container   flex flex-col items-center  pt-4 justify-center text-left'>
                         <FontAwesomeIcon className='text-white my-3' icon={faNewspaper} size='xl' beat />
                         <h1 className='text-white text-5xl font-bold font-nunito'>CSEHacks For <span className='text-blue-500'>Knowladge</span> </h1>
                         <div className='flex mt-4 items-center justify-center sm:mt-2 lg:mt-0 w-[70%]'>
@@ -73,12 +146,68 @@ const Blogs = () => {
                                 ref={inputRef}
                                 className='rounded w-[50%] h-9 px-2 me-2 outline-none'
                                 placeholder='Search Desire Coding Compiler...'
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
                             />
                             <button
+                                variant="outlined" onClick={handleClickOpen}
                                 className='rounded bg-white text-black text-sm h-9 px-4'
                             >
                                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                             </button>
+
+                        </div >
+                        <div className='text-slate-700 w-[36%] font-bold  overflow-y-auto  rounded font-nunito absolute bg-white top-[300px]  h-auto'>
+                            {loading && <p>Loading...</p>}
+                            {results.length > 0 && (
+                                <>
+                                    <ul>
+                                        {results.slice(0, 5).map((blog) => (
+                                            <p className='px-3 h-8  flex items-center  hover:text-green-600 duration-200 cursor-pointer hover:rounded hover:bg-slate-100' key={blog._id}><FontAwesomeIcon className='me-1' icon={faMagnifyingGlass} />{blog.title}</p>
+                                        ))}
+                                    </ul>
+                                    <div className='text-center p-1 bg-slate-200 items-center justify-center'>
+                                        <React.Fragment>
+                                            <button variant="outlined" onClick={handleClickOpen}>
+                                                See All
+                                            </button>
+                                            <Dialog
+                                                fullWidth={fullWidth}
+                                                maxWidth={maxWidth}
+                                                open={open}
+                                                onClose={handleClose}
+                                            >
+                                                {/* <DialogTitle>Optional sizes</DialogTitle> */}
+                                                
+                                                <DialogContent>
+                                                    <DialogContentText>
+                                                        You can set my maximum width and whether to adapt or not.
+                                                    </DialogContentText>
+                                                    <Box
+                                                        noValidate
+                                                        component="form"
+                                                        sx={{
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            m: 'auto',
+                                                            width: 'fit-content',
+                                                        }}
+                                                    >
+
+
+                                                    </Box>
+                                                </DialogContent>
+                                                <DialogActions>
+                                                    <Button onClick={handleClose}>Close</Button>
+                                                </DialogActions>
+                                            </Dialog>
+                                        </React.Fragment>
+                                    </div>
+                                </>
+
+                            )}
+
+
                         </div>
                         <div className='flex items-center text-center justify-center  container mt-5 font-nutino text-slate-600'>
                             <div className='me-3 hover:-translate-y-1 hover:scale-105 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-2  ' icon={faSearch} />Search</div>
