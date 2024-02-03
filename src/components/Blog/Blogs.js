@@ -17,6 +17,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
+import BlogMain from './BlogMain';
 
 
 const Blogs = () => {
@@ -133,7 +134,7 @@ const Blogs = () => {
     };
 
     return (
-        <div className='bg-slate-50'>
+        <div className=' '>
             <div className='bg-slate-950 pb-10'>
                 <div className='contaner'>
                     <div className='container   flex flex-col items-center  pt-4 justify-center text-left'>
@@ -177,25 +178,57 @@ const Blogs = () => {
                                                 open={open}
                                                 onClose={handleClose}
                                             >
-                                                {/* <DialogTitle>Optional sizes</DialogTitle> */}
-                                                
+                                                <DialogTitle>
+                                                    <input
+                                                        type="text"
+                                                        className='rounded  bg-slate-100 w-[50%] h-9 px-2 me-2 outline-none'
+                                                        value={query}
+                                                        onChange={(e) => setQuery(e.target.value)}
+                                                    />
+                                                </DialogTitle>
                                                 <DialogContent>
                                                     <DialogContentText>
-                                                        You can set my maximum width and whether to adapt or not.
+                                                        <div className="md:flex md:justify-between lg:flex-col">
+                                                            <div className="md:flex md:justify-between gap-1 lg:flex-col">
+                                                                {loading && <p>Loading...</p>}
+                                                                {results.length > 0 && (
+
+                                                                    <ul>
+                                                                        {results.map((blog) => (
+                                                                            <a onClick={() => navigateToServiceDetail(blog._id)} href="#" className="flex p-2 flex-col bg-white shadow  rounded pb-8 lg:mb-3 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
+                                                                                <img src={blog.photourl} alt="" className="inline-block rounded h-60 w-full object-cover md:h-36 lg:h-32 lg:w-32" />
+                                                                                <div className="flex flex-col items-start pt-1 lg:px-8">
+                                                                                    <div className="mb-2 rounded-md bg-[#f2f2f7] px-2 py-1.5">
+                                                                                        <p className="text-sm font-semibold text-[#6574f8]">{blog.category}</p>
+                                                                                    </div>
+                                                                                    <p className="mb-1 text-sm font-bold text-green-500 sm:text-base md:text-xl">{blog.title}</p>
+                                                                                    <hr className='w-full' />
+                                                                                    <div className="flex flex-col items-start">
+                                                                                        <div className="flex flex-col mt-1 text-sm text-[#636262] sm:text-base lg:flex-row lg:items-center">
+                                                                                            <p
+                                                                                                className='text-gray-700 font-nunito text-justify overflow-hidden text-base'
+                                                                                                style={{
+                                                                                                    display: '-webkit-box',
+                                                                                                    WebkitLineClamp: 2,
+                                                                                                    WebkitBoxOrient: 'vertical',
+                                                                                                    overflow: 'hidden',
+                                                                                                    textOverflow: 'ellipsis'
+                                                                                                }}
+                                                                                                dangerouslySetInnerHTML={{ __html: blog.content }}
+                                                                                            >
+
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        ))}
+                                                                    </ul>
+                                                                )}
+                                                            </div>
+                                                        </div>
                                                     </DialogContentText>
-                                                    <Box
-                                                        noValidate
-                                                        component="form"
-                                                        sx={{
-                                                            display: 'flex',
-                                                            flexDirection: 'column',
-                                                            m: 'auto',
-                                                            width: 'fit-content',
-                                                        }}
-                                                    >
 
-
-                                                    </Box>
                                                 </DialogContent>
                                                 <DialogActions>
                                                     <Button onClick={handleClose}>Close</Button>
@@ -223,6 +256,10 @@ const Blogs = () => {
             </div>
 
             <div>
+                <BlogMain />
+            </div>
+
+            {/* <div>
 
                 <section>
 
@@ -239,7 +276,7 @@ const Blogs = () => {
                                                 <div className="mb-2 rounded-md bg-[#f2f2f7] px-3 py-1.5">
                                                     <p className="text-sm font-semibold text-[#6574f8]">{blog.category}</p>
                                                 </div>
-                                                <p className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">{blog.title}</p>
+                                                <p className="mb-2 text-xl font-bold md:text-2xl  lg:text-3xl">{blog.title}</p>
                                                 <div className="flex flex-col text-sm text-[#636262] lg:flex-row">
                                                     <p>{blog.date}</p>
 
@@ -311,8 +348,8 @@ const Blogs = () => {
                     </div>
                 </section>
 
-            </div>
-            <div className='flex items-center text-center justify-center mt-14 mb-4'>
+            </div> */}
+            {/* <div className='flex items-center text-center justify-center mt-14 mb-4'>
                 <Stack spacing={2}>
                     <Pagination
                         count={Math.ceil(blogs.length / itemsPerPageSection1)} // or use the larger itemsPerPageSection2
@@ -322,7 +359,7 @@ const Blogs = () => {
                         shape='rounded'
                     />
                 </Stack>
-            </div>
+            </div> */}
         </div>
     );
 };

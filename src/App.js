@@ -41,6 +41,8 @@ import IdeFormatter from './components/OnlineIDE/IdeFormatter';
 import ManageBlog from './components/Blog/ManageBlog';
 import Managetwelveblog from './components/TwelveClass/Managetwelveblog/Managetwelveblog';
 import Edit from './components/Blog/ManageBlog/Edit';
+import BlogMain from './components/Blog/BlogMain';
+import Categorywise from './components/Blog/BlogCategory/Categorywise';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -121,6 +123,12 @@ function App() {
               <ManageBlog />
             </RequireAuth>
           }></Route>
+
+
+          <Route path="/blogss" exact component={BlogMain} />
+          <Route path="/category/:categoryName" component={Categorywise} />
+
+
 
 
           {/* Userlogin ROUTES */}
