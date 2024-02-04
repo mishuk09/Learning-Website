@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faBrain, faCode, faComputerMouse, faMagnifyingGlass, faNewspaper, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Pagination, Stack, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -164,7 +164,7 @@ const Blogs = () => {
                                 <>
                                     <ul>
                                         {results.slice(0, 5).map((blog) => (
-                                            <p className='px-3 h-8  flex items-center  hover:text-green-600 duration-200 cursor-pointer hover:rounded hover:bg-slate-100' key={blog._id}><FontAwesomeIcon className='me-1' icon={faMagnifyingGlass} />{blog.title}</p>
+                                            <p onClick={() => navigateToServiceDetail(blog._id)} className='px-3 h-8  flex items-center  hover:text-green-600 duration-200 cursor-pointer hover:rounded hover:bg-slate-100' key={blog._id}><FontAwesomeIcon className='me-1' icon={faMagnifyingGlass} />{blog.title}</p>
                                         ))}
                                     </ul>
                                     <div className='text-center p-1 bg-slate-200 items-center justify-center'>
@@ -195,7 +195,7 @@ const Blogs = () => {
 
                                                                     <ul>
                                                                         {results.map((blog) => (
-                                                                            <a onClick={() => navigateToServiceDetail(blog._id)} href="#" className="flex p-2 flex-col bg-white shadow  rounded pb-8 lg:mb-3 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
+                                                                            <Link onClick={() => navigateToServiceDetail(blog._id)} href="#" className="flex p-2 flex-col bg-white shadow  rounded pb-8 lg:mb-3 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
                                                                                 <img src={blog.photourl} alt="" className="inline-block rounded h-60 w-full object-cover md:h-36 lg:h-32 lg:w-32" />
                                                                                 <div className="flex flex-col items-start pt-1 lg:px-8">
                                                                                     <div className="mb-2 rounded-md bg-[#f2f2f7] px-2 py-1.5">
@@ -221,7 +221,7 @@ const Blogs = () => {
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </a>
+                                                                            </Link>
                                                                         ))}
                                                                     </ul>
                                                                 )}

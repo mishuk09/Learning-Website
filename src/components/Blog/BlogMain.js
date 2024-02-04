@@ -1,7 +1,7 @@
 import { faClock, faList, faTags, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useBlogs from './Hooks/useBlogs';
 import Blogs from './Blogs';
 import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -61,7 +61,11 @@ const BlogMain = ({ onSelectCategory }) => {
         fetchCategoriesWithCount();
     }, []);
 
+    const navigate = useNavigate();
 
+    const navigateToServiceDetail = (id) => {
+        navigate(`/blogsdetails/${id}`);
+    };
     if (loading) {
         return <p>Loading categories...</p>;
     }
@@ -95,7 +99,7 @@ const BlogMain = ({ onSelectCategory }) => {
                         <div className='bg-white p-2 mt-4 rounded-sm'>
                             <h2 className='text-1xl mb-3 font-nunito font-bold border-b-2 border-dotted pb-1'>Random Blog</h2>
                             {blogs && blogs.slice(0, 5).map((blog) => (
-                                <div className="flex p-2  h-20 bg-white shadow cursor-pointer rounded pb-8 lg:mb-1 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
+                                <div onClick={() => navigateToServiceDetail(blog._id)} className="flex p-2  h-20 bg-white shadow cursor-pointer rounded pb-8 lg:mb-1 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
                                     <img src={blog.photourl} alt="" className="inline-block rounded object-cover w-20" />
                                     <div className="flex flex-col items-start   ps-2">
                                         <p className='hover:text-green-600 leading-6 duration-200'>
@@ -116,7 +120,7 @@ const BlogMain = ({ onSelectCategory }) => {
                         <div className='h-full    relative rounded-sm'>
                             {
                                 blogs && blogs.slice(0, 1).map((blog) => (
-                                    <div key={blog.id}>
+                                    <div className='cursor-pointer' onClick={() => navigateToServiceDetail(blog._id)} key={blog.id}>
                                         <div className='relative'>
                                             <img className='w-full rounded-sm h-[350px]' src={blog.photourl} alt="" />
 
@@ -136,7 +140,7 @@ const BlogMain = ({ onSelectCategory }) => {
                         <div className=' grid grid-cols-2 gap-2 mt-4'>
                             {
                                 blogs && blogs.slice(1, 3).map((blog) => (
-                                    <a href="#" className="flex bg-white flex-col gap-3 px-2 py-2 shadow rounded-sm  ">
+                                    <div onClick={() => navigateToServiceDetail(blog._id)} className="flex  bg-white cursor-pointer flex-col gap-3 px-2 py-2 shadow rounded-sm  ">
                                         <img src={blog.photourl} alt="" className="inline-block  rounded-t h-[150px] w-full object-cover" />
                                         <div className="flex flex-col items-start ">
                                             <div className="mb-2 rounded-md bg-[#f2f2f7] px-3 py-1.5">
@@ -148,7 +152,7 @@ const BlogMain = ({ onSelectCategory }) => {
 
 
                                         </div>
-                                    </a>
+                                    </div>
                                 ))
                             }
                         </div>
@@ -158,7 +162,7 @@ const BlogMain = ({ onSelectCategory }) => {
                                 displayedBlogs && displayedBlogs.map((blog) => (
 
                                     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                                    <a href="#" className="flex p-2 flex-col bg-white shadow  rounded pb-8 lg:mb-3 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
+                                    <div onClick={() => navigateToServiceDetail(blog._id)} className="flex cursor-pointer p-2 flex-col bg-white shadow  rounded pb-8 lg:mb-3 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
                                         <img src={blog.photourl} alt="" className="inline-block rounded h-60 w-full object-cover md:h-36 lg:h-32 lg:w-32" />
                                         <div className="flex flex-col items-start pt-1 lg:px-8">
                                             <div className="mb-2 rounded-md bg-[#f2f2f7] px-2 py-1.5">
@@ -184,7 +188,7 @@ const BlogMain = ({ onSelectCategory }) => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>))}
+                                    </div>))}
                         </div>
                     </div>
                     <div className='bg-white w-[25%]  h-full rounded'>
@@ -227,7 +231,7 @@ const BlogMain = ({ onSelectCategory }) => {
                             <h2 className='text-2xl mb-2 border-b-2 border-dotted text-green-600 font-nunito font-bold'>AI Blogs</h2>
                             {blogs &&
                                 blogs.slice(0, 1).map((blog) => (
-                                    <div key={blog.id} className='relative rounded-sm'>
+                                    <div onClick={() => navigateToServiceDetail(blog._id)} key={blog.id} className='cursor-pointer relative rounded-sm'>
                                         <div className='relative'>
                                             <img className='w-full rounded-sm h-[150px]' src={blog.photourl} alt="" />
                                             <div className='absolute inset-0 bg-gradient-to-b from-transparent to-black'></div>
@@ -244,7 +248,7 @@ const BlogMain = ({ onSelectCategory }) => {
                         <div className='bg-white font-nunito  mt-2 rounded-sm'>
 
                             {blogs && blogs.slice(0, 3).map((blog) => (
-                                <div className="flex p-2  h-20 bg-white shadow cursor-pointer rounded pb-8 lg:mb-1 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
+                                <div onClick={() => navigateToServiceDetail(blog._id)} className="flex p-2  h-20 bg-white shadow cursor-pointer rounded pb-8 lg:mb-1 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
                                     <img src={blog.photourl} alt="" className="inline-block rounded object-cover w-20" />
                                     <div className="flex flex-col items-start   ps-2">
                                         <p className='hover:text-green-600 leading-6 duration-200'>
@@ -264,7 +268,7 @@ const BlogMain = ({ onSelectCategory }) => {
                             <h2 className='text-2xl font-nunito  font-bold border-b-2 border-dotted text-green-500 pb-1 mb-2'>Tag</h2>
                             <ul className='grid grid-cols-3 gap-2 items-center text-center justify-center'>
                                 {categoriesWithCount.map(category => (
-                                    <li key={category.name} className='border flex items-center text-center justify-center cursor-pointer hover:text-green-500    p-1 rounded border-slate-900 font-nunito font-bold text-sm'>
+                                    <li onClick={() => navigateToServiceDetail(categoriesWithCount._id)} key={category.name} className='border flex items-center text-center justify-center cursor-pointer hover:text-green-500    p-1 rounded border-slate-900 font-nunito font-bold text-sm'>
                                         <Link to={`/category/${category.name}`}>
                                             <div className='justify-between flex items-center text-center'>
                                                 <p><FontAwesomeIcon className='me-2 text-green-600' icon={faTags} />
@@ -283,10 +287,11 @@ const BlogMain = ({ onSelectCategory }) => {
                     </div>
                 </div>
             </div>
-            <div className='flex items-center text-center justify-center mt-14 mb-4'>
+            <div className='flex items-center text-center justify-center mt-14 pb-20'>
                 <Stack spacing={2}>
                     <Pagination
-                        count={Math.ceil(blogs.length / itemsPerPageSection1)}
+                        // count={Math.ceil(blogs.length / itemsPerPageSection1)}
+                        count={Math.ceil((blogs?.length || 0) / itemsPerPageSection1)}
                         page={currentPage}
                         onChange={handlePageChange}
                         variant='outlined'
