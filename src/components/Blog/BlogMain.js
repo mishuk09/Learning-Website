@@ -86,7 +86,7 @@ const BlogMain = ({ onSelectCategory }) => {
                                     <div className="flex flex-col items-start   ps-2">
                                         {blog.title.split(' ').slice(0, 5).join(' ')}...
                                         <p className='  text-xs text-slate-500'>
-                                        <FontAwesomeIcon className='me-1' icon={faClock} />  {blog.date}
+                                            <FontAwesomeIcon className='me-1' icon={faClock} />  {blog.date}
                                         </p>
                                     </div>
 
