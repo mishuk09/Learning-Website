@@ -43,6 +43,7 @@ import Managetwelveblog from './components/TwelveClass/Managetwelveblog/Managetw
 import Edit from './components/Blog/ManageBlog/Edit';
 import BlogMain from './components/Blog/BlogMain';
 import Categorywise from './components/Blog/BlogCategory/Categorywise';
+import BlogBycategory from './components/Blog/BlogBycategory';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -106,7 +107,7 @@ function App() {
           <Route path='/dashbord' element={<RequireAuth>
             <Dashbord />
           </RequireAuth>}></Route>
-
+          <Route path='/blogbycategory/:selectedCategory' element={<BlogBycategory />}></Route>
 
 
           {/* Blog ROUTES */}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-const useBlogs = () => {
+const useBlogs = (blogid) => {
     const [blogs, setBlogs] = useState();
     const [categoriesWithCount, setCategoriesWithCount] = useState([]);
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
 
 
@@ -14,24 +14,24 @@ const useBlogs = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setBlogs(data));
-    }, []);
+    }, [blogid]);
     //get blog with categorywise...
     useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/blog/categories');
-                if (response.ok) {
-                    const data = await response.json();
-                    setCategories(data);
-                } else {
-                    console.error('Error fetching categories');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        // const fetchCategories = async () => {
+        //     try {
+        //         const response = await fetch('http://localhost:5000/blog/categories');
+        //         if (response.ok) {
+        //             const data = await response.json();
+        //             setCategories(data);
+        //         } else {
+        //             console.error('Error fetching categories');
+        //         }
+        //     } catch (error) {
+        //         console.error('Error:', error);
+        //     } finally {
+        //         setLoading(false);
+        //     }
+        // };
 
         const fetchCategoriesWithCount = async () => {
             try {
@@ -49,10 +49,10 @@ const useBlogs = () => {
             }
         };
 
-        fetchCategories();
+        // fetchCategories();
         fetchCategoriesWithCount();
-    }, []);
-    return { blogs, setBlogs ,categoriesWithCount,categories,loading};
+    }, [blogid]);
+    return { blogs, setBlogs, categoriesWithCount, loading };
 };
 
 export default useBlogs;

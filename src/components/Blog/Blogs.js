@@ -179,12 +179,12 @@ const Blogs = () => {
                                                 onClose={handleClose}
                                             >
                                                 <DialogTitle>
-                                                    <input
+                                                    {/* <input
                                                         type="text"
                                                         className='rounded  bg-slate-100 w-[50%] h-9 px-2 me-2 outline-none'
                                                         value={query}
                                                         onChange={(e) => setQuery(e.target.value)}
-                                                    />
+                                                    /> */}
                                                 </DialogTitle>
                                                 <DialogContent>
                                                     <DialogContentText>
