@@ -70,6 +70,9 @@ const Article = () => {
     const indexOfFirstBlog = indexOfLastBlog - itemsPerPage;
 
     const currentBlogs = blogs ? blogs.slice(indexOfFirstBlog, indexOfLastBlog) : [];
+    if (!blogs || !categoriesWithCount) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <div className='container mt-16'>
@@ -88,7 +91,7 @@ const Article = () => {
 
                         {/* All Blogs TabPanel */}
                         <TabPanel className='  mt-2' value="1">
-                            {currentBlogs.map((blog) => generateBlogPanel(blog, () => navigateToServiceDetail(blog._id)))}
+                            {currentBlogs && currentBlogs.map((blog) => generateBlogPanel(blog, () => navigateToServiceDetail(blog._id)))}
                             <div className='flex items-center text-center justify-center mt-14 mb-4'>
                                 <Stack spacing={2}>
                                     <Pagination
@@ -103,7 +106,7 @@ const Article = () => {
                         </TabPanel>
 
                         {/* Individual Category TabPanels */}
-                        {categoriesWithCount.map((category, index) => (
+                        {categoriesWithCount && categoriesWithCount.map((category, index) => (
                             <TabPanel key={index} className=' mt-2' value={String(index + 2)}>
                                 {blogs
                                     .filter((blog) => blog.category === category.name)
@@ -116,6 +119,8 @@ const Article = () => {
                                     <Stack spacing={2}>
                                         <Pagination
                                             count={Math.ceil(blogs.filter((blog) => blog.category === category.name).length / itemsPerPage)}
+
+
                                             page={currentPages[String(index + 2)]}
                                             onChange={(event, value) => handlePageChange(event, value, index + 2)}
                                             variant='outlined'
