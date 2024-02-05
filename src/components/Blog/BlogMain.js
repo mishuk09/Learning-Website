@@ -8,10 +8,10 @@ import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-sv
 import { Pagination, Stack } from '@mui/material';
 
 const BlogMain = ({ onSelectCategory }) => {
-    const { blogs } = useBlogs();
-    const [categories, setCategories] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [categoriesWithCount, setCategoriesWithCount] = useState([]);
+    const { blogs, categoriesWithCount, categories, loading } = useBlogs();
+    // const [categories, setCategories] = useState([]);
+    // const [loading, setLoading] = useState(true);
+    // const [categoriesWithCount, setCategoriesWithCount] = useState([]);
     const itemsPerPageSection1 = 5;
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -23,43 +23,6 @@ const BlogMain = ({ onSelectCategory }) => {
     const endIndex = startIndex + itemsPerPageSection1;
     const displayedBlogs = blogs && blogs.slice(startIndex, endIndex);
 
-
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/blog/categories');
-                if (response.ok) {
-                    const data = await response.json();
-                    setCategories(data);
-                } else {
-                    console.error('Error fetching categories');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        const fetchCategoriesWithCount = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/blog/categoriesWithCount');
-                if (response.ok) {
-                    const data = await response.json();
-                    setCategoriesWithCount(data);
-                } else {
-                    console.error('Error fetching categories with count');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchCategories();
-        fetchCategoriesWithCount();
-    }, []);
 
     const navigate = useNavigate();
 
@@ -76,8 +39,6 @@ const BlogMain = ({ onSelectCategory }) => {
                 <div className='flex gap-3 w-full pt-6'>
                     <div className='  w-[25%] px-2 h-full rounded'>
                         <div className='bg-white   p-2 h-full rounded-sm'>
-
-
                             <h2 className='text-1xl font-nunito font-bold border-b-2 border-dotted pb-1 mb-2'>Category</h2>
                             <ul>
                                 {categoriesWithCount.map(category => (
