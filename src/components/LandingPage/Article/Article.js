@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Headline from '../../Otherscomponent/Headline';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -10,109 +10,89 @@ import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
+import useBlogs from '../../Blog/Hooks/useBlogs';
 
+const tabClass = 'rounded border border-slate-300 hover:bg-green-500 hover:text-white duration-300 h-[30px] px-2 ms-2';
 
-
-
+const generateBlogPanel = (blog, onClick) => (
+    <div key={blog._id} onClick={onClick} className='m-3 rounded pb-2 cursor-pointer shadow-sm border w-full h-full border-slate-400'>
+        <div className='mx-3 mt-2 font-bold'>{blog.title}</div>
+        <div className='px-2 py-2 mx-2 mt-1 flex flex-col justify-end rounded-sm border-slate-400 w-[99%] h-22'>
+            <p
+                className='text-slate-600 font-nunito text-justify overflow-hidden text-base'
+                style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                }}
+                dangerouslySetInnerHTML={{ __html: blog.content }}
+            ></p>
+            <p className='rounded-sm pt-2 pb-3 align-bottom text-sm border-slate-400 w-[100%] h-4'>
+                <FontAwesomeIcon className='text-green-500' icon={faTag} /> {blog.category}
+            </p>
+        </div>
+    </div>
+);
 
 const Article = () => {
-    const [value, setValue] = React.useState('1');
+    const { blogs, categoriesWithCount } = useBlogs();
+    const navigate = useNavigate();
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
-    const inputRef = useRef(null);
-    const [blogs, setBlogPosts] = useState([]);
+    const [value, setValue] = useState('1');
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
-
+    const [currentPages, setCurrentPages] = useState({});
 
     useEffect(() => {
-        const fetchBlogPosts = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/blog/read'); // Adjust the URL as needed
-                if (response.ok) {
-                    const data = await response.json();
-                    setBlogPosts(data);
-                } else {
-                    console.error('Failed to fetch blog posts');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        };
+        const initialPages = Object.fromEntries(categoriesWithCount.map((_, index) => [String(index + 2), 1]));
+        setCurrentPages(initialPages);
+    }, [categoriesWithCount]);
 
-        fetchBlogPosts();
-    }, []);
-
-    const navigate = useNavigate();
+    const handleChange = (_, newValue) => {
+        setValue(newValue);
+    };
 
     const navigateToServiceDetail = (id) => {
         navigate(`/blogsdetails/${id}`);
     };
 
-    const indexOfLastBlog = currentPage * itemsPerPage;
-    const indexOfFirstBlog = indexOfLastBlog - itemsPerPage;
-    const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
-
-    const handlePageChange = (event, value) => {
+    const handlePageChange = (event, value, categoryIndex) => {
         setCurrentPage(value);
+        setCurrentPages((prevPages) => ({
+            ...prevPages,
+            [String(categoryIndex)]: value,
+        }));
     };
 
+    const itemsPerPage = 5;
+    const indexOfLastBlog = currentPage * itemsPerPage;
+    const indexOfFirstBlog = indexOfLastBlog - itemsPerPage;
 
+    const currentBlogs = blogs ? blogs.slice(indexOfFirstBlog, indexOfLastBlog) : [];
 
     return (
         <div className='container mt-16'>
-            <Headline parent='Article' child='Bloog' short='News' />
+            <Headline parent='Article' child='Blog' short='News' />
             <div className=' mt-4'>
                 <Box sx={{ width: '100%', typography: 'body1' }}>
                     <TabContext value={value}>
                         <Box sx={{}}>
                             <TabList onChange={handleChange} aria-label="lab API tabs example">
-                                <Tab className='rounded border border-slate-300 hover:bg-green-500 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="All" value="1" />
-                                <Tab className='rounded border border-slate-300 hover:bg-green-500 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="Ai" value="2" />
-                                <Tab className='rounded border border-slate-300 hover:bg-green-500 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="DSA" value="3" />
-                                <Tab className='rounded border border-slate-300 hover:bg-green-500 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="Tech News" value="4" />
-                                <Tab className='rounded border border-slate-300 hover:bg-green-500 hover:text-white  duration-300 h-[30px] px-2 ms-2' label="Basic Computer" value="5" />
+                                <Tab className={tabClass} label="All" value="1" />
+                                {categoriesWithCount.map((category, index) => (
+                                    <Tab key={index} className={tabClass} label={category.name} value={String(index + 2)} />
+                                ))}
                             </TabList>
-
                         </Box>
+
+                        {/* All Blogs TabPanel */}
                         <TabPanel className='  mt-2' value="1">
-
-                            {
-                                currentBlogs.map((blog) => (
-                                    <div onClick={() => navigateToServiceDetail(blog._id)} className='m-3 rounded pb-2 cursor-pointer shadow-sm  border w-full h-full border-slate-400'>
-                                        <div className='mx-3 mt-2 font-bold'>{blog.title}</div>
-                                        <div className='px-2 py-2 mx-2 mt-1 flex flex-col justify-end rounded-sm   border-slate-400 w-[99%] h-22 '  >
-                                            <p
-                                                className='text-slate-600 font-nunito text-justify overflow-hidden text-base'
-                                                style={{
-                                                    display: '-webkit-box',
-                                                    WebkitLineClamp: 2,
-                                                    WebkitBoxOrient: 'vertical',
-                                                    overflow: 'hidden',
-                                                    textOverflow: 'ellipsis'
-                                                }}
-                                                dangerouslySetInnerHTML={{ __html: blog.content }}
-                                            >
-
-                                            </p>
-
-                                            <p className='rounded-sm  pt-2 pb-3 align-bottom text-sm     border-slate-400 w-[100%] h-4'>
-                                                <FontAwesomeIcon className='text-green-500' icon={faTag} /> {blog.category}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-
-
-
+                            {currentBlogs.map((blog) => generateBlogPanel(blog, () => navigateToServiceDetail(blog._id)))}
                             <div className='flex items-center text-center justify-center mt-14 mb-4'>
                                 <Stack spacing={2}>
                                     <Pagination
-                                        count={Math.ceil(blogs.length / itemsPerPage)}
+                                        count={Math.ceil((blogs?.length || 0) / itemsPerPage)}
                                         page={currentPage}
                                         onChange={handlePageChange}
                                         variant='outlined'
@@ -121,83 +101,30 @@ const Article = () => {
                                 </Stack>
                             </div>
                         </TabPanel>
-                        <TabPanel className=' mt-2' value="2"> <div className='m-3 rounded pb-3     border w-full h-full border-slate-400'>
-                            <div className='mx-3 mt-2 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-                            <div className='mx-3 mt-3 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-                            <div className='mx-3 mt-3 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
 
-                        </div>
-                            <Stack className='felx items-center justify-center mt-4' spacing={2}>
-
-                                <Pagination count={10} variant="outlined" shape="rounded" />
-                            </Stack> </TabPanel>
-                        <TabPanel className=' mt-2' value="3"> <div className='m-3 rounded pb-3     border w-full h-full border-slate-400'>
-                            <div className='mx-3 mt-2 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-                            <div className='mx-3 mt-3 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-                            <div className='mx-3 mt-3 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-
-                        </div>
-                            <Stack className='felx items-center justify-center mt-4' spacing={2}>
-
-                                <Pagination count={10} variant="outlined" shape="rounded" />
-                            </Stack></TabPanel>
-                        <TabPanel className=' mt-2' value="4"> <div className='m-3 rounded pb-3     border w-full h-full border-slate-400'>
-                            <div className='mx-3 mt-2 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-                            <div className='mx-3 mt-3 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-                            <div className='mx-3 mt-3 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-
-                        </div>
-                            <Stack className='felx items-center justify-center mt-4' spacing={2}>
-
-                                <Pagination count={10} variant="outlined" shape="rounded" />
-                            </Stack>
-                        </TabPanel>
-                        <TabPanel className=' mt-2' value="5"> <div className='m-3 rounded pb-3     border w-full h-full border-slate-400'>
-                            <div className='mx-3 mt-2 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-                            <div className='mx-3 mt-3 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-                            <div className='mx-3 mt-3 font-bold'>Headline</div>
-                            <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                                <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                            </div>
-
-                        </div>
-                            <Stack className='felx items-center justify-center mt-4' spacing={2}>
-
-                                <Pagination count={10} variant="outlined" shape="rounded" />
-                            </Stack></TabPanel>
+                        {/* Individual Category TabPanels */}
+                        {categoriesWithCount.map((category, index) => (
+                            <TabPanel key={index} className=' mt-2' value={String(index + 2)}>
+                                {blogs
+                                    .filter((blog) => blog.category === category.name)
+                                    .slice(
+                                        (currentPages[String(index + 2)] - 1) * itemsPerPage,
+                                        currentPages[String(index + 2)] * itemsPerPage
+                                    )
+                                    .map((blog) => generateBlogPanel(blog, () => navigateToServiceDetail(blog._id)))}
+                                <div className='flex items-center text-center justify-center mt-14 mb-4'>
+                                    <Stack spacing={2}>
+                                        <Pagination
+                                            count={Math.ceil(blogs.filter((blog) => blog.category === category.name).length / itemsPerPage)}
+                                            page={currentPages[String(index + 2)]}
+                                            onChange={(event, value) => handlePageChange(event, value, index + 2)}
+                                            variant='outlined'
+                                            shape='rounded'
+                                        />
+                                    </Stack>
+                                </div>
+                            </TabPanel>
+                        ))}
                     </TabContext>
                 </Box>
             </div>

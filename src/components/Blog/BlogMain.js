@@ -239,7 +239,7 @@ const BlogMain = ({ onSelectCategory }) => {
                             <h2 className='text-2xl font-nunito  font-bold border-b-2 border-dotted text-green-500 pb-1 mb-2'>Tag</h2>
                             <ul className='grid grid-cols-3 gap-2 items-center text-center justify-center'>
                                 {categoriesWithCount.map(category => (
-                                    <li onClick={() => navigateToServiceDetail(categoriesWithCount._id)} key={category.name} className='border flex items-center text-center justify-center cursor-pointer hover:text-green-500    p-1 rounded border-slate-900 font-nunito font-bold text-sm'>
+                                    <li onClick={() => handleCategoryClick(category.name)} key={category.name} className='border flex items-center text-center justify-center cursor-pointer hover:text-green-500    p-1 rounded border-slate-900 font-nunito font-bold text-sm'>
                                         <Link to={`/category/${category.name}`}>
                                             <div className='justify-between flex items-center text-center'>
                                                 <p><FontAwesomeIcon className='me-2 text-green-600' icon={faTags} />

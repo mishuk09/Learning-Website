@@ -205,10 +205,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                         </Link>
                         <Link to='/twelveclass'>  <div className='me-3 hover:scale-105 duration-300   px-2 py-1 rounded  border    items-center text-center text-sm text-slate-300'>Class 12
                         </div></Link>
-                        {/* <div class="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-                            <span class="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
-                            <span class="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md   duration-400">
-                                <span class="relative text-white">Button Text</span>
+                        {/* <div className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+                            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+                            <span className="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md   duration-400">
+                                <span className="relative text-white">Button Text</span>
                             </span>
                         </div> */}
 
@@ -218,8 +218,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                             {language ? <span>EN</span> : <span className=' '>বাং</span>}
                             <span className="absolute inline-flex rounded-md shadow-sm ml-2">
                                 <span className="flex absolute h-2 w-2 top-[-5px] right-0   -mr-1">
-                                    <span class="absolute top-0 right-0 -mr-1 -mt-1 w-4 h-4 rounded-full bg-green-300 animate-ping"></span>
-                                    <span class="relative top-[3px] right-[2px] -mr-1 -mt-1 w-3 h-3 rounded-full bg-green-400"></span>
+                                    <span className="absolute top-0 right-0 -mr-1 -mt-1 w-4 h-4 rounded-full bg-green-300 animate-ping"></span>
+                                    <span className="relative top-[3px] right-[2px] -mr-1 -mt-1 w-3 h-3 rounded-full bg-green-400"></span>
                                     {/* <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-50"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span> */}
                                 </span>
