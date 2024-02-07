@@ -1,7 +1,7 @@
-import React from 'react';
 import library from '../../img/library.png';
 
-const CObject = [
+
+const CppObject = [
     {
         id: 1,
         title: "Basic Questions of C",
@@ -87,4 +87,4 @@ const CObject = [
     }
 ]
 
-export default CObject;
+export default CppObject;

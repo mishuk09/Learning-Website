@@ -10,7 +10,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Tutorials from '../Otherscomponent/Tutorials/Tutorials';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Language from './Language';
 import Library from './Library';
 import Tools from './Tools';
@@ -60,10 +60,15 @@ export default function InterviewObject() {
     const handleChangeIndex = (index) => {
         setValue(index);
     };
+    const navigate = useNavigate();
+    const handleClick = (title, img) => {
+        navigate(`/interview/${title}`, { state: { img } });
+    }
+
 
     return (
-        <Box sx={{ bgcolor: 'background.paper', width: '100%', borderRadius: '5px' }}>
-            <AppBar position="static">
+        <Box className='    shadow' sx={{ bgcolor: 'background.paper', width: '100%', borderRadius: '5px' }}>
+            <AppBar position="static" sx={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -94,11 +99,12 @@ export default function InterviewObject() {
 
                                 // eslint-disable-next-line jsx-a11y/anchor-has-content
 
-                                <Link
+                                <div
                                     key={tutorial.id}
-                                    to={tutorial.link}
-                                    className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
+                                    onClick={() => handleClick(tutorial.title, tutorial.img)}
+                                    className='shadow-sm rounded transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-40 duration-400'
                                 >
+
                                     <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
                                         <div>
                                             <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
@@ -108,7 +114,7 @@ export default function InterviewObject() {
                                         </div>
                                     </div>
 
-                                </Link>
+                                </div>
 
 
                             ))

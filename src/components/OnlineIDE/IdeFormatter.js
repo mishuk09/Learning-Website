@@ -59,7 +59,7 @@ const IdeFormatter = () => {
         navigate(`/ideformat/${id}`);
     };
     return (
-        <div className='p-6 mb-20'>
+        <div className='p-6 mb-20 container'>
             <h2 className='pt-6 text-center font-bold text-4xl'>{value.toUpperCase()} Online IDE</h2>
             <div className='w-full bg-slate-950 flex rounded  mb-2 py-1 px-1 mt-6'>
                 <div className='flex items-center text-center text-sm'>

@@ -11,7 +11,7 @@ import Dsa from '../LandingPage/Dsa/Dsa';
 import Library from '../LandingPage/Library/Library';
 import Article from '../LandingPage/Article/Article';
 import Dsaproblems from '../LandingPage/Dsaproblems/Dsaproblems';
- 
+
 const InterviewDiv = () => {
 
     const inputRef = useRef(null);
@@ -28,7 +28,7 @@ const InterviewDiv = () => {
     }, []);
     return (
         <div>
-            <div className='relative h-[650px] mb-[360px]  bg-black '>
+            <div className=' pb-10 bg-slate-950 '>
                 <div className='container flex flex-col items-center pt-4 justify-center text-left'>
                     <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' beat />
                     <h1 className='text-white text-5xl font-bold font-nunito'>Interview Questions <span className='text-green-500'>For All</span> </h1>
@@ -56,17 +56,14 @@ const InterviewDiv = () => {
 
                     </div>
                     <p className='text-slate-300 w-[50%] text-justify font-nunito mt-3'>Find interview questions on any topic. Choose, read, and prepare for your job interview hassle-free</p>
-                    <div className='   shadow absolute flex flex-col items-center justify-center top-[380px] h-auto'>
-                        <InterviewObject />
-                    </div>
-
 
                 </div>
-
-
-
             </div>
-         
+            <div className='   mt-10   container    flex flex-col items-center justify-center   h-auto'>
+                <InterviewObject />
+            </div>
+
+
 
             <Courses />
             <Dsa />

@@ -12,7 +12,7 @@ import php from './img/php.png';
 const Language = [
     {
         id: 1,
-        link: '/cinterview',
+        link: '',
         img: c,
         title: 'C'
     },
@@ -23,19 +23,20 @@ const Language = [
     },
     {
         id: 3,
+        link: '',
         img: csharp,
         title: 'C#'
     },
     {
         id: 4,
         img: html,
-        link: '/html',
+        link: '',
         title: 'Html'
     },
     {
         id: 5,
         img: css,
-        link: '/css',
+        link: '',
         title: 'Css'
     },
     {

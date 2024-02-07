@@ -147,7 +147,7 @@ function App() {
           <Route path='/practice' element={<Practice />}></Route>
           {/* Interview ROUTES */}
           <Route path='/interview' element={<InterviewDiv />}></Route>
-          <Route path='/cinterview' element={<C />}></Route>
+          <Route path='/interview/:title' element={<C />}></Route>
           <Route path='/c++interview' element={<InterviewDiv />}></Route>
 
           {/* Online IDE ROUTES */}

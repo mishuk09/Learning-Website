@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import { TableVirtuoso } from 'react-virtuoso';
 import { TablePagination } from '@mui/material';
 import Headline from '../../Otherscomponent/Headline';
+import { Link } from 'react-router-dom';
 
 
 const columns = [
@@ -102,7 +103,7 @@ const Dsaproblems = () => {
             <Paper className='mt-4' sx={{ width: '100%', overflow: 'hidden' }}>
                 <TableContainer sx={{ maxHeight: 440 }}>
                     <Table stickyHeader aria-label="sticky table">
-                        <TableHead style={{ backgroundColor: '#000' }}>
+                        <TableHead className="cursor-pointer ">
                             <TableRow>
                                 {columns.map((column) => (
                                     <TableCell
@@ -115,20 +116,33 @@ const Dsaproblems = () => {
                                 ))}
                             </TableRow>
                         </TableHead>
+
                         <TableBody className='font-nunito'>
                             {problems
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row) => {
                                     return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} key={row.index}>
+
+                                        <TableRow
+                                            component="a"
+                                            href="https://codeforces.com/problemset"
+                                            target="_blank"
+                                            className="cursor-pointer "
+                                            hover
+                                            role="checkbox"
+                                            tabIndex={-1}
+                                            key={row.index}
+                                        >
                                             <TableCell>{row.contestId}</TableCell>
                                             <TableCell>{row.index}</TableCell>
-                                            <TableCell className='text-green-500 font-bold'>{row.name}</TableCell>
+                                            <TableCell className="text-green-500 font-bold">{row.name}</TableCell>
                                             <TableCell>{row.type}</TableCell>
                                             <TableCell>{row.points}</TableCell>
                                             <TableCell>{row.rating}</TableCell>
                                             <TableCell>{row.tags.join(', ')}</TableCell>
                                         </TableRow>
+
+
                                     );
                                 })}
                         </TableBody>
