@@ -1,34 +1,150 @@
-import React from 'react';
+// Dsaproblems.js
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { TableVirtuoso } from 'react-virtuoso';
+import { TablePagination } from '@mui/material';
 import Headline from '../../Otherscomponent/Headline';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+
+
+const columns = [
+    { id: 'name', label: 'ID', minWidth: 100 },
+    { id: 'code', label: 'INDEX', minWidth: 100 },
+    {
+        id: 'population',
+        label: 'NAME',
+        minWidth: 300,
+        align: 'center',
+        format: (value) => value.toLocaleString('en-US'),
+    },
+    {
+        id: 'size',
+        label: 'TYPE',
+        minWidth: 170,
+        align: 'center',
+        format: (value) => value.toLocaleString('en-US'),
+    },
+    {
+        id: 'density',
+        label: 'POINT',
+        minWidth: 170,
+        align: 'center',
+        format: (value) => value.toFixed(2),
+    },
+    {
+        id: 'density',
+        label: 'RATING',
+        minWidth: 170,
+        align: 'center',
+        format: (value) => value.toFixed(2),
+    },
+    {
+        id: 'density',
+        label: 'TYPE',
+        minWidth: 170,
+        align: 'center',
+        format: (value) => value.toFixed(2),
+    },
+];
+
+function createData(name, code, population, size) {
+    const density = population / size;
+    return { name, code, population, size, density };
+}
+
 
 const Dsaproblems = () => {
+    const [problems, setProblems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+
+    useEffect(() => {
+        const fetchProblems = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/problems');
+                setProblems(response.data.result.problems);
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProblems();
+    }, []);
+
+    if (loading) {
+        return <p>Loading problems...</p>;
+    }
+
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(+event.target.value);
+        setPage(0);
+    };
+
     return (
-        <div className='container'>
-            <Headline parent='DSA' child='Problems' short='Code'></Headline>
-            <div className='container m-3 w-[98%]'>
-                <div className='  m-3 rounded pb-3     border w-full h-full border-slate-400'>
-                    <div className='mx-3 mt-2 font-bold'>Headline</div>
-                    <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                        <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                    </div>
-                    <div className='mx-3 mt-3 font-bold'>Headline</div>
-                    <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                        <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                    </div>
-                    <div className='mx-3 mt-3 font-bold'>Headline</div>
-                    <div className='px-3 py-2 mx-3 mt-1 flex flex-col justify-end rounded-sm border border-slate-400 w-[97%] h-20 '  >
-                        <div className='rounded-sm   align-bottom text-sm   border border-slate-400 w-[100%] h-4'> </div>
-                    </div>
+        <div className='container mt-14'>
+            <Headline parent='DSA' child='Problemset' short='Data Structure' showSeemore={false}></Headline>
 
-                </div>
-                <Stack className='felx items-center justify-center mt-4' spacing={2}>
+            <Paper className='mt-4' sx={{ width: '100%', overflow: 'hidden' }}>
+                <TableContainer sx={{ maxHeight: 440 }}>
+                    <Table stickyHeader aria-label="sticky table">
+                        <TableHead style={{ backgroundColor: '#000' }}>
+                            <TableRow>
+                                {columns.map((column) => (
+                                    <TableCell
+                                        key={column.id}
+                                        align={column.align}
+                                        style={{ minWidth: column.minWidth }}
+                                    >
+                                        {column.label}
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        </TableHead>
+                        <TableBody className='font-nunito'>
+                            {problems
+                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                .map((row) => {
+                                    return (
+                                        <TableRow hover role="checkbox" tabIndex={-1} key={row.index}>
+                                            <TableCell>{row.contestId}</TableCell>
+                                            <TableCell>{row.index}</TableCell>
+                                            <TableCell className='text-green-500 font-bold'>{row.name}</TableCell>
+                                            <TableCell>{row.type}</TableCell>
+                                            <TableCell>{row.points}</TableCell>
+                                            <TableCell>{row.rating}</TableCell>
+                                            <TableCell>{row.tags.join(', ')}</TableCell>
+                                        </TableRow>
+                                    );
+                                })}
+                        </TableBody>
 
-                    <Pagination count={10} variant="outlined" shape="rounded" />
-                </Stack>
-
-            </div>
+                    </Table>
+                </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[10, 25, 100]}
+                    component="div"
+                    count={problems.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+            </Paper>
 
         </div>
     );
