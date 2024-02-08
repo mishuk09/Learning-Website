@@ -46,6 +46,7 @@ import Categorywise from './components/Blog/BlogCategory/Categorywise';
 import BlogBycategory from './components/Blog/BlogBycategory';
 import Addimg from './components/Interview/AddImg/Addimg';
 import ImageDisplay from './components/Interview/AddImg/ImageDisplay';
+import Addinterview from './components/Interview/AddInterview/Addinterview';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -150,10 +151,12 @@ function App() {
           <Route path='/practice' element={<Practice />}></Route>
           {/* Interview ROUTES */}
           <Route path='/interview' element={<InterviewDiv />}></Route>
-          <Route path='/interview/:title' element={<C />}></Route>
+          <Route path='/interview/:name' element={<C />}></Route>
           <Route path='/c++interview' element={<InterviewDiv />}></Route>
           <Route path='/addimg' element={<Addimg />}></Route>
           <Route path='/imgdisplay' element={<ImageDisplay />}></Route>
+          <Route path='/addinterview' element={<Addinterview />}></Route>
+
 
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>

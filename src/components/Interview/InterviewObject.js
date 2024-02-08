@@ -1,6 +1,4 @@
 
-
-import * as React from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
@@ -15,6 +13,7 @@ import Language from './Language';
 import Library from './Library';
 import Tools from './Tools';
 import interviewObject from '../Otherscomponent/interviewObject';
+import { useEffect, useState } from 'react';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -51,7 +50,8 @@ function a11yProps(index) {
 
 export default function InterviewObject() {
     const theme = useTheme();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [language, setLanguage] = useState([]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -63,7 +63,13 @@ export default function InterviewObject() {
     const navigate = useNavigate();
     const handleClick = (title, img) => {
         navigate(`/interview/${title}`, { state: { img } });
-    }
+    };
+    useEffect(() => {
+        const url = 'http://localhost:5000/interview/get';
+        fetch(url)
+            .then((res) => res.json())
+            .then(data => setLanguage(data))
+    });
 
 
     return (
