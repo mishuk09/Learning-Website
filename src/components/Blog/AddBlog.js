@@ -1,4 +1,3 @@
-// Blog.js
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReactQuill from 'react-quill';
@@ -7,8 +6,8 @@ import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import thumsup from './img/thumsup.png';
-
-
+import Prism from 'prismjs'; // Import Prism for syntax highlighting
+import 'prismjs/themes/prism-okaidia.css'; // Import Prism theme
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -18,7 +17,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
         padding: theme.spacing(1),
     },
 }));
-
 
 const AddBlog = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -33,15 +31,19 @@ const AddBlog = () => {
             ['link', 'image'],
             ['clean']
         ],
+        syntax: {
+            highlight: (text) => {
+                return Prism.highlight(text, Prism.languages.javascript, 'javascript');
+            },
+        },
     };
+
     const formats = [
         'header',
         'bold', 'italic', 'underline', 'strike', 'blockquote',
         'list', 'bullet', 'indent',
-        'link', 'image'
+        'link', 'image', 'code-block' // Include 'code-block' in formats
     ];
-
-
 
     const onSubmit = (data) => {
         const url = `http://localhost:5000/blog/create`;
@@ -55,28 +57,27 @@ const AddBlog = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                setSuccess("Blog add Successfully..")
+                setSuccess("Blog added successfully..");
                 setValue('');
                 reset();
-
             });
     };
+
     const handleCloseDialog = () => {
         setSuccess(false);
     };
+
     return (
         <div className='bg-slate-50'>
             <h1 className='text-5xl font-bold font-verdina text-center pt-10'>Add Blog</h1>
-            {
-                success && (
-                    <BootstrapDialog onClose={handleCloseDialog} aria-labelledby="customized-dialog-title" open={success}>
-                        <DialogTitle sx={{ m: 0, p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }} id="customized-dialog-title">
-                            <img className="w-[200px]" src={thumsup} alt="" />
-                            Blog Added Successfully...
-                        </DialogTitle>
-                    </BootstrapDialog>
-                )
-            }
+            {success && (
+                <BootstrapDialog onClose={handleCloseDialog} aria-labelledby="customized-dialog-title" open={success}>
+                    <DialogTitle sx={{ m: 0, p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }} id="customized-dialog-title">
+                        <img className="w-[200px]" src={thumsup} alt="" />
+                        Blog Added Successfully...
+                    </DialogTitle>
+                </BootstrapDialog>
+            )}
             <form className="container   mt-6" onSubmit={handleSubmit(onSubmit)}>
                 <div className='grid grid-cols-2 gap-3 mb-6'>
                     <input {...register("category")} className="text-black rounded p-2 mt-10   w-full bg-white shadow border" type="text" placeholder="Category" />
@@ -86,7 +87,6 @@ const AddBlog = () => {
                 </div>
                 <ReactQuill theme="snow" formats={formats} modules={modules} value={value} className='bg-white   h-[300px]' onChange={setValue} />
                 <input type="submit" className="text-white rounded p-2 mt-20 font-bold border w-full bg-blue-500 mb-20" value='Submit' />
-
             </form>
         </div>
     );

@@ -9,7 +9,7 @@ import { faFilePen, faLayerGroup, faPlus, faTrash } from '@fortawesome/free-soli
 import AddBlog from './ManageBlog/Addblog';
 
 const ManageBlog = () => {
-   
+
     const [show, setShow] = useState(1);
     const blogitems = [
         {

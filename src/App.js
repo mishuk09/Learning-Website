@@ -44,6 +44,8 @@ import Edit from './components/Blog/ManageBlog/Edit';
 import BlogMain from './components/Blog/BlogMain';
 import Categorywise from './components/Blog/BlogCategory/Categorywise';
 import BlogBycategory from './components/Blog/BlogBycategory';
+import Addimg from './components/Interview/AddImg/Addimg';
+import ImageDisplay from './components/Interview/AddImg/ImageDisplay';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -77,6 +79,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+
       <CssBaseline />
       <div className="App">
 
@@ -149,6 +152,8 @@ function App() {
           <Route path='/interview' element={<InterviewDiv />}></Route>
           <Route path='/interview/:title' element={<C />}></Route>
           <Route path='/c++interview' element={<InterviewDiv />}></Route>
+          <Route path='/addimg' element={<Addimg />}></Route>
+          <Route path='/imgdisplay' element={<ImageDisplay />}></Route>
 
           {/* Online IDE ROUTES */}
           <Route path='/onlineide' element={<OnlineIDE />}></Route>
