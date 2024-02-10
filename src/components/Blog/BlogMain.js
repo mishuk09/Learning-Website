@@ -6,6 +6,9 @@ import useBlogs from './Hooks/useBlogs';
 import Blogs from './Blogs';
 import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Pagination, Stack } from '@mui/material';
+// import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
 
 const BlogMain = ({ onSelectCategory }) => {
     const { blogs, categoriesWithCount, loading } = useBlogs();

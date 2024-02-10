@@ -10,6 +10,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faLinkedin, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faArrowDown, faUpDown } from '@fortawesome/free-solid-svg-icons';
 
 const C = () => {
     const { name } = useParams();
@@ -74,8 +77,26 @@ const C = () => {
             <div className='w-[60%] h-full p-2 bg-slate-50 border-1 rounded'>
                 {interviews.map((interview) => (
                     <div key={interview._id}>
-                        <h2>{interview.title}</h2>
-                        <div className='text-justify pt-10 font-nunito text-xl' dangerouslySetInnerHTML={{ __html: interview.content }} />
+                        <div className='flex justify-between border-b-2 pb-2 border-dotted'>
+
+                            <div>
+                                <p>
+                                    <p className='text-4xl font-bold mt-4 text-gray-800'> {interview.title} Interview Question </p>
+                                    <small> Last Update:-{interview.date}</small>
+                                </p>
+                                <p className='mt-3'><FontAwesomeIcon className='text-blue-500 me-2' icon={faFacebook} size='xl' />
+                                    <FontAwesomeIcon className='text-blue-600 me-2' icon={faLinkedin} size='xl' />
+                                    <FontAwesomeIcon className='text-blue-500 me-2' icon={faTwitter} size='xl' />
+                                    <FontAwesomeIcon className='text-green-500 me-2' icon={faWhatsapp} size='xl' />
+                                </p>
+                            </div>
+
+                            <div >
+                                <button className='mt-8 border text-sm font-nunito rounded px-4 py-2'>Download PDF  <FontAwesomeIcon className='  ms-2  ' icon={faArrowDown} /></button>
+                            </div>
+                        </div>
+                      
+                        <div className='text-justify pt-4 font-nunito  ' dangerouslySetInnerHTML={{ __html: interview.content }} />
                     </div>
                 ))}
             </div>
