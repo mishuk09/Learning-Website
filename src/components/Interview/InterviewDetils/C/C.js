@@ -8,6 +8,7 @@ import { useParams, useLocation, Link } from 'react-router-dom';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import library from '../../img/library.png';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,7 +29,8 @@ const C = () => {
                 const response = await fetch(url);
                 const data = await response.json();
                 // Filter interviews based on matching name and title
-                const filteredInterviews = data.filter(interview => interview.title === name);
+                // const filteredInterviews = data.filter(interview => interview.title === name);
+                const filteredInterviews = data.filter(interview => interview.title.toLowerCase() === name.toLowerCase());
                 setInterviews(filteredInterviews);
             } catch (error) {
                 console.error('Error fetching interviews:', error);
@@ -44,7 +46,7 @@ const C = () => {
                 <TutorialHeadlineFormat logo={img || c} name={name} description='Interview Question' />
                 <div className='mt-2'>
                     {interviews.map(interview => (
-                        interview.cobject.map((data, index) => (
+                        interview.childObjects.map((data, index) => (
                             <Accordion key={index}>
                                 <AccordionSummary
                                     style={{ backgroundColor: '#1E293B', color: '#fff' }}
@@ -53,7 +55,7 @@ const C = () => {
                                     id="panel1a-header"
                                 >
                                     <Typography className='flex items-center   justify-center'>
-                                        <img className='w-6 h-6   me-2' src={data.icon} alt="" />
+                                        <img className='w-6 h-6   me-2' src={library} alt="" />
                                         {data.title}
                                     </Typography>
                                 </AccordionSummary>
@@ -95,7 +97,7 @@ const C = () => {
                                 <button className='mt-8 border text-sm font-nunito rounded px-4 py-2'>Download PDF  <FontAwesomeIcon className='  ms-2  ' icon={faArrowDown} /></button>
                             </div>
                         </div>
-                      
+
                         <div className='text-justify pt-4 font-nunito  ' dangerouslySetInnerHTML={{ __html: interview.content }} />
                     </div>
                 ))}

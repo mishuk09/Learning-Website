@@ -31,6 +31,7 @@ const Addinterview = () => {
             ['link', 'image'],
             ['clean']
         ]
+
     };
 
     const formats = [
@@ -87,5 +88,4 @@ const Addinterview = () => {
         </div>
     );
 };
-
-export default Addinterview;
+ 

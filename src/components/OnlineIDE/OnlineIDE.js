@@ -169,7 +169,7 @@ const OnlineIDE = () => {
 
 
             </div>
-            <div className='container mt-10'>
+            <div className='container mt-10 bg-white rounded-sm py-6 mb-10'>
 
                 {/* <p className='font-nutino text-md text-blue-500'>Compiler</p>
                     <div className='flex justify-between relative items-center pe-2   '> <h1 className='text-slate-200 font-nunito   font-bold text-5xl  '>Compiler For<span className='text-green-500  '> Coder </span>  </h1>  </div>

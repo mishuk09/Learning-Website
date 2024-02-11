@@ -75,7 +75,7 @@ const Article = () => {
     }
 
     return (
-        <div className='container mt-16'>
+        <div className='container mt-16 bg-white rounded-sm py-6'>
             <Headline parent='Article' child='Blog' short='News' />
             <div className=' mt-4'>
                 <Box sx={{ width: '100%', typography: 'body1' }}>
@@ -115,7 +115,7 @@ const Article = () => {
                                         currentPages[String(index + 2)] * itemsPerPage
                                     )
                                     .map((blog) => generateBlogPanel(blog, () => navigateToServiceDetail(blog._id)))}
-                                <div className='flex items-center text-center justify-center mt-14 mb-4'>
+                                <div className='flex items-center text-center justify-center mt-14  '>
                                     <Stack spacing={2}>
                                         <Pagination
                                             count={Math.ceil(blogs.filter((blog) => blog.category === category.name).length / itemsPerPage)}

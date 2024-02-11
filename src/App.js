@@ -76,13 +76,14 @@ function App() {
     },
     // Add more tutorial objects as needed
   ];
+  const bgColorClass = darkMode ? 'bg-slate-950' : 'bg-blue-50';
 
 
   return (
     <ThemeProvider theme={theme}>
 
       <CssBaseline />
-      <div className="App">
+      <div className={`App ${bgColorClass}`}>
 
 
 

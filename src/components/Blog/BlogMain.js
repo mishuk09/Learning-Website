@@ -45,11 +45,11 @@ const BlogMain = ({ onSelectCategory }) => {
     };
 
     return (
-        <div className='bg-slate-50'>
+        <div className=''>
             <div className='container'>
-                <div className='flex gap-3 w-full pt-6'>
+                <div className='flex gap-2 w-full pt-6'>
                     <div className='  w-[25%] px-2 h-full rounded'>
-                        <div className='bg-white   p-2 h-full rounded-sm'>
+                        <div className='bg-white   px-2 py-3 h-full rounded-sm'>
                             <h2 className='text-1xl font-nunito font-bold border-b-2 border-dotted pb-1 mb-2'>Category</h2>
                             <ul>
                                 {categoriesWithCount.map(category => (
@@ -73,13 +73,13 @@ const BlogMain = ({ onSelectCategory }) => {
                         <div className='bg-white p-2 mt-4 rounded-sm'>
                             <h2 className='text-1xl mb-3 font-nunito font-bold border-b-2 border-dotted pb-1'>Random Blog</h2>
                             {blogs && blogs.slice(0, 5).map((blog) => (
-                                <div onClick={() => navigateToServiceDetail(blog._id)} className="flex p-2  h-20 bg-white shadow cursor-pointer rounded pb-8 lg:mb-1 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
+                                <div onClick={() => navigateToServiceDetail(blog._id)} className="flex p-2  h-20 bg-white font-nunito   cursor-pointer   pb-8 lg:mb-1 lg:flex-row  border-b ">
                                     <img src={blog.photourl} alt="" className="inline-block rounded object-cover w-20" />
                                     <div className="flex flex-col items-start   ps-2">
-                                        <p className='hover:text-green-600 leading-6 duration-200'>
+                                        <p className='hover:text-green-600 font-bold leading-4 duration-200'>
                                             {blog.title.split(' ').slice(0, 5).join(' ')}...
                                         </p>
-                                        <p className='  text-xs text-slate-500'>
+                                        <p className=' mt-2  text-xs text-slate-500'>
                                             <FontAwesomeIcon className='me-1' icon={faClock} />  {blog.date}
                                         </p>
                                     </div>
@@ -90,7 +90,7 @@ const BlogMain = ({ onSelectCategory }) => {
 
                     </div>
 
-                    <div className='  w-[50%] h-full rounded relative'>
+                    <div className=' bg-white p-2  w-[50%] h-full rounded relative'>
                         <div className='h-full    relative rounded-sm'>
                             {
                                 blogs && blogs.slice(0, 1).map((blog) => (
@@ -104,7 +104,7 @@ const BlogMain = ({ onSelectCategory }) => {
 
                                         <div className='absolute text-white ps-3 bottom-3'>
                                             <p style={{ backgroundColor: '#263e57' }} className='text-sm p-1 mt-1 w-20 text-center rounded-sm'>{blog.category}</p>
-                                            <p className='mt-2 font-bold  font-sans text-4xl'>{blog.title}</p>
+                                            <p className='mt-2 font-bold hover:text-green-500 duration-200  font-sans text-4xl'>{blog.title}</p>
                                             <p className='text-sm mt-2 text-slate-300 font-nunito'> <FontAwesomeIcon className='me-1' icon={faClock} />  {blog.date}</p>
                                         </div>
                                     </div>
@@ -136,7 +136,7 @@ const BlogMain = ({ onSelectCategory }) => {
                                 displayedBlogs && displayedBlogs.map((blog) => (
 
                                     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                                    <div onClick={() => navigateToServiceDetail(blog._id)} className="flex cursor-pointer p-2 flex-col bg-white shadow  rounded pb-8 lg:mb-3 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
+                                    <div onClick={() => navigateToServiceDetail(blog._id)} className="flex cursor-pointer p-2 flex-col bg-white shadow-sm  rounded pb-8 lg:mb-3 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
                                         <img src={blog.photourl} alt="" className="inline-block rounded h-60 w-full object-cover md:h-36 lg:h-32 lg:w-32" />
                                         <div className="flex flex-col items-start pt-1 lg:px-8">
                                             <div className="mb-2 rounded-md bg-[#f2f2f7] px-2 py-1.5">
@@ -165,7 +165,7 @@ const BlogMain = ({ onSelectCategory }) => {
                                     </div>))}
                         </div>
                     </div>
-                    <div className='bg-white w-[25%]  h-full rounded'>
+                    <div className='bg-white w-[25%] p-2  h-full rounded'>
                         <div className='grid grid-cols-2 gap-2 font-nunito'>
                             <Link className='w-full flex cursor-pointer  text-white items-center ps-2 h-10 rounded-sm bg-blue-600'>
                                 <div className='w-[20%] '>
@@ -213,7 +213,7 @@ const BlogMain = ({ onSelectCategory }) => {
 
                                         <div className='absolute text-white ps-3 bottom-3'>
                                             <p style={{ backgroundColor: '#263e57' }} className='text-sm p-1 mt-1 w-20 text-center rounded-sm'>{blog.category}</p>
-                                            <p className='mt-2 font-bold font-sans text-1xl'>{blog.title}</p>
+                                            <p className='mt-2 font-bold hover:text-green-500 duration-200 font-sans text-1xl'>{blog.title}</p>
                                             <p className='text-sm mt-2 text-slate-300 font-nunito'> <FontAwesomeIcon className='me-1' icon={faClock} />  {blog.date}</p>
                                         </div>
                                     </div>
@@ -222,13 +222,13 @@ const BlogMain = ({ onSelectCategory }) => {
                         <div className='bg-white font-nunito  mt-2 rounded-sm'>
 
                             {blogs && blogs.slice(0, 3).map((blog) => (
-                                <div onClick={() => navigateToServiceDetail(blog._id)} className="flex p-2  h-20 bg-white shadow cursor-pointer rounded pb-8 lg:mb-1 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
+                                <div onClick={() => navigateToServiceDetail(blog._id)} className="flex p-2  h-20 bg-white    cursor-pointer   pb-8 lg:mb-1 lg:flex-row  border-b ">
                                     <img src={blog.photourl} alt="" className="inline-block rounded object-cover w-20" />
                                     <div className="flex flex-col items-start   ps-2">
-                                        <p className='hover:text-green-600 leading-6 duration-200'>
+                                        <p className='hover:text-green-600 leading-4 font-bold duration-200'>
                                             {blog.title.split(' ').slice(0, 5).join(' ')}...
                                         </p>
-                                        <p className='  text-xs text-slate-500'>
+                                        <p className=' mt-2  text-xs text-slate-500'>
                                             <FontAwesomeIcon className='me-1' icon={faClock} />  {blog.date}
                                         </p>
                                     </div>
@@ -242,7 +242,7 @@ const BlogMain = ({ onSelectCategory }) => {
                             <h2 className='text-2xl font-nunito  font-bold border-b-2 border-dotted text-green-500 pb-1 mb-2'>Tag</h2>
                             <ul className='grid grid-cols-3 gap-2 items-center text-center justify-center'>
                                 {categoriesWithCount.map(category => (
-                                    <li onClick={() => handleCategoryClick(category.name)} key={category.name} className='border flex items-center text-center justify-center cursor-pointer hover:text-green-500    p-1 rounded border-slate-900 font-nunito font-bold text-sm'>
+                                    <li onClick={() => handleCategoryClick(category.name)} key={category.name} className='border flex items-center text-center justify-center cursor-pointer hover:text-green-500    py-1 rounded border-slate-900 font-nunito font-bold text-sm'>
                                         <Link to={`/category/${category.name}`}>
                                             <div className='justify-between flex items-center text-center'>
                                                 <p><FontAwesomeIcon className='me-2 text-green-600' icon={faTags} />

@@ -97,7 +97,7 @@ const Dsaproblems = () => {
     };
 
     return (
-        <div className='container mt-14'>
+        <div className='container mt-14 bg-white rounded-sm py-6'>
             <Headline parent='DSA' child='Problemset' short='Data Structure' showSeemore={false}></Headline>
 
             <Paper className='mt-4' sx={{ width: '100%', overflow: 'hidden' }}>
