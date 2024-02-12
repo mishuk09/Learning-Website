@@ -47,6 +47,7 @@ import BlogBycategory from './components/Blog/BlogBycategory';
 import Addimg from './components/Interview/AddImg/Addimg';
 import ImageDisplay from './components/Interview/AddImg/ImageDisplay';
 import Addinterview from './components/Interview/AddInterview/Addinterview';
+import Manageinterview from './components/Interview/Manageinterview/Manageinterview';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -157,6 +158,7 @@ function App() {
           <Route path='/addimg' element={<Addimg />}></Route>
           <Route path='/imgdisplay' element={<ImageDisplay />}></Route>
           <Route path='/addinterview' element={<Addinterview />}></Route>
+          <Route path='/manageinterview' element={<Manageinterview />}></Route>
 
 
           {/* Online IDE ROUTES */}

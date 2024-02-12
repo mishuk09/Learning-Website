@@ -105,8 +105,8 @@ const InterviewDiv = () => {
 
     const navigate = useNavigate();
 
-    const navigateToServiceDetail = (id) => {
-        navigate(`/blogsdetails/${id}`);
+    const navigateToServiceDetail = (title) => {
+        navigate(`/interview/${title}`);
     };
 
     return (
@@ -139,7 +139,7 @@ const InterviewDiv = () => {
                             <>
                                 <ul>
                                     {results.slice(0, 5).map((blog) => (
-                                        <p onClick={() => navigateToServiceDetail(blog._id)} className='px-3 h-8  flex items-center  hover:text-green-600 duration-200 cursor-pointer hover:rounded hover:bg-slate-100' key={blog._id}><FontAwesomeIcon className='me-1' icon={faMagnifyingGlass} />{blog.title}</p>
+                                        <p onClick={() => navigateToServiceDetail(blog.title)} className='px-3 h-8  flex items-center  hover:text-green-600 duration-200 cursor-pointer hover:rounded hover:bg-slate-100' key={blog._id}><FontAwesomeIcon className='me-1' icon={faMagnifyingGlass} />{blog.title}</p>
                                     ))}
                                 </ul>
                                 <div className='text-center p-1 bg-slate-200 items-center justify-center'>
