@@ -20,6 +20,7 @@ const C = () => {
     const location = useLocation();
     const { state } = location;
     const img = state ? state.img : null;
+    const photourl = state ? state.photourl : null;
     const [interviews, setInterviews] = useState([]);
 
     useEffect(() => {
@@ -43,7 +44,7 @@ const C = () => {
     return (
         <div className='container flex mt-10 gap-3 rounded'>
             <div className='w-[20%] bg-slate-900 rounded h-full'>
-                <TutorialHeadlineFormat logo={img || c} name={name} description='Interview Question' />
+                <TutorialHeadlineFormat logo={photourl || img || c} name={name} description='Interview Question' />
                 <div className='mt-2'>
                     {interviews.map(interview => (
                         interview.childObjects.map((data, index) => (
@@ -94,7 +95,7 @@ const C = () => {
                             </div>
 
                             <div >
-                                <button className='mt-8 border text-sm font-nunito rounded px-4 py-2'>Download PDF  <FontAwesomeIcon className='  ms-2  ' icon={faArrowDown} /></button>
+                                <button className='mt-8 border text-sm font-nunito bg-blue-50 rounded px-4 py-2'>Download PDF  <FontAwesomeIcon className='  ms-2  ' icon={faArrowDown} /></button>
                             </div>
                         </div>
 

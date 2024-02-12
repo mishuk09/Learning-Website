@@ -48,6 +48,7 @@ import Addimg from './components/Interview/AddImg/Addimg';
 import ImageDisplay from './components/Interview/AddImg/ImageDisplay';
 import Addinterview from './components/Interview/AddInterview/Addinterview';
 import Manageinterview from './components/Interview/Manageinterview/Manageinterview';
+import Editinter from './components/Interview/Manageinterview/Editinter';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -159,6 +160,7 @@ function App() {
           <Route path='/imgdisplay' element={<ImageDisplay />}></Route>
           <Route path='/addinterview' element={<Addinterview />}></Route>
           <Route path='/manageinterview' element={<Manageinterview />}></Route>
+          <Route path='/editinterview/:id' element={<Editinter />}></Route>
 
 
           {/* Online IDE ROUTES */}
