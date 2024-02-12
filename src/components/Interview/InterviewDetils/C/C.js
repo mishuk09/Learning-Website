@@ -14,8 +14,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faArrowDown, faUpDown } from '@fortawesome/free-solid-svg-icons';
+import {
+    FacebookShareButton
+} from "react-share";
 
-const C = () => {
+const C = ({ url, title }) => {
     const { name } = useParams();
     const location = useLocation();
     const { state } = location;
@@ -29,8 +32,6 @@ const C = () => {
                 const url = 'http://localhost:5000/interview/get';
                 const response = await fetch(url);
                 const data = await response.json();
-                // Filter interviews based on matching name and title
-                // const filteredInterviews = data.filter(interview => interview.title === name);
                 const filteredInterviews = data.filter(interview => interview.title.toLowerCase() === name.toLowerCase());
                 setInterviews(filteredInterviews);
             } catch (error) {
@@ -39,7 +40,9 @@ const C = () => {
         };
 
         fetchInterviews();
-    }, [name]); // Dependency array with 'name'
+    }, [name]);
+
+
 
     return (
         <div className='container flex mt-10 gap-3 rounded'>
@@ -55,16 +58,16 @@ const C = () => {
                                     aria-controls="panel1a-content"
                                     id="panel1a-header"
                                 >
-                                    <Typography className='flex items-center   justify-center'>
-                                        <img className='w-6 h-6   me-2' src={library} alt="" />
+                                    <Typography className='flex items-center justify-center'>
+                                        <img className='w-6 h-6 me-2' src={library} alt="" />
                                         {data.title}
                                     </Typography>
                                 </AccordionSummary>
                                 <AccordionDetails style={{ backgroundColor: '#1E293A', color: '#fff' }}>
                                     <Typography>
-                                        <div className='flex flex-col text-slate-200 bg-slate-800 w-full  '>
+                                        <div className='flex flex-col text-slate-200 bg-slate-800 w-full'>
                                             {data.links.map((link, index) => (
-                                                <Link to={link.to} key={index} className='border-b hover:text-green-500  font-nunito mb-3 border-dotted  py-1 hover:bg-slate-800 duration-300'>
+                                                <Link to={link.to} key={index} className='border-b hover:text-green-500 font-nunito mb-3 border-dotted py-1 hover:bg-slate-800 duration-300'>
                                                     {link.text}
                                                 </Link>
                                             ))}
@@ -81,56 +84,33 @@ const C = () => {
                 {interviews.map((interview) => (
                     <div key={interview._id}>
                         <div className='flex justify-between border-b-2 pb-2 border-dotted'>
-
                             <div>
                                 <p>
-                                    <p className='text-4xl font-bold mt-4 text-gray-800'> {interview.title} Interview Question </p>
+                                    <p className='text-4xl font-bold mt-4 text-gray-800'> {interview.title.toUpperCase()} Interview Question </p>
                                     <small> Last Update:-{interview.date}</small>
                                 </p>
-                                <p className='mt-3'><FontAwesomeIcon className='text-blue-500 me-2' icon={faFacebook} size='xl' />
-                                    <FontAwesomeIcon className='text-blue-600 me-2' icon={faLinkedin} size='xl' />
-                                    <FontAwesomeIcon className='text-blue-500 me-2' icon={faTwitter} size='xl' />
-                                    <FontAwesomeIcon className='text-green-500 me-2' icon={faWhatsapp} size='xl' />
-                                </p>
+                                {/* <p className='mt-3'>
+                                    <FontAwesomeIcon className='text-blue-500 me-2' icon={faFacebook} size='xl' onClick={() => shareOnSocialMedia('facebook')} />
+                                    <FontAwesomeIcon className='text-blue-600 me-2' icon={faLinkedin} size='xl' onClick={() => shareOnSocialMedia('linkedin')} />
+                                    <FontAwesomeIcon className='text-blue-500 me-2' icon={faTwitter} size='xl' onClick={() => shareOnSocialMedia('twitter')} />
+                                    <FontAwesomeIcon className='text-green-500 me-2' icon={faWhatsapp} size='xl' onClick={() => shareOnSocialMedia('whatsapp')} />
+                                </p> */}
+                                <FacebookShareButton url={window.location.href}  quote={title}>
+                                    {(shareCount) => <span className="myShareCountWrapper">{shareCount}</span>}
+                                </FacebookShareButton>
                             </div>
 
-                            <div >
+                            <div>
                                 <button className='mt-8 border text-sm font-nunito bg-blue-50 rounded px-4 py-2'>Download PDF  <FontAwesomeIcon className='  ms-2  ' icon={faArrowDown} /></button>
                             </div>
                         </div>
 
-                        <div className='text-justify pt-4 font-nunito  ' dangerouslySetInnerHTML={{ __html: interview.content }} />
+                        <div className='text-justify pt-4 font-nunito' dangerouslySetInnerHTML={{ __html: interview.content }} />
                     </div>
                 ))}
             </div>
             <ArticleComponent />
         </div>
-
-        // <ul>
-        //     {interviews.map(item => (
-        //         <li key={item._id}>
-        //             <h2>{item.title}</h2>
-        //             <p>{item.content}</p>
-        //             <img src={item.photourl} alt={item.title} />
-        //             <p>{item.date}</p>
-        //             <ul>
-        //                 {Object.keys(item.cobject).map(key => (
-        //                     <div key={key}>
-        //                         <h3>{item.cobject[key].title}</h3>
-        //                         <ul>
-        //                             {item.cobject[key].links.map(link => (
-        //                                 <li key={link.url}>
-        //                                     <a href={link.url}>{link.description}</a>
-        //                                 </li>
-        //                             ))}
-        //                         </ul>
-        //                     </div>
-        //                 ))}
-
-        //             </ul>
-        //         </li>
-        //     ))}
-        // </ul>
     );
 };
 

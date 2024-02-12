@@ -1,91 +1,102 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import thumsup from '../../Blog/img/thumsup.png';
-import Prism from 'prismjs'; // Import Prism for syntax highlighting
-import 'prismjs/themes/prism-okaidia.css'; // Import Prism theme
+import React, { useEffect, useState } from 'react';
+import TutorialHeadlineFormat from '../../../TutorialDetails/TutorialsDetailsComponent/TutorialHeadlineFormat/TutorialHeadlineFormat';
+import c from '../../img/c.svg';
+import ArticleComponent from '../../../TutorialDetails/TutorialsDetailsComponent/ArticleComponent/ArticleComponent';
+import { useParams, useLocation, Link } from 'react-router-dom';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import library from '../../img/library.png';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { FacebookShareCount } from "react-share";
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-    '& .MuiDialogContent-root': {
-        padding: theme.spacing(2),
-    },
-    '& .MuiDialogActions-root': {
-        padding: theme.spacing(1),
-    },
-}));
+const C = () => {
+    const { name } = useParams();
+    const location = useLocation();
+    const { state } = location;
+    const img = state ? state.img : null;
+    const photourl = state ? state.photourl : null;
+    const [interviews, setInterviews] = useState([]);
 
-const Addinterview = () => {
-    const { register, handleSubmit, reset } = useForm();
-    const [value, setValue] = useState('');
-    const [success, setSuccess] = useState('');
+    useEffect(() => {
+        const fetchInterviews = async () => {
+            try {
+                const url = 'http://localhost:5000/interview/get';
+                const response = await fetch(url);
+                const data = await response.json();
+                const filteredInterviews = data.filter(interview => interview.title.toLowerCase() === name.toLowerCase());
+                setInterviews(filteredInterviews);
+            } catch (error) {
+                console.error('Error fetching interviews:', error);
+            }
+        };
 
-    const modules = {
-        toolbar: [
-            [{ 'header': [1, 2, false] }],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-            ['link', 'image'],
-            ['clean']
-        ]
-
-    };
-
-    const formats = [
-        'header',
-        'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent',
-        'link', 'image', 'code-block' // Include 'code-block' in formats
-    ];
-
-    const onSubmit = (data) => {
-        const url = `http://localhost:5000/interview/create`;
-        data.content = value;
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                setSuccess("Blog added successfully..");
-                setValue('');
-                reset();
-            });
-    };
-
-    const handleCloseDialog = () => {
-        setSuccess(false);
-    };
+        fetchInterviews();
+    }, [name]);
 
     return (
-        <div className='bg-slate-50'>
-            <h1 className='text-5xl font-bold font-verdina text-center pt-10'>Add Blog</h1>
-            {success && (
-                <BootstrapDialog onClose={handleCloseDialog} aria-labelledby="customized-dialog-title" open={success}>
-                    <DialogTitle sx={{ m: 0, p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }} id="customized-dialog-title">
-                        <img className="w-[200px]" src={thumsup} alt="" />
-                        Blog Added Successfully...
-                    </DialogTitle>
-                </BootstrapDialog>
-            )}
-            <form className="container   mt-6" onSubmit={handleSubmit(onSubmit)}>
-                <div className='grid grid-cols-2 gap-3 mb-6'>
-                    <input {...register("category")} className="text-black rounded p-2 mt-10   w-full bg-white shadow border" type="text" placeholder="Category" />
-                    <input {...register("title")} className="text-black rounded p-2  mt-10   w-full bg-white shadow border" type="text" placeholder="Blog Title" />
-                    <input placeholder="Photo URL" className="text-black rounded p-2   mb-2 w-full bg-white shadow border " type="text" {...register("photourl", { required: true })} />
-                    <input className="text-black rounded p-2   mb-2 w-full bg-white shadow border" type="date" {...register("date", { required: true })} />
+        <div className='container flex mt-10 gap-3 rounded'>
+            <div className='w-[20%] bg-slate-900 rounded h-full'>
+                <TutorialHeadlineFormat logo={photourl || img || c} name={name} description='Interview Question' />
+                <div className='mt-2'>
+                    {interviews.map((interview, index) => (
+                        <Accordion key={index}>
+                            <AccordionSummary
+                                style={{ backgroundColor: '#1E293B', color: '#fff' }}
+                                expandIcon={<ExpandMoreIcon style={{ color: "#fff" }} />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography className='flex items-center justify-center'>
+                                    <img className='w-6 h-6 me-2' src={library} alt="" />
+                                    {interview.title}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails style={{ backgroundColor: '#1E293A', color: '#fff' }}>
+                                <Typography>
+                                    <div className='flex flex-col text-slate-200 bg-slate-800 w-full'>
+                                        {interview.links.map((link, index) => (
+                                            <Link to={link.to} key={index} className='border-b hover:text-green-500 font-nunito mb-3 border-dotted py-1 hover:bg-slate-800 duration-300'>
+                                                {link.text}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                    ))}
                 </div>
-                <ReactQuill theme="snow" formats={formats} modules={modules} value={value} className='bg-white   h-[300px]' onChange={setValue} />
+            </div>
 
-                <input type="submit" className="text-white rounded p-2 mt-20 font-bold border w-full bg-blue-500 mb-20" value='Submit' />
-            </form>
+            <div className='w-[60%] h-full p-2 bg-slate-50 border-1 rounded'>
+                {interviews.map((interview) => (
+                    <div key={interview._id}>
+                        <div className='flex justify-between border-b-2 pb-2 border-dotted'>
+                            <div>
+                                <p>
+                                    <p className='text-4xl font-bold mt-4 text-gray-800'> {interview.title.toUpperCase()} Interview Question </p>
+                                    <small> Last Update:-{interview.date}</small>
+                                </p>
+                                <FacebookShareCount url={window.location.href}>
+                                    {(shareCount) => <span className="myShareCountWrapper">{shareCount}</span>}
+                                </FacebookShareCount>
+                            </div>
+
+                            <div>
+                                <button className='mt-8 border text-sm font-nunito bg-blue-50 rounded px-4 py-2'>Download PDF  <FontAwesomeIcon className='  ms-2  ' icon={faArrowDown} /></button>
+                            </div>
+                        </div>
+
+                        <div className='text-justify pt-4 font-nunito' dangerouslySetInnerHTML={{ __html: interview.content }} />
+                    </div>
+                ))}
+            </div>
+            <ArticleComponent />
         </div>
     );
 };
- 
+
+export default C;
