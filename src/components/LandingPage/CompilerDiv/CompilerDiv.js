@@ -4,6 +4,21 @@ import codefont from './img/codefont.png';
 import codeback from './img/codeback.png';
 import { Link } from 'react-router-dom';
 
+const clipPathStyle = {
+    backgroundImage: `url(${compilerlogo})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+};
+
+const clipPathStyletwo = {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+};
+
 const CompilerDiv = () => {
     const codStyle = {
         // width: '100%', // Adjusted to fill the width of its container
@@ -25,9 +40,9 @@ const CompilerDiv = () => {
                     </div>
                 </div>
                 {/* <div className='h-36 w-[25%] border-t border-r border-b bg-black flex items-center justify-center' style={codStyle} > <button className='bg-green-600 p-2 rounded text-white'> CODE NOW </button></div> */}
-                <div style={{ position: 'relative', width: '25%' }} >
-                    {/* Background with opacity */}
-                    <div className='h-36 w-full border-t border-r border-b bg-black flex items-center justify-center' >
+                <div style={clipPathStyle} >
+                   {/* <div style={clipPathStyletwo}> */}
+                   <div  style={clipPathStyletwo} className='h-36 w-full border-t border-r border-b bg-black flex items-center justify-center' >
                         <Link to='/onlineide'>
                             <button className='bg-green-600 py-2 px-3 font-bold duration-300 rounded text-white hover:bg-green-800'>
                                 &lt;/   CODE NOW &gt;
@@ -36,19 +51,9 @@ const CompilerDiv = () => {
                         </Link>
 
                     </div>
-                    <div
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundImage: `url(${codeback})`,
-                            opacity: 0.2,
-                        }}
-                    />
+                   {/* </div> */}
+                  
+                   
 
                 </div>
 

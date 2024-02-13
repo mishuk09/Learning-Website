@@ -5,6 +5,7 @@ import interview from './img/interview.png';
 import job from './img/job.png';
 import sql from './img/sql.png';
 import Headline from '../../Otherscomponent/Headline';
+import { Link } from 'react-router-dom';
 
 
 const Picktrack = () => {
@@ -12,31 +13,37 @@ const Picktrack = () => {
         {
             id: 1,
             img: code,
+            link: 'allcourse',
             title: 'Programming'
         },
         {
             id: 2,
             img: dsa,
+            link: 'dsa',
             title: 'Data Structure'
         },
         {
             id: 3,
             img: interview,
+            link: 'interview',
             title: 'Interview'
         },
         {
             id: 4,
             img: job,
+            link: 'jobs',
             title: 'Jobs'
         },
         {
             id: 5,
             img: sql,
+            link: 'sql',
             title: 'SQL'
         },
         {
             id: 6,
             img: code,
+            link: 'onlineide',
             title: 'Online IDE'
         },
 
@@ -50,9 +57,9 @@ const Picktrack = () => {
                 {
                     pickTrack.map((pick) => (
                         // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                        <a
+                        <Link
                             key={pick.id}
-                            href="#"
+                            to={pick.link}
                             className='rounded flex ps-2  justify-center items-center  bg-blue-500 h-[70px] w-[100%] transition ease-in-out delay-100 shadow-sm hover:shadow  hover:-translate-y-1 hover:scale-20 hover:bg-indigo-500 duration-300 '
                         >
 
@@ -64,7 +71,7 @@ const Picktrack = () => {
                                 {pick.title}
                             </div>
 
-                        </a>
+                        </Link>
                     ))
                 }
 

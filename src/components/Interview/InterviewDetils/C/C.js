@@ -17,6 +17,7 @@ import { faArrowDown, faUpDown } from '@fortawesome/free-solid-svg-icons';
 import {
     FacebookShareButton
 } from "react-share";
+import Share from './Share';
 
 const C = ({ url, title }) => {
     const { name } = useParams();
@@ -89,15 +90,13 @@ const C = ({ url, title }) => {
                                     <p className='text-4xl font-bold mt-4 text-gray-800'> {interview.title.toUpperCase()} Interview Question </p>
                                     <small> Last Update:-{interview.date}</small>
                                 </p>
-                                {/* <p className='mt-3'>
-                                    <FontAwesomeIcon className='text-blue-500 me-2' icon={faFacebook} size='xl' onClick={() => shareOnSocialMedia('facebook')} />
-                                    <FontAwesomeIcon className='text-blue-600 me-2' icon={faLinkedin} size='xl' onClick={() => shareOnSocialMedia('linkedin')} />
-                                    <FontAwesomeIcon className='text-blue-500 me-2' icon={faTwitter} size='xl' onClick={() => shareOnSocialMedia('twitter')} />
-                                    <FontAwesomeIcon className='text-green-500 me-2' icon={faWhatsapp} size='xl' onClick={() => shareOnSocialMedia('whatsapp')} />
-                                </p> */}
-                                <FacebookShareButton url={window.location.href}  quote={title}>
-                                    {(shareCount) => <span className="myShareCountWrapper">{shareCount}</span>}
-                                </FacebookShareButton>
+                                <p className='mt-3'>
+                                    <FontAwesomeIcon className='text-blue-500 me-2' icon={faFacebook} size='xl' />
+                                    <FontAwesomeIcon className='text-blue-600 me-2' icon={faLinkedin} size='xl' />
+                                    <FontAwesomeIcon className='text-blue-500 me-2' icon={faTwitter} size='xl' />
+                                    <FontAwesomeIcon className='text-green-500 me-2' icon={faWhatsapp} size='xl' />
+                                </p>
+
                             </div>
 
                             <div>
@@ -105,7 +104,7 @@ const C = ({ url, title }) => {
                             </div>
                         </div>
 
-                        <div className='text-justify pt-4 font-nunito' dangerouslySetInnerHTML={{ __html: interview.content }} />
+                        <div className='text-justify pt-4 text-xl  font-nunito' dangerouslySetInnerHTML={{ __html: interview.content }} />
                     </div>
                 ))}
             </div>
