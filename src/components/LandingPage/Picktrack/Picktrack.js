@@ -50,7 +50,7 @@ const Picktrack = () => {
     ]
 
     return (
-        <div className='  mt-4'>
+        <div className='   bg-white py-4 px-2 rounded'>
             <div className='w-[100%]'><Headline short="Pick" parent='Pick a' child="Track">   </Headline></div>
 
             <div className='grid gap-2 grid-cols-3 mt-3'>

@@ -13,9 +13,9 @@ import CompilerDiv from '../CompilerDiv/CompilerDiv';
 
 const Childdiv = () => {
     return (
-        <div className='container mt-20'>
+        <div className='container mt-20 '>
             {/* <div className='w-[70%]'><Headline short="Pick" parent='Pick a' child="Track">   </Headline></div> */}
-            <div className=' flex    w-[100%] h-[930px] border-t border-slate-200'>
+            <div className=' flex    w-[100%]    border-t border-slate-200'>
 
                 <div className='w-[70%]    py-2 pe-2 '>
                     <Picktrack></Picktrack>
@@ -23,10 +23,10 @@ const Childdiv = () => {
                     <Latesttutorial></Latesttutorial>
 
                 </div>
-                <div className='w-[30%] h-full  border-l border-slate-200'>
+                <div className='w-[30%] mt-2 h-full bg-white  border-l border-slate-200'>
 
 
-                    <Dsaquestion className=''></Dsaquestion>
+                    <Dsaquestion  ></Dsaquestion>
                     <Bestside></Bestside>
 
 

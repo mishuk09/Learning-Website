@@ -21,8 +21,8 @@ const Bestside = () => {
 
 
     return (
-        <div className='w-[100%] px-2 h-40 rounded 
-         m-2 border border-slate-400 shadow-sm'>
+        <div className='w-[100%] px-2 h-40 rounded  mt-1
+          border border-slate-400 shadow-sm'>
             <h1 className=' mt-1 font-sans text-xl font-bold flex items-center justify-center'>Best Coding Contest Side</h1>
             <hr className='text-slate-400 mt-1' />
             <Marquee

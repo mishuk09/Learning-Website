@@ -10,7 +10,7 @@ module.exports = {
         'source-sans-3': ['"Source Sans Pro"', 'sans-serif'],
         verdina: ['Verdina', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Fira Sans', 'Inter', 'sans-serif'],
         'noto-sans-bengali': ['Noto Sans Bengali', 'sans-serif'],
       },
     },

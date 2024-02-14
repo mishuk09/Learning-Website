@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 const Latesttutorial = () => {
 
     return (
-        <div className=' mt-14'>
+        <div className=' mt-14 bg-white py-6 px-2 rounded'>
             <Headline className='w-[100%]' parent="Latest" child="Tutorial" short="Code" showSeemore={true}></Headline>
-            <div className="inline-grid grid-cols-7 gap-3 mt-4">
+            <div className="inline-grid grid-cols-6 gap-3 mt-4">
                 {
                     Tutorials.map((tutorial) => (
 

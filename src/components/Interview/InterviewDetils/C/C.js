@@ -44,9 +44,8 @@ const C = ({ url, title }) => {
     }, [name]);
 
 
-
     return (
-        <div className='container flex mt-10 gap-3 rounded'>
+        <div className='container interview-div flex mt-10 gap-3 rounded'>
             <div className='w-[20%] bg-slate-900 rounded h-full'>
                 <TutorialHeadlineFormat logo={photourl || img || c} name={name} description='Interview Question' />
                 <div className='mt-2'>
@@ -104,7 +103,7 @@ const C = ({ url, title }) => {
                             </div>
                         </div>
 
-                        <div className='text-justify pt-4 text-xl  font-nunito' dangerouslySetInnerHTML={{ __html: interview.content }} />
+                        <div className='text-justify pt-4   font-nunito' dangerouslySetInnerHTML={{ __html: interview.content }} />
                     </div>
                 ))}
             </div>
