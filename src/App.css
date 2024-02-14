@@ -15,7 +15,7 @@
 
 
 .ql-syntax {
-  background-color: black;
+  background-color: rgb(26, 26, 26);
   padding: 5px;
   color: rgb(208, 208, 208);
   border-radius: 5px;
@@ -25,13 +25,15 @@
 .interview-div a {
   color: #10b981;
 }
+
 .interview-div h1 {
-  
+
   font-size: 25px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .interview-div h2 {
-  
+
   font-size: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

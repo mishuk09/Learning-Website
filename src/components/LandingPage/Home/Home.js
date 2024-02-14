@@ -3,7 +3,7 @@ import './Home.css';
 import home from './img/home.png';
 import rocket from './img/rocket.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpen, faCode, faFilePdf, faMagnifyingGlass, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faBriefcase, faCode, faFilePdf, faMagnifyingGlass, faNewspaper, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -71,14 +71,20 @@ const Home = () => {
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
-                <div className='flex w-[60%]  align-items-center justify-between mt-2'>
-                    <div className='      '> <FontAwesomeIcon icon={faCode} className='    coding-icon34 text-white' size='1xl' beat /></div>
+                <div className='flex w-[50%]  align-items-center justify-between mt-2'>
+                    <div className=' text-white   font-bold text-xl mx-3     '>   <span> &lt;/&gt;</span></div>
                     <div className=' h-1 rounded-sm bg-gradient-to-r from-slate-950 to-blue-600  w-100 pt-1'>   </div>
                     <div className=' text-slate-300   font-bold text-xl mx-3'>
-                        <span> &lt;/&gt;</span>
+                        <FontAwesomeIcon icon={faUserGraduate} className='    coding-icon34 text-white' size='1xl' />
                     </div>
                     <div className=' h-1 rounded-sm bg-gradient-to-l from-slate-950 to-blue-600 w-100  '>   </div>
-                    <div className='  '>  <FontAwesomeIcon icon={faCode} className='    coding-icon34 text-white' size='1xl' beat /></div>
+                    <div className='  '>  <FontAwesomeIcon icon={faBriefcase} className='    coding-icon34 text-white' size='1xl' /></div>
+                </div>
+                <div className='grid grid-cols-2 gap-3'>
+                    <div className='w-[200px] font-bold border-2 rounded-sm py-1  border-purple-500 text-white h-auto'>Learning</div>
+                    <div className='w-[200px] font-bold border-2 rounded-sm py-1  border-purple-500 text-white h-auto'>Learning</div>
+                    <div className='w-[200px] font-bold border-2 rounded-sm py-1  border-purple-500 text-white h-auto'>Learning</div>
+                    <div className='w-[200px] font-bold border-2 rounded-sm py-1  border-purple-500 text-white h-auto'>Learning</div>
                 </div>
 
             </div>
