@@ -39,7 +39,7 @@ const PracticeComponent = () => {
 
 
     return (
-        <div className='   bg-white py-6 px-1 rounded'>
+        <div className='   bg-white py-6 px-1 shadow rounded'>
             <Headline parent='Interview' child='Guid' short='Company'></Headline>
             <div className='px-5 mb-10 relative  '>
                 <div className='flex gap-3 mt-4 overflow-hidden  ' ref={interviewRef}>
