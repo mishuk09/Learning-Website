@@ -22,7 +22,7 @@ const CompilerDiv = () => {
 
 
     return (
-        <div className='container pt-8'>
+        <div className='container pt-8 hover:-translate-y-2 cursor-pointer duration-300'>
             <div className='flex w-full mt-10 border rounded border-slate-400'>
                 <div className='h-36 w-[15%] bg-emerald-500 rounded-s items-center justify-center text-center'>
                     <img className='flex items-center justify-center text-center absolute w-[150px] mx-14 mt-2' src={codefont} alt="" />

@@ -3,7 +3,7 @@ import './Home.css';
 import home from './img/home.png';
 import rocket from './img/rocket.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpen, faBriefcase, faCode, faFilePdf, faMagnifyingGlass, faNewspaper, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faBrain, faBriefcase, faCode, faFilePdf, faMagnifyingGlass, faNewspaper, faPeopleArrows, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
         return () => clearInterval(intervalId);
     }, []);
     return (
-        <div className='bg-gray-950 relative pb-20'>
+        <div style={{backgroundColor:'#0e1117'}} className='  relative pb-20 h-[530px]'>
             {/* <div className='container flex w-[100%] text-slate-300 h-[450px]'>
                 <div className='w-[50%] headline-div mt-[80px]'>
                     <span className='absolute ms-[38%]'><img className='w-16' src={rocket} alt="" /></span>
@@ -58,7 +58,7 @@ const Home = () => {
                     gain CV points, & get hired by your dream company.</p>
 
 
-                <div className='flex items-center justify-center  text-center sm:mt-2 lg:mt-4 w-[60%]'>
+                <div className='flex items-center justify-center  text-center sm:mt-2 lg:mt-6 w-[60%]'>
                     <input
                         type="text"
                         id="searchInput"
@@ -71,20 +71,20 @@ const Home = () => {
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
-                <div className='flex w-[50%]  align-items-center justify-between mt-2'>
-                    <div className=' text-white   font-bold text-xl mx-3     '>   <span> &lt;/&gt;</span></div>
-                    <div className=' h-1 rounded-sm bg-gradient-to-r from-slate-950 to-blue-600  w-100 pt-1'>   </div>
-                    <div className=' text-slate-300   font-bold text-xl mx-3'>
-                        <FontAwesomeIcon icon={faUserGraduate} className='    coding-icon34 text-white' size='1xl' />
+                <div className='flex  w-[50%]   items-center mt-3'>
+                    <div className=' text-white   font-bold text-xl      '>   <span> &lt;/&gt;</span></div>
+                    <div className=' h-1 rounded-sm me-2 bg-gradient-to-r from-slate-950 to-blue-600  w-full  '>   </div>
+                    <div className=' text-slate-300 me-2  font-bold text-xl  '>
+                        <FontAwesomeIcon icon={faUserGraduate} className='    text-white' size='1xl' />
                     </div>
                     <div className=' h-1 rounded-sm bg-gradient-to-l from-slate-950 to-blue-600 w-100  '>   </div>
-                    <div className='  '>  <FontAwesomeIcon icon={faBriefcase} className='    coding-icon34 text-white' size='1xl' /></div>
+                    <div className='  '>  <FontAwesomeIcon icon={faBriefcase} className='     text-white' size='1xl' /></div>
                 </div>
-                <div className='grid grid-cols-2 gap-3'>
-                    <div className='w-[200px] font-bold border-2 rounded-sm py-1  border-purple-500 text-white h-auto'>Learning</div>
-                    <div className='w-[200px] font-bold border-2 rounded-sm py-1  border-purple-500 text-white h-auto'>Learning</div>
-                    <div className='w-[200px] font-bold border-2 rounded-sm py-1  border-purple-500 text-white h-auto'>Learning</div>
-                    <div className='w-[200px] font-bold border-2 rounded-sm py-1  border-purple-500 text-white h-auto'>Learning</div>
+                <div className='grid grid-cols-2 text-start mt-3 gap-2'>
+                    <Link to='/allcourse' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faBookOpen} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Learning</Link>
+                    <Link to='/practice' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faBrain} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Practice</Link>
+                    <Link to='/interview' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faPeopleArrows} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Interview</Link>
+                    <Link to='/onlineide' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faCode} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Online IDE</Link>
                 </div>
 
             </div>

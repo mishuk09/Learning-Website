@@ -30,7 +30,7 @@ const CodingPractice = () => {
     ];
 
     return (
-        <div id='codingpractice' className='container flex gap-3 mt-14'>
+        <div id='codingpractice' className='  flex gap-3  '>
             {bgimg.map((bg) => (
                 <Link
                     key={bg.id}

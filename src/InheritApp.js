@@ -17,6 +17,7 @@ const InheritApp = () => {
             <GoToTopButton></GoToTopButton>
             <ShortDetils></ShortDetils>
             <Childdiv></Childdiv>
+          
             <Dsa></Dsa>
             <Library></Library>
             <Interview></Interview>

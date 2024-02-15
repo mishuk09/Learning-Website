@@ -12,7 +12,7 @@ const Latesttutorial = () => {
             <Headline className='w-[100%]' parent="Latest" child="Tutorial" short="Code" showSeemore={true}></Headline>
             <div className="inline-grid grid-cols-6 gap-3 mt-4">
                 {
-                    Tutorials.map((tutorial) => (
+                    Tutorials.slice(0,12).map((tutorial) => (
 
                         // eslint-disable-next-line jsx-a11y/anchor-has-content
 

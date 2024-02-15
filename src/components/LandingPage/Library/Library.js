@@ -7,7 +7,7 @@ import BasicComputer from '../../Otherscomponent/Tutorials/BasicComputer';
 
 const Library = () => {
     return (
-        <div className='container mt-20 bg-white rounded-sm py-6'>
+        <div id='library' className='container mt-20 bg-white rounded-sm py-6'>
             <Headline parent="Choose" child='Library' short="Tutorial"></Headline>
             <div className='grid grid-cols-2 gap-2 mt-4'>
                 <div className='w-[100%] shadow h-[200px] px-2 py-3 rounded  '>

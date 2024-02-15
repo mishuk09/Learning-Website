@@ -4,7 +4,7 @@ import Allcourses from '../Otherscomponent/Allcourses';
 
 const Courses = () => {
     return (
-        <div className='container  bg-white rounded-sm py-6'>
+        <div id='courses' className='container  bg-white rounded-sm py-6'>
             <Headline className='w-[100%]' parent="Start" child="Learning" short="Course" showSeemore={false}></Headline>
             <div className=" flex flex-wrap gap-2 mt-4">
                 {

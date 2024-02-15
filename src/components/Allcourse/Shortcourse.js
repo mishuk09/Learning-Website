@@ -1,12 +1,12 @@
 import React from 'react';
-import './ShortDetils.css';
+// import './ShortDetils.css';
 import a from './img/a.png';
 import b from './img/b.png';
 import c from './img/c.png';
 import d from './img/d.png';
 import { Link } from 'react-router-dom';
 
-const ShortDetils = () => {
+const Shortcourse = () => {
 
     const shortData = [
         {
@@ -66,8 +66,8 @@ const ShortDetils = () => {
     // ];
 
     return (
-        <div className='container flex  justify-center items-center '>
-            <div style={{backgroundColor:'#f2f0fe'}} className='absolute container   py-4  rounded-sm shadow mt-1'>
+        <div className='container flex pb-32 justify-center items-center '>
+            <div style={{ backgroundColor: '#f2f0fe' }} className='absolute container   py-4  rounded-sm shadow mt-1'>
                 <div className='flex container'>
                     {shortData.map((data, index) => (
                         // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -75,14 +75,16 @@ const ShortDetils = () => {
                             key={data.id}
                             to={data.link}
                             className='flex relative shadow-md px-1 items-center rounded duration-200 mx-2 w-[100%]'
-                            style={{ backgroundColor:'#ffffff'  }}
+                            style={{ backgroundColor: '#ffffff' }}
                             // bgColors[index]?.bgColor
                             onMouseEnter={(e) => { e.currentTarget.style.top = '-10px'; }}
                             onMouseLeave={(e) => { e.currentTarget.style.top = '0'; }}
 
 
                         >
-                            <div><img className='p-1 mx-0 left-0 w-[100px]' src={data.img} alt="" /></div>
+                            <div>
+                                <img className='p-1 mx-0 left-0 w-[100px]' src={data.img} alt="" />
+                                </div>
                             <div className='ms-2 text-black pb-2'>
                                 <p className='font-bold font-source-sans-2'>{data.name} </p>
                                 <p className='text-sm font-nunito mt-1'> {data.detils}</p>
@@ -97,4 +99,4 @@ const ShortDetils = () => {
     );
 };
 
-export default ShortDetils;
+export default Shortcourse;
