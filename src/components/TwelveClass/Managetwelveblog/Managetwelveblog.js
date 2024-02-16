@@ -41,7 +41,7 @@ const Managetwelveblog = () => {
         <div className='bg-slate-50 flex'>
 
             <div
-                className="sidebar  mt-1 bottom-0 lg:left-0 p-2 w-[25%] h-[500px] overflow-y-auto text-center bg-gray-900"
+                className="sidebar  mt-1 bottom-0 lg:left-0 p-2 w-[20%] h-[500px] overflow-y-auto text-center bg-gray-900"
             >
                 <div className="text-gray-100 text-xl">
                     <div className="p-2.5 mt-1 flex items-center">
@@ -70,7 +70,7 @@ const Managetwelveblog = () => {
 
 
             </div>
-            <div className='w-[75%] '>
+            <div className='w-[80%] '>
                 {
                     show === 1 ? <Abouttwelvedata/> : show === 2 ? <Adddata /> : show === 3 ? <Editdata /> : <Deletedata />
                 }
