@@ -87,7 +87,7 @@ const Ict = () => {
 
 
     return (
-        <div className='container relative mt-[500px] h-[650px]'>
+        <div className='container relative mt-[300px] h-[650px]'>
 
             <GoToTopButton />
             <div className='bg-cover bg-center border absolute w-full flex   justify-between font-noto-sans-bengali wi-[100%] top-[160px] rounded left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[300px] mt-[-150px] bg-slate-950' style={{ backgroundImage: `url(${bg})` }}>
