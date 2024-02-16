@@ -4,7 +4,7 @@ import HomePage from '../Otherscomponent/HomePage/HomePage';
 import interviewimg from './img/interviewimg.png';
 import Interview from '../LandingPage/Interview/Interview';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpenReader, faCode, faHandPointer, faMagnifyingGlass, faPeopleArrows, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faBookOpenReader, faBrain, faBriefcase, faCode, faHandPointer, faMagnifyingGlass, faPeopleArrows, faThumbsUp, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import InterviewObject from './InterviewObject';
 import Courses from '../Allcourse/Courses';
 import Dsa from '../LandingPage/Dsa/Dsa';
@@ -105,41 +105,46 @@ const InterviewDiv = () => {
 
     const navigate = useNavigate();
 
-    const navigateToServiceDetail = (title,photourl) => {
-        navigate(`/interview/${title}`,{state:{photourl}});
+    const navigateToServiceDetail = (title, photourl) => {
+        navigate(`/interview/${title}`, { state: { photourl } });
     };
 
     return (
         <div>
-            <div className=' pb-10 bg-slate-950 '>
-                <div className='container flex flex-col items-center pt-4 justify-center text-left'>
-                    <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' beat />
-                    <h1 className='text-white text-5xl font-bold font-nunito'>Interview Questions <span className='text-green-500'>For All</span> </h1>
-                    <div className='flex mt-4 items-center justify-center sm:mt-2 lg:mt-0 w-[70%]'>
+            <div style={{ backgroundColor: '#0e1117' }} className='  relative pb-20 h-[530px]'>
+
+                {/* <div className='container flex flex-col items-center pt-4 justify-center text-left'>
+                
+                    <h1 className='text-white text-5xl font-bold font-nunito'>Interview Questions <span className='text-green-500'>For All</span> </h1> */}
+                <div className=' flex flex-col items-center justify-center  text-center'>
+                    <h1 className='pt-16 text-center text-slate-300 text-5xl font-bold font-sans'>Interview Questions For All
+                    </h1>
+                    <p className='mt-4 mx-3 font-nunito text-1xl text-slate-300   text-center'>Find interview questions on any topic. Choose, read, and prepare <br /> for your job interview hassle-free</p>
+
+                    <div className='flex items-center justify-center  text-center sm:mt-2 lg:mt-6 w-[60%]'>
                         <input
                             type="text"
                             id="searchInput"
                             ref={inputRef}
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            className='rounded w-[50%] h-9 px-2 me-2 outline-none'
+                            className='  w-[50%] h-10 px-2  rounded-l outline-none'
                             placeholder='Search Desired Interview Topic...'
                         />
-
-
                         <button
-                            className='rounded bg-white text-black text-sm h-9 px-4  '
+                            className='  bg-blue-600 text-slate-300 text-sm h-10 px-4 w-28 rounded-r items-center text-center justify-center'
                         >
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
+
                     <div className='text-slate-700 w-[36%] font-bold  overflow-y-auto  rounded font-nunito absolute bg-white top-[300px]  h-auto'>
                         {loading && <p>Loading...</p>}
                         {results.length > 0 && (
                             <>
                                 <ul>
                                     {results.slice(0, 5).map((blog) => (
-                                        <p onClick={() => navigateToServiceDetail(blog.title,blog.photourl)} className='px-3 h-8  flex items-center  hover:text-green-600 duration-200 cursor-pointer hover:rounded hover:bg-slate-100' key={blog._id}><FontAwesomeIcon className='me-1' icon={faMagnifyingGlass} />{blog.title}</p>
+                                        <p onClick={() => navigateToServiceDetail(blog.title, blog.photourl)} className='px-3 h-8  flex items-center  hover:text-green-600 duration-200 cursor-pointer hover:rounded hover:bg-slate-100' key={blog._id}><FontAwesomeIcon className='me-1' icon={faMagnifyingGlass} />{blog.title}</p>
                                     ))}
                                 </ul>
                                 <div className='text-center p-1 bg-slate-200 items-center justify-center'>
@@ -217,18 +222,25 @@ const InterviewDiv = () => {
 
 
                     </div>
-                    <div className='flex items-center text-center justify-center  container mt-5 font-nutino text-slate-600'>
-                        <div className='me-3 hover:-translate-y-1 hover:scale-105 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-2  ' icon={faHandPointer} />Select</div>
-                        <div className='me-3 hover:-translate-y-1 hover:scale-110 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-1' icon={faBookOpenReader} />Read</div>
-                        <div className='me-3 hover:-translate-y-1 hover:scale-110 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-1' icon={faPeopleArrows} />Intervies</div>
-                        <div className='me-3 hover:-translate-y-1 hover:scale-110 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200   '><FontAwesomeIcon className='pe-1' icon={faThumbsUp} />Get Job</div>
 
+                    <div className='flex  w-[50%]   items-center mt-3'>
+                        <div className=' text-white   font-bold text-xl      '>   <span> &lt;/&gt;</span></div>
+                        <div className=' h-1 rounded-sm me-2 bg-gradient-to-r from-slate-950 to-blue-600  w-full  '>   </div>
+                        <div className=' text-slate-300 me-2  font-bold text-xl  '>
+                            <FontAwesomeIcon icon={faUserGraduate} className='    text-white' size='1xl' />
+                        </div>
+                        <div className=' h-1 rounded-sm bg-gradient-to-l from-slate-950 to-blue-600 w-100  '>   </div>
+                        <div className='  '>  <FontAwesomeIcon icon={faBriefcase} className='     text-white' size='1xl' /></div>
                     </div>
-                    <p className='text-slate-300 w-[50%] text-justify font-nunito mt-3'>Find interview questions on any topic. Choose, read, and prepare for your job interview hassle-free</p>
-
+                    <div className='grid grid-cols-2 text-start mt-3 gap-2'>
+                        <Link to='/allcourse' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faHandPointer} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Select</Link>
+                        <Link to='/practice' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faBookOpenReader} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Read</Link>
+                        <Link to='/interview' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faPeopleArrows} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Interview</Link>
+                        <Link to='/onlineide' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faThumbsUp} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Get Job</Link>
+                    </div>
                 </div>
             </div>
-            <div className='   mt-10   container    flex flex-col items-center justify-center   h-auto'>
+            <div className='   mt-10     mb-[300px]    flex flex-col items-center justify-center  '>
                 <InterviewObject />
             </div>
 

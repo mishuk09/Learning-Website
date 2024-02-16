@@ -73,177 +73,183 @@ export default function InterviewObject() {
 
 
     return (
-        <Box className='    shadow' sx={{ bgcolor: 'background.paper', width: '100%', borderRadius: '5px' }}>
-            <AppBar position="static" sx={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    indicatorColor="secondary"
-                    textColor="black"
-                    variant="fullWidth"
-                    aria-label="full width tabs example"
-                >
-                    <Tab label="Programming Language" {...a11yProps(0)} />
-                    <Tab label="Framewoek & Library" {...a11yProps(1)} />
-                    <Tab label="Tools" {...a11yProps(2)} />
-                    <Tab label="Top MNC" {...a11yProps(3)} />
-                    <Tab label="About COmpany" {...a11yProps(4)} />
-                </Tabs>
-            </AppBar>
-            <SwipeableViews
-                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                index={value}
-                onChangeIndex={handleChangeIndex}
-            >
-                <TabPanel value={value} index={0} dir={theme.direction}>
-                    <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>Interview Question For Programming Language</div>
-                    <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
-                    </div>
-                    <div className="flex flex-wrap  gap-3 mt-4">
-                        {
-                            Language.map((tutorial) => (
+        <div className='   flex  mt-[160px] justify-center items-center '>
+            <div style={{ backgroundColor: '#f2f0fe' }} className='absolute  container py-3   rounded shadow mt-1'>
+                <Box className='    shadow' sx={{ bgcolor: 'background.paper', width: '100%', borderRadius: '5px' }}>
+                    <AppBar position="static" sx={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }}>
+                        <Tabs
+                            value={value}
+                            onChange={handleChange}
+                            indicatorColor="secondary"
+                            textColor="black"
+                            variant="fullWidth"
+                            aria-label="full width tabs example"
+                        >
+                            <Tab label="Programming Language" {...a11yProps(0)} />
+                            <Tab label="Framewoek & Library" {...a11yProps(1)} />
+                            <Tab label="Tools" {...a11yProps(2)} />
+                            <Tab label="Top MNC" {...a11yProps(3)} />
+                            <Tab label="About COmpany" {...a11yProps(4)} />
+                        </Tabs>
+                    </AppBar>
+                    <SwipeableViews
+                        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                        index={value}
+                        onChangeIndex={handleChangeIndex}
+                    >
+                        <TabPanel value={value} index={0} dir={theme.direction}>
+                            <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>Interview Question For Programming Language</div>
+                            <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
+                            </div>
+                            <div className="flex flex-wrap  gap-3 mt-4">
+                                {
+                                    Language.map((tutorial) => (
 
-                                // eslint-disable-next-line jsx-a11y/anchor-has-content
+                                        // eslint-disable-next-line jsx-a11y/anchor-has-content
 
-                                <div
-                                    key={tutorial.id}
-                                    onClick={() => handleClick(tutorial.title, tutorial.img)}
-                                    className='shadow-sm rounded transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-40 duration-400'
-                                >
+                                        <div
+                                            key={tutorial.id}
+                                            onClick={() => handleClick(tutorial.title, tutorial.img)}
+                                            className='shadow-sm rounded transition ease-in-out delay-50 hover:-translate-y-2 hover:scale-40 duration-400'
+                                        >
 
-                                    <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
-                                        <div>
-                                            <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
+                                            <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
+                                                <div>
+                                                    <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
+                                                </div>
+                                                <div className='text-black mt-1 font-verdina text-sm'>
+                                                    {tutorial.title}
+                                                </div>
+                                            </div>
+
                                         </div>
-                                        <div className='text-black mt-1 font-verdina text-sm'>
-                                            {tutorial.title}
-                                        </div>
-                                    </div>
-
-                                </div>
 
 
-                            ))
-                        }
-                    </div>
-                </TabPanel>
-                <TabPanel value={value} index={1} dir={theme.direction}>
-                    <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>Interview Questions about Library & Framework</div>
-                    <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
-                    </div>
-                    <div className="flex flex-wrap  gap-3 mt-4">
-                        {
-                            Library.map((tutorial) => (
+                                    ))
+                                }
+                            </div>
+                        </TabPanel>
+                        <TabPanel value={value} index={1} dir={theme.direction}>
+                            <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>Interview Questions about Library & Framework</div>
+                            <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
+                            </div>
+                            <div className="flex flex-wrap  gap-3 mt-4">
+                                {
+                                    Library.map((tutorial) => (
 
-                                <Link
-                                    key={tutorial.id}
-                                    to={tutorial.link}
-                                    className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
-                                >
-                                    <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
-                                        <div>
-                                            <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
-                                        </div>
-                                        <div className='text-black mt-1 font-verdina text-sm'>
-                                            {tutorial.title}
-                                        </div>
-                                    </div>
+                                        <Link
+                                            key={tutorial.id}
+                                            to={tutorial.link}
+                                            className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
+                                        >
+                                            <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
+                                                <div>
+                                                    <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
+                                                </div>
+                                                <div className='text-black mt-1 font-verdina text-sm'>
+                                                    {tutorial.title}
+                                                </div>
+                                            </div>
 
-                                </Link>
-
-
-                            ))
-                        }
-                    </div>
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>Interview Questions about Tools</div>
-                    <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
-                    </div>
-                    <div className="flex flex-wrap overflow-x-auto   gap-3 mt-4">
-                        {
-                            Tools.slice(0, 16).map((tutorial) => (
-
-                                <Link
-                                    key={tutorial.id}
-                                    to={tutorial.link}
-                                    className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
-                                >
-                                    <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
-                                        <div>
-                                            <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
-                                        </div>
-                                        <div className='text-black mt-1 font-verdina text-sm'>
-                                            {tutorial.title}
-                                        </div>
-                                    </div>
-
-                                </Link>
+                                        </Link>
 
 
-                            ))
-                        }
-                    </div>
-                </TabPanel>
-                <TabPanel value={value} index={3} dir={theme.direction}>
-                    <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>Top MNC</div>
-                    <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
-                    </div>
-                    <div className="flex flex-wrap  gap-3 mt-4">
-                        {
-                            interviewObject.map((tutorial) => (
+                                    ))
+                                }
+                            </div>
+                        </TabPanel>
+                        <TabPanel value={value} index={2} dir={theme.direction}>
+                            <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>Interview Questions about Tools</div>
+                            <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
+                            </div>
+                            <div className="flex flex-wrap overflow-x-auto   gap-3 mt-4">
+                                {
+                                    Tools.slice(0, 16).map((tutorial) => (
 
-                                <Link
-                                    key={tutorial.id}
-                                    to={tutorial.link}
-                                    className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
-                                >
-                                    <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
-                                        <div>
-                                            <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
-                                        </div>
-                                        <div className='text-black mt-1 font-verdina text-sm'>
-                                            {tutorial.title}
-                                        </div>
-                                    </div>
+                                        <Link
+                                            key={tutorial.id}
+                                            to={tutorial.link}
+                                            className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
+                                        >
+                                            <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
+                                                <div>
+                                                    <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
+                                                </div>
+                                                <div className='text-black mt-1 font-verdina text-sm'>
+                                                    {tutorial.title}
+                                                </div>
+                                            </div>
 
-                                </Link>
-
-
-                            ))
-                        }
-                    </div>
-                </TabPanel>
-                <TabPanel value={value} index={4} dir={theme.direction}>
-                    <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>About Company</div>
-                    <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
-                    </div>
-                    <div className="flex flex-wrap  gap-3 mt-4">
-                        {
-                            interviewObject.map((tutorial) => (
-
-                                <Link
-                                    key={tutorial.id}
-                                    to={tutorial.link}
-                                    className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
-                                >
-                                    <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
-                                        <div>
-                                            <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
-                                        </div>
-                                        <div className='text-black mt-1 font-verdina text-sm'>
-                                            {tutorial.title}
-                                        </div>
-                                    </div>
-
-                                </Link>
+                                        </Link>
 
 
-                            ))
-                        }
-                    </div>
-                </TabPanel>
-            </SwipeableViews>
-        </Box>
+                                    ))
+                                }
+                            </div>
+                        </TabPanel>
+                        <TabPanel value={value} index={3} dir={theme.direction}>
+                            <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>Top MNC</div>
+                            <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
+                            </div>
+                            <div className="flex flex-wrap  gap-3 mt-4">
+                                {
+                                    interviewObject.map((tutorial) => (
+
+                                        <Link
+                                            key={tutorial.id}
+                                            to={tutorial.link}
+                                            className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
+                                        >
+                                            <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
+                                                <div>
+                                                    <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
+                                                </div>
+                                                <div className='text-black mt-1 font-verdina text-sm'>
+                                                    {tutorial.title}
+                                                </div>
+                                            </div>
+
+                                        </Link>
+
+
+                                    ))
+                                }
+                            </div>
+                        </TabPanel>
+                        <TabPanel value={value} index={4} dir={theme.direction}>
+                            <div className=' font-verdina text-3xl font-bold mt-3 mb-2'>About Company</div>
+                            <div className='font-nunito'> Delve into the core of computing with our fundamental interview section. Explore essential concepts, from hardware to software, to prepare for comprehensive discussions. Master the foundational principles for a confident stride in your interviews.
+                            </div>
+                            <div className="flex flex-wrap  gap-3 mt-4">
+                                {
+                                    interviewObject.map((tutorial) => (
+
+                                        <Link
+                                            key={tutorial.id}
+                                            to={tutorial.link}
+                                            className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
+                                        >
+                                            <div className='w-[130px] h-36 rounded bg-slate-100 hover:bg-slate-200 flex flex-col items-center justify-center'>
+                                                <div>
+                                                    <img className='w-[70px] h-[70px]' src={tutorial.img} alt="" />
+                                                </div>
+                                                <div className='text-black mt-1 font-verdina text-sm'>
+                                                    {tutorial.title}
+                                                </div>
+                                            </div>
+
+                                        </Link>
+
+
+                                    ))
+                                }
+                            </div>
+                        </TabPanel>
+                    </SwipeableViews>
+                </Box>
+
+
+            </div>
+        </div>
     );
 }

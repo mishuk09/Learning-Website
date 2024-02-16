@@ -122,11 +122,30 @@ const OnlineIDE = () => {
         <div>
 
 
-            <div className='bg-slate-950 pb-10'>
-                <div className='container flex flex-col items-center pt-4 justify-center text-left'>
-                    <FontAwesomeIcon className='text-white my-3' icon={faCode} size='xl' beat />
-                    <h1 className='text-white text-5xl font-bold font-nunito'>Online Coding <span className='text-green-500'>Compilers</span> </h1>
-                    <div className='flex mt-4 items-center justify-center sm:mt-2   w-[70%]'>
+            <div style={{ backgroundColor: '#0e1117' }} className='  relative pb-20 h-[530px]'>
+
+                <div className=' flex flex-col items-center justify-center  text-center'>
+                    <h1 className='pt-16 text-center text-slate-300 text-5xl font-bold font-sans'>Online Coding Compiler
+                    </h1>
+                    <p className='mt-4 mx-3 font-nunito text-1xl text-slate-300   text-center'>Access a powerful online IDE directly on our learning platform,  enabling seamless<br /> coding without any software installations.</p>
+
+                    <div className='flex items-center justify-center  text-center sm:mt-2 lg:mt-6 w-[60%]'>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            ref={inputRef}
+                            onChange={handleInputChange}
+                            placeholder='Search Desire Coding Compiler...'
+                            className='  w-[50%] h-10 px-2  rounded-l outline-none'
+                        />
+                        <button
+                            onClick={handleSearch}
+                            className='  bg-blue-600 text-slate-300 text-sm h-10 px-4 w-28 rounded-r items-center text-center justify-center'
+                        >
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </button>
+                    </div>
+                    {/* <div className='flex mt-4 items-center justify-center sm:mt-2   w-[70%]'>
                         <input
                             type="text"
                             // onChange={e => setSearchVal(e.target.value)}
@@ -143,8 +162,8 @@ const OnlineIDE = () => {
                         >
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
-                    </div>
-                    <div className='text-slate-700 w-[36%] font-bold  overflow-y-auto  rounded font-nunito absolute bg-white top-[300px]  h-auto'>
+                    </div> */}
+                    <div className='text-slate-700 w-[36%] font-bold  overflow-y-auto  rounded font-nunito absolute bg-white top-[250px]  h-auto'>
 
                         {showSearchList &&
                             products.map((product) => (
@@ -154,14 +173,13 @@ const OnlineIDE = () => {
                             ))}
 
                     </div>
-                    <div className='flex items-center text-center justify-center  container mt-5 font-nutino text-slate-600'>
-                        <div className='me-3 hover:-translate-y-1 hover:scale-105 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-2  ' icon={faCode} />Code</div>
-                        <div className='me-3 hover:-translate-y-1 hover:scale-110 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-1' icon={faGear} />Run</div>
-                        <div className='me-3 hover:-translate-y-1 hover:scale-110 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200'><FontAwesomeIcon className='pe-1' icon={faBug} />Find Bug</div>
-                        <div className='me-3 hover:-translate-y-1 hover:scale-110 transition duration-100 hover:bg-green-700 rounded bg-green-600 px-2 py-1 text-gray-200   '><FontAwesomeIcon className='pe-1' icon={faThumbsUp} />Get Output</div>
-
+                    <div className='grid grid-cols-2 text-start mt-3 gap-2'>
+                        <Link to='/allcourse' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faCode} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Code</Link>
+                        <Link to='/practice' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faGear} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Run</Link>
+                        <Link to='/interview' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faBug} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Find Bug</Link>
+                        <Link to='/onlineide' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faThumbsUp} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' />Get Output</Link>
                     </div>
-                    <p className='text-slate-300 w-[50%] text-justify font-nunito mt-3'>Access a powerful online IDE directly on our learning platform, enabling seamless coding without any software installations.</p>
+
 
                 </div>
 
@@ -169,15 +187,9 @@ const OnlineIDE = () => {
 
 
             </div>
-            <div className='container mt-10 bg-white rounded-sm py-6 mb-10'>
-
-                {/* <p className='font-nutino text-md text-blue-500'>Compiler</p>
-                    <div className='flex justify-between relative items-center pe-2   '> <h1 className='text-slate-200 font-nunito   font-bold text-5xl  '>Compiler For<span className='text-green-500  '> Coder </span>  </h1>  </div>
-                    */}
-                <Headline parent='Online' child=' Compiler' short='Compiler' showSeemore={false}></Headline>
-
-                <div className='px-5 my-10   relative  '>
-                    <div className='  grid grid-flow-col auto-cols-max gap-3 mt-4 overflow-hidden  ' ref={interviewRef}>
+            <div className='container flex  justify-center items-center mb-[150px] '>
+                <div style={{ backgroundColor: '#f2f0fe' }} className='absolute container   py-4  px-10  rounded-sm shadow mt-1'>
+                    <div className='  grid grid-flow-col   gap-3 my-2 overflow-hidden  ' ref={interviewRef}>
 
                         {
                             OnlineIDEObject.map((tutorial) => (
@@ -207,13 +219,13 @@ const OnlineIDE = () => {
                         }
                     </div>
                     <button
-                        className='absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-200 text-black p-2 rounded-full'
+                        className='absolute top-1/2 left-2 transform -translate-y-1/2 bg-green-500 text-black p-2 rounded-full'
                         onClick={() => scroll(-500)}
                     >
                         {'<'}
                     </button>
                     <button
-                        className='absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-200 text-black p-2 rounded-full'
+                        className='absolute top-1/2 right-2 transform -translate-y-1/2 bg-green-500 text-black p-2 rounded-full'
                         onClick={() => scroll(500)}
                     >
                         {'>'}
