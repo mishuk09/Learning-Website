@@ -34,16 +34,6 @@ function AddInterview() {
     const { register, reset } = useForm();
     const [success, setSuccess] = useState('');
 
-    // const modules = {
-    //     toolbar: [
-    //         [{ 'header': [1, 2, false] }],
-    //         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    //         [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-    //         ['link', 'image'],
-    //         ['clean']
-    //     ]
-    // };
-
 
     const modules = {
         toolbar: [
@@ -104,16 +94,34 @@ function AddInterview() {
         }));
     };
 
+    // Inside your form component
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setInterviewData(prevState => ({ ...prevState, file }));
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/interview/create', interviewData);
+            const formData = new FormData();
+            formData.append('file', interviewData.file); // Append the PDF file to the form data
+            formData.append('title', interviewData.title);
+            formData.append('content', interviewData.content);
+            formData.append('photourl', interviewData.photourl);
+            formData.append('date', interviewData.date);
+            formData.append('childObjects', JSON.stringify(interviewData.childObjects));
+    
+            const response = await axios.post('http://localhost:5000/interview/create', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
+            });
             console.log('Interview created:', response.data);
             // Reset form after successful submission if needed
             setInterviewData({
                 title: '',
                 content: '',
                 photourl: '',
+                pdf: '', // Reset the PDF field
                 date: '',
                 childObjects: [{
                     id: 1,
@@ -126,7 +134,7 @@ function AddInterview() {
             console.error('Error creating interview:', error);
         }
     };
-
+    
     const handleCloseDialog = () => {
         setSuccess(false);
     };
@@ -152,6 +160,12 @@ function AddInterview() {
                         <label>Photo URL:</label>
                         <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="photourl" value={interviewData.photourl} onChange={(e) => setInterviewData(prevState => ({ ...prevState, photourl: e.target.value }))} />
                     </div>
+
+                    <div>
+                        <label>Photo:</label>
+                        <input type="file" accept="image/*" onChange={handleFileChange} className="text-black rounded p-2 mt-2   w-full bg-white shadow border" />
+                    </div>
+
                     <div>
                         <label>Date:</label>
                         <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="date" name="date" value={interviewData.date} onChange={(e) => setInterviewData(prevState => ({ ...prevState, date: e.target.value }))} />
