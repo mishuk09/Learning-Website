@@ -33,7 +33,7 @@ const C = ({ url, title }) => {
                 const url = 'http://localhost:5000/interview/get';
                 const response = await fetch(url);
                 const data = await response.json();
-                const filteredInterviews = data.filter(interview => interview.title.toLowerCase() === name.toLowerCase());
+                const filteredInterviews = data.filter(interview => interview.title === name);
                 setInterviews(filteredInterviews);
             } catch (error) {
                 console.error('Error fetching interviews:', error);
@@ -42,6 +42,22 @@ const C = ({ url, title }) => {
 
         fetchInterviews();
     }, [name]);
+
+    // useEffect(() => {
+    //     const fetchInterviews = async () => {
+    //         try {
+    //             const url = 'http://localhost:5000/interview/get';
+    //             const response = await fetch(url);
+    //             const data = await response.json();
+    //             const filteredInterviews = data.filter(interview => interview.title.toLowerCase() === name.toLowerCase());
+    //             setInterviews(filteredInterviews);
+    //         } catch (error) {
+    //             console.error('Error fetching interviews:', error);
+    //         }
+    //     };
+
+    //     fetchInterviews();
+    // }, [name]);
 
 
     return (
