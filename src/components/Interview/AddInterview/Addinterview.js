@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import ReactQuill from 'react-quill';
@@ -9,6 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import thumsup from '../../Blog/img/thumsup.png';
 import Prism from 'prismjs'; // Import Prism for syntax highlighting
 import 'prismjs/themes/prism-okaidia.css'; // Import Prism theme
+import JoditEditor from 'jodit-react';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -20,11 +21,20 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 function AddInterview() {
+    const editor = useRef(null);
+    const [content, setContent] = useState('');
+
+    // const config = useMemo(
+    //     {
+    //         readonly: false, // all options from https://xdsoft.net/jodit/docs/,
+    //         placeholder: placeholder || 'Start typings...'
+    //     },
+    //     [placeholder]
+    // );
     const [interviewData, setInterviewData] = useState({
         title: '',
         content: '',
         photourl: '',
-        pdf: null, // Add a state to store the selected PDF file
         date: '',
         childObjects: [{
             id: 1,
@@ -95,27 +105,17 @@ function AddInterview() {
         }));
     };
 
-    const handlePdfChange = (e) => {
-        setInterviewData(prevState => ({ ...prevState, pdf: e.target.files[0] }));
-    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const formData = new FormData();
-            formData.append('title', interviewData.title);
-            formData.append('content', interviewData.content);
-            formData.append('photourl', interviewData.photourl);
-            formData.append('pdf', interviewData.pdf);
-            formData.append('date', interviewData.date);
-            formData.append('childObjects', JSON.stringify(interviewData.childObjects));
-
-            const response = await axios.post('http://localhost:5000/interview/create', formData);
+            const response = await axios.post('http://localhost:5000/interview/create', interviewData);
             console.log('Interview created:', response.data);
+            // Reset form after successful submission if needed
             setInterviewData({
                 title: '',
                 content: '',
                 photourl: '',
-                pdf: null,
                 date: '',
                 childObjects: [{
                     id: 1,
@@ -123,14 +123,11 @@ function AddInterview() {
                     links: [{ text: '' }]
                 }]
             });
-            reset();
             setSuccess(true);
         } catch (error) {
-            console.error('Error creating interview:', error.response.data); // Log the specific error message
-            // Handle error here if needed
+            console.error('Error creating interview:', error);
         }
     };
-
 
     const handleCloseDialog = () => {
         setSuccess(false);
@@ -157,10 +154,6 @@ function AddInterview() {
                         <label>Photo URL:</label>
                         <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="photourl" value={interviewData.photourl} onChange={(e) => setInterviewData(prevState => ({ ...prevState, photourl: e.target.value }))} />
                     </div>
-                    <div>
-                        <label>PDF File:</label>
-                        <input type="file" onChange={handlePdfChange} />
-                    </div>
 
 
                     <div>
@@ -168,7 +161,17 @@ function AddInterview() {
                         <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="date" name="date" value={interviewData.date} onChange={(e) => setInterviewData(prevState => ({ ...prevState, date: e.target.value }))} />
                     </div> </div>
                 <label>Content:</label>
-                <ReactQuill theme="snow" formats={formats} modules={modules} value={interviewData.content} onChange={handleChange} className='bg-white h-[400px]' />
+                {/* <ReactQuill theme="snow" formats={formats} modules={modules} value={interviewData.content} onChange={handleChange} className='bg-white h-[400px]' /> */}
+                <JoditEditor
+                    ref={editor}
+                    value={content}
+                    // config={config}
+                    tabIndex={1} // tabIndex of textarea
+                    onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                    // value={interviewData.content}
+                     onChange={handleChange}
+                />
+
                 {interviewData.childObjects.map((child, index) => (
                     <div> <div className='mt-20 grid grid-cols-3 gap-3' key={index}>
                         <div>
