@@ -1,35 +1,35 @@
-import { faFilePen, faLayerGroup, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import { faFilePen, faLayerGroup, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import AddInterview from '../AddInterview/Addinterview';
-import Allinterview from './Allinterview';
-import Editinterview from './Editinterview';
-import Deleteinterview from './Deleteinterview';
+import Allanguage from './Allanguage';
+import Addlanguage from './Addlanguage';
+import Editlanguage from './Editlanguage';
+import Deletelanguage from './Deletelanguage';
 
-const Manageinterview = () => {
+
+const Alllanguage = () => {
     const [show, setShow] = useState(1);
     const blogitems = [
         {
             id: 1,
             icon: <FontAwesomeIcon icon={faLayerGroup} />,
-            title: 'All About'
+            title: 'All About Language'
         },
         {
             id: 2,
             icon: <FontAwesomeIcon icon={faPlus} />,
-            title: 'Add Interview'
+            title: 'Add Language'
         },
         {
             id: 3,
             icon: <FontAwesomeIcon icon={faFilePen} />,
-            title: 'Edit Interview'
+            title: 'Edit Language'
         },
         {
             id: 4,
             icon: <FontAwesomeIcon icon={faTrash} />,
-            title: 'Delete Interview'
+            title: 'Delete Language'
         }
 
     ]
@@ -73,7 +73,7 @@ const Manageinterview = () => {
             </div>
             <div className='w-[80%] '>
                 {
-                    show === 1 ? <Allinterview /> : show === 2 ? <AddInterview /> : show === 3 ? <Editinterview /> : <Deleteinterview />
+                    show === 1 ? <Allanguage /> : show === 2 ? <Addlanguage /> : show === 3 ? <Editlanguage /> : <Deletelanguage />
                 }
 
             </div>
@@ -82,4 +82,4 @@ const Manageinterview = () => {
     );
 };
 
-export default Manageinterview; 
+export default Alllanguage;

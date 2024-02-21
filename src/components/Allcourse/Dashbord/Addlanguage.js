@@ -20,63 +20,27 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-function AddInterview() {
+function Addlanguage() {
     const editor = useRef(null);
     const [content, setContent] = useState('');
-
-    // const config = useMemo(
-    //     {
-    //         readonly: false, // all options from https://xdsoft.net/jodit/docs/,
-    //         placeholder: placeholder || 'Start typings...'
-    //     },
-    //     [placeholder]
-    // );
     const [interviewData, setInterviewData] = useState({
+
         title: '',
-        content: '',
-        photourl: '',
-        date: '',
-        childObjects: [{
+        pythonSchema: [{
             id: 1,
-            title: '',
-            links: [{ text: '' }]
+            pychild: '',
+            pythonDetails: [{
+                title: '',
+                content: '',
+                photourl: '',
+                date: '',
+            }]
         }]
     });
-    const { register, reset } = useForm();
     const [success, setSuccess] = useState('');
 
 
-    const modules = {
-        toolbar: [
 
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-            ['link', 'image'],
-            ['clean'],
-            [{ 'bold': 'bold' }, { 'italic': 'italic' }, { 'underline': 'underline' }, { 'strike': 'strike' }],        // toggled buttons
-            ['blockquote', 'code-block'],
-            // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-            // [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-            [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-            [{ 'direction': 'rtl' }],                         // text direction
-            // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-            [{ 'font': [] }],
-            [{ 'align': [] }],
-            ['clean']
-        ]
-    };
-
-
-
-    const formats = [
-        'header',
-        'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent',
-        'link', 'image', 'code-block' // Include 'code-block' in formats
-    ];
 
     const handleChange = (value) => {
         setInterviewData(prevState => ({ ...prevState, content: value }));
@@ -85,10 +49,15 @@ function AddInterview() {
     const handleAddChild = () => {
         setInterviewData(prevState => ({
             ...prevState,
-            childObjects: [...prevState.childObjects, {
-                id: prevState.childObjects.length + 1,
-                title: '',
-                links: [{ text: '' }]
+            pythonDetails: [...prevState.pythonDetails, {
+                id: prevState.pythonDetails.length + 1,
+                pychild: '',
+                pythonDetails: [{
+                    title: '',
+                    content: '',
+                    photourl: '',
+                    date: '',
+                }]
             }]
         }));
     };
@@ -96,10 +65,15 @@ function AddInterview() {
     const handleAddLink = (index) => {
         setInterviewData(prevState => ({
             ...prevState,
-            childObjects: prevState.childObjects.map((childObj, i) =>
+            pythonDetails: prevState.pythonDetails.map((childObj, i) =>
                 i === index ? {
                     ...childObj,
-                    links: [...childObj.links, { text: '' }]
+                    pythonDetails: [...childObj.pythonDetails, {
+                        title: '',
+                        content: '',
+                        photourl: '',
+                        date: '',
+                    }]
                 } : childObj
             )
         }));
@@ -109,18 +83,21 @@ function AddInterview() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/interview/create', interviewData);
+            const response = await axios.post('http://localhost:5000/language/create', interviewData);
             console.log('Interview created:', response.data);
             // Reset form after successful submission if needed
             setInterviewData({
+
                 title: '',
-                content: '',
-                photourl: '',
-                date: '',
-                childObjects: [{
+                pythonSchema: [{
                     id: 1,
-                    title: '',
-                    links: [{ text: '' }]
+                    pychild: '',
+                    pythonDetails: [{
+                        title: '',
+                        content: '',
+                        photourl: '',
+                        date: '',
+                    }]
                 }]
             });
             setSuccess(true);
@@ -135,33 +112,35 @@ function AddInterview() {
 
     return (
         <div className='container'>
-            <h2 className='text-4xl font-bold text-center mt-6'>Add Interview</h2>
+            <h2 className='text-4xl font-bold text-center mt-6'>Add Language</h2>
             {success && (
                 <BootstrapDialog onClose={handleCloseDialog} aria-labelledby="customized-dialog-title" open={success}>
                     <DialogTitle sx={{ m: 0, p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }} id="customized-dialog-title">
                         <img className="w-[200px]" src={thumsup} alt="" />
-                        Interview Added Successfully...
+                        Language Added Successfully...
                     </DialogTitle>
                 </BootstrapDialog>
             )}
             <form onSubmit={handleSubmit}>
                 <div className='grid grid-cols-2 gap-3 mt-6 mb-6'>
                     <div>
-                        <label>Main Title:</label>
+                        <label>Language Title:</label>
                         <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="title" value={interviewData.title} onChange={(e) => setInterviewData(prevState => ({ ...prevState, title: e.target.value }))} required />
 
-                    </div> <div>
-                        <label>Photo URL:</label>
-                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="photourl" value={interviewData.photourl} onChange={(e) => setInterviewData(prevState => ({ ...prevState, photourl: e.target.value }))} />
                     </div>
 
+                    {/* <div>
+                        <label>Photo URL:</label>
+                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="photourl" value={interviewData.photourl} onChange={(e) => setInterviewData(prevState => ({ ...prevState, photourl: e.target.value }))} />
+                    </div> */}
 
-                    <div>
+
+                    {/* <div>
                         <label>Date:</label>
                         <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="date" name="date" value={interviewData.date} onChange={(e) => setInterviewData(prevState => ({ ...prevState, date: e.target.value }))} />
-                    </div> </div>
-                <label>Content:</label>
-                <ReactQuill theme="snow" formats={formats} modules={modules} value={interviewData.content} onChange={handleChange} className='bg-white h-[400px]' />
+                    </div> */}
+                </div>
+                {/* <label>Content:</label>
                 <JoditEditor
                     ref={editor}
                     value={content}
@@ -170,20 +149,42 @@ function AddInterview() {
                     onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                     // value={interviewData.content}
                     onChange={handleChange}
-                />
+                /> */}
 
-                {interviewData.childObjects.map((child, index) => (
+                {interviewData.pythonSchema.map((child, index) => (
                     <div> <div className='mt-20 grid grid-cols-3 gap-3' key={index}>
                         <div>
                             <label>Child {index + 1} Title:</label>
                             <input className="text-black rounded p-2 mt-2  mb-2 w-full bg-white shadow border" type="text" name={`title-${index}`} value={child.title} onChange={(e) => setInterviewData(prevState => ({ ...prevState, childObjects: prevState.childObjects.map((childObj, i) => i === index ? { ...childObj, title: e.target.value } : childObj) }))} />
 
                         </div>
-                        {child.links.map((link, childIndex) => (
+                        {child.pythonDetails.map((link, childIndex) => (
                             <div key={childIndex} className=''>
                                 <div>
                                     <label>Question</label>
                                     <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="text" value={link.text} onChange={(e) => setInterviewData(prevState => ({ ...prevState, childObjects: prevState.childObjects.map((childObj, i) => i === index ? { ...childObj, links: childObj.links.map((linkObj, j) => j === childIndex ? { ...linkObj, text: e.target.value } : linkObj) } : childObj) }))} />
+                                    <div>
+                                        <label>Photo URL:</label>
+                                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="photourl" value={interviewData.photourl} onChange={(e) => setInterviewData(prevState => ({ ...prevState, photourl: e.target.value }))} />
+                                    </div>
+
+
+                                    <div>
+                                        <label>Date:</label>
+                                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="date" name="date" value={interviewData.date} onChange={(e) => setInterviewData(prevState => ({ ...prevState, date: e.target.value }))} />
+                                    </div>
+
+                                    <label>Content:</label>
+                                    <JoditEditor
+                                        ref={editor}
+                                        value={content}
+                                        // config={config}
+                                        tabIndex={1} // tabIndex of textarea
+                                        onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                                        // value={interviewData.content}
+                                        onChange={handleChange}
+                                    />
+
                                 </div>
                             </div>
                         ))}
@@ -198,4 +199,4 @@ function AddInterview() {
     );
 }
 
-export default AddInterview;
+export default Addlanguage;

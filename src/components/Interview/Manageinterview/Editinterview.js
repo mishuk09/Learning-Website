@@ -32,13 +32,13 @@ const Editinterview = () => {
             <div className='grid grid-cols-4 gap-2 px-2 mt-6'>
 
                 {
-                    interview.slice(0, 10).map((blog) => (
+                    interview.map((blog) => (
 
                         // eslint-disable-next-line jsx-a11y/anchor-is-valid
                         <a onClick={() => navigateToServiceDetail(blog._id)} href="#" className="flex p-2 flex-col bg-white shadow items-center  rounded pb-8 lg:mb-0 lg:flex-row lg:[border-bottom:1px_solid_rgb(236,_236,_236)]">
                             <img src={blog.photourl} alt="" className="inline-block rounded h-60 w-full object-cover md:h-36 lg:h-10 lg:w-10" />
-                            <div className="flex flex-col items-start pt-1 lg:px-8"> 
-                                <p className="mb-1 text-sm font-bold sm:text-base md:text-xl">{blog.title}</p> 
+                            <div className="flex flex-col items-start pt-1 lg:px-8">
+                                <p className="mb-1 text-sm font-bold sm:text-base md:text-xl">{blog.title}</p>
                             </div>
                         </a>))}
             </div>
