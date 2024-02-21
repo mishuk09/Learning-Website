@@ -1,15 +1,11 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { styled } from '@mui/material/styles';
+import JoditEditor from 'jodit-react';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import thumsup from '../../Blog/img/thumsup.png';
-import Prism from 'prismjs'; // Import Prism for syntax highlighting
-import 'prismjs/themes/prism-okaidia.css'; // Import Prism theme
-import JoditEditor from 'jodit-react';
+import { styled } from '@mui/material/styles';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -20,11 +16,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-function Addlanguage() {
+function AddLanguage() {
     const editor = useRef(null);
     const [content, setContent] = useState('');
-    const [interviewData, setInterviewData] = useState({
-
+    const [languageData, setLanguageData] = useState({
         title: '',
         pythonSchema: [{
             id: 1,
@@ -39,18 +34,15 @@ function Addlanguage() {
     });
     const [success, setSuccess] = useState('');
 
-
-
-
     const handleChange = (value) => {
-        setInterviewData(prevState => ({ ...prevState, content: value }));
+        setLanguageData(prevState => ({ ...prevState, content: value }));
     };
 
     const handleAddChild = () => {
-        setInterviewData(prevState => ({
+        setLanguageData(prevState => ({
             ...prevState,
-            pythonDetails: [...prevState.pythonDetails, {
-                id: prevState.pythonDetails.length + 1,
+            pythonSchema: [...prevState.pythonSchema, {
+                id: prevState.pythonSchema.length + 1,
                 pychild: '',
                 pythonDetails: [{
                     title: '',
@@ -62,10 +54,10 @@ function Addlanguage() {
         }));
     };
 
-    const handleAddLink = (index) => {
-        setInterviewData(prevState => ({
+    const handleAddDetail = (index) => {
+        setLanguageData(prevState => ({
             ...prevState,
-            pythonDetails: prevState.pythonDetails.map((childObj, i) =>
+            pythonSchema: prevState.pythonSchema.map((childObj, i) =>
                 i === index ? {
                     ...childObj,
                     pythonDetails: [...childObj.pythonDetails, {
@@ -79,15 +71,12 @@ function Addlanguage() {
         }));
     };
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/language/create', interviewData);
-            console.log('Interview created:', response.data);
-            // Reset form after successful submission if needed
-            setInterviewData({
-
+            const response = await axios.post('http://localhost:5000/language/create', languageData);
+            console.log('Language created:', response.data);
+            setLanguageData({
                 title: '',
                 pythonSchema: [{
                     id: 1,
@@ -102,7 +91,7 @@ function Addlanguage() {
             });
             setSuccess(true);
         } catch (error) {
-            console.error('Error creating interview:', error);
+            console.error('Error creating language:', error);
         }
     };
 
@@ -125,71 +114,47 @@ function Addlanguage() {
                 <div className='grid grid-cols-2 gap-3 mt-6 mb-6'>
                     <div>
                         <label>Language Title:</label>
-                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="title" value={interviewData.title} onChange={(e) => setInterviewData(prevState => ({ ...prevState, title: e.target.value }))} required />
-
+                        <input className="text-black rounded p-2 mt-2 w-full bg-white shadow border" type="text" name="title" value={languageData.title} onChange={(e) => setLanguageData(prevState => ({ ...prevState, title: e.target.value }))} required />
                     </div>
-
-                    {/* <div>
-                        <label>Photo URL:</label>
-                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="photourl" value={interviewData.photourl} onChange={(e) => setInterviewData(prevState => ({ ...prevState, photourl: e.target.value }))} />
-                    </div> */}
-
-
-                    {/* <div>
-                        <label>Date:</label>
-                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="date" name="date" value={interviewData.date} onChange={(e) => setInterviewData(prevState => ({ ...prevState, date: e.target.value }))} />
-                    </div> */}
                 </div>
-                {/* <label>Content:</label>
-                <JoditEditor
-                    ref={editor}
-                    value={content}
-                    // config={config}
-                    tabIndex={1} // tabIndex of textarea
-                    onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                    // value={interviewData.content}
-                    onChange={handleChange}
-                /> */}
 
-                {interviewData.pythonSchema.map((child, index) => (
-                    <div> <div className='mt-20 grid grid-cols-3 gap-3' key={index}>
-                        <div>
-                            <label>Child {index + 1} Title:</label>
-                            <input className="text-black rounded p-2 mt-2  mb-2 w-full bg-white shadow border" type="text" name={`title-${index}`} value={child.title} onChange={(e) => setInterviewData(prevState => ({ ...prevState, childObjects: prevState.childObjects.map((childObj, i) => i === index ? { ...childObj, title: e.target.value } : childObj) }))} />
-
+                {languageData.pythonSchema.map((child, index) => (
+                    <div key={index}>
+                        <div className='mt-20 grid grid-cols-3 gap-3'>
+                            <div>
+                                <label>Child {index + 1} Title:</label>
+                                <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={child.pychild} onChange={(e) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pychild: e.target.value } : childObj) }))} />
+                            </div>
                         </div>
-                        {child.pythonDetails.map((link, childIndex) => (
-                            <div key={childIndex} className=''>
-                                <div>
-                                    <label>Question</label>
-                                    <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="text" value={link.text} onChange={(e) => setInterviewData(prevState => ({ ...prevState, childObjects: prevState.childObjects.map((childObj, i) => i === index ? { ...childObj, links: childObj.links.map((linkObj, j) => j === childIndex ? { ...linkObj, text: e.target.value } : linkObj) } : childObj) }))} />
+                        {child.pythonDetails.map((detail, detailIndex) => (
+                            <div key={detailIndex}>
+                                <div className='mt-20 grid grid-cols-3 gap-3'>
+                                    <div>
+                                        <label>Detail {detailIndex + 1} Title:</label>
+                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={detail.title} onChange={(e) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, title: e.target.value } : detailObj) } : childObj) }))} />
+                                    </div>
+                                    <div>
+                                        <label>Content:</label>
+                                        <JoditEditor
+                                            ref={editor}
+                                            value={detail.content}
+                                            tabIndex={1}
+                                            onBlur={(newContent) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, content: newContent } : detailObj) } : childObj) }))}
+                                            onChange={(newContent) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, content: newContent } : detailObj) } : childObj) }))}
+                                        />
+                                    </div>
                                     <div>
                                         <label>Photo URL:</label>
-                                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="photourl" value={interviewData.photourl} onChange={(e) => setInterviewData(prevState => ({ ...prevState, photourl: e.target.value }))} />
+                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={detail.photourl} onChange={(e) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, photourl: e.target.value } : detailObj) } : childObj) }))} />
                                     </div>
-
-
                                     <div>
                                         <label>Date:</label>
-                                        <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="date" name="date" value={interviewData.date} onChange={(e) => setInterviewData(prevState => ({ ...prevState, date: e.target.value }))} />
+                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="date" value={detail.date} onChange={(e) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, date: e.target.value } : detailObj) } : childObj) }))} />
                                     </div>
-
-                                    <label>Content:</label>
-                                    <JoditEditor
-                                        ref={editor}
-                                        value={content}
-                                        // config={config}
-                                        tabIndex={1} // tabIndex of textarea
-                                        onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                                        // value={interviewData.content}
-                                        onChange={handleChange}
-                                    />
-
                                 </div>
                             </div>
                         ))}
-                    </div>
-                        <button type="button" className='border font-bold w-100 p-2 mt-3 rounded bg-green-500 text-white' onClick={() => handleAddLink(index)}>Add Question</button>
+                        <button type="button" className='border font-bold w-100 p-2 mt-3 rounded bg-green-500 text-white' onClick={() => handleAddDetail(index)}>Add Detail</button>
                     </div>
                 ))}
                 <button type="button" className='border w-100 font-bold p-2 mt-3 rounded bg-green-500 text-white' onClick={handleAddChild}>Add Child</button>
@@ -199,4 +164,4 @@ function Addlanguage() {
     );
 }
 
-export default Addlanguage;
+export default AddLanguage;
