@@ -50,7 +50,7 @@ const Picktrack = () => {
         },
 
     ]
-    
+
 
     return (
         <div className='  bg-green-100  py-4 px-2 rounded'>

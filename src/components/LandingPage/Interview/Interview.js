@@ -39,7 +39,7 @@ const Interview = () => {
 
 
     return (
-        <div className='container mt-16 '>
+        <div   className='container bg-white py-6 rounded mt-16 '>
             <Headline parent='Interview' child='Guid' short='Company' showSeemore={true} to='/interview'></Headline>
             <div className='px-5 mb-10 relative  '>
                 <div className='flex gap-3 mt-4 overflow-hidden  ' ref={interviewRef}>
