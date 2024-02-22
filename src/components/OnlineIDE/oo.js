@@ -1,180 +1,85 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import thumsup from '../../Blog/img/thumsup.png';
-import Prism from 'prismjs'; // Import Prism for syntax highlighting
-import 'prismjs/themes/prism-okaidia.css'; // Import Prism theme
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import ArticleComponent from './TutorialsDetailsComponent/ArticleComponent/ArticleComponent';
+import TutorialHeadlineFormat from './TutorialsDetailsComponent/TutorialHeadlineFormat/TutorialHeadlineFormat';
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
-    padding: theme.spacing(2),
-  },
-  '& .MuiDialogActions-root': {
-    padding: theme.spacing(1),
-  },
-}));
+const TutorialDetails = () => {
+    const { name } = useParams();
+    const [interviews, setInterviews] = useState([]);
+    const location = useLocation();
+    const { state } = location;
+    const img = state ? state.img : null;
+    const [selectedPyDetails, setSelectedPyDetails] = useState(null);
 
-function AddInterview() {
-  const [interviewData, setInterviewData] = useState({
-    title: '',
-    content: '',
-    photourl: '',
-    date: '',
-    childObjects: [{
-      id: 1,
-      title: '',
-      links: [{ text: '' }]
-    }]
-  });
-  const { register, reset } = useForm();
-  const [success, setSuccess] = useState('');
+    useEffect(() => {
+        const fetchInterviews = async () => {
+            try {
+                const url = 'http://localhost:5000/language/read';
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch interviews');
+                }
+                const data = await response.json();
+                const filteredInterviews = data.filter(interview => interview.title.toLowerCase() === name.toLowerCase());
+                setInterviews(filteredInterviews);
+            } catch (error) {
+                console.error('Error fetching interviews:', error);
+            }
+        };
 
+        fetchInterviews();
+    }, [name]);
 
-  const modules = {
-    toolbar: [
+    const handlePyDetailsClick = (pyDetails) => {
+        setSelectedPyDetails(pyDetails);
+    };
 
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-      ['link', 'image'],
-      ['clean'],
-      [{ 'bold': 'bold' }, { 'italic': 'italic' }, { 'underline': 'underline' }, { 'strike': 'strike' }],        // toggled buttons
-      ['blockquote', 'code-block'],
-      // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-      // [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-      [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-      [{ 'direction': 'rtl' }],                         // text direction
-      // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-      [{ 'font': [] }],
-      [{ 'align': [] }],
-      ['clean']
-    ]
-  };
+    return (
+        <div className='container interview-div flex mt-10 gap-3 rounded'>
+            <div className='w-[20%] bg-slate-900 rounded h-full'>
+                <TutorialHeadlineFormat logo={img} description={`${name} Tutorial`} />
 
-
-
-  const formats = [
-    'header',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image', 'code-block' // Include 'code-block' in formats
-  ];
-
-  const handleChange = (value) => {
-    setInterviewData(prevState => ({ ...prevState, content: value }));
-  };
-
-  const handleAddChild = () => {
-    setInterviewData(prevState => ({
-      ...prevState,
-      childObjects: [...prevState.childObjects, {
-        id: prevState.childObjects.length + 1,
-        title: '',
-        links: [{ text: '' }]
-      }]
-    }));
-  };
-
-  const handleAddLink = (index) => {
-    setInterviewData(prevState => ({
-      ...prevState,
-      childObjects: prevState.childObjects.map((childObj, i) =>
-        i === index ? {
-          ...childObj,
-          links: [...childObj.links, { text: '' }]
-        } : childObj
-      )
-    }));
-  };
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/interview/create', interviewData);
-      console.log('Interview created:', response.data);
-      // Reset form after successful submission if needed
-      setInterviewData({
-        title: '',
-        content: '',
-        photourl: '',
-        date: '',
-        childObjects: [{
-          id: 1,
-          title: '',
-          links: [{ text: '' }]
-        }]
-      });
-      setSuccess(true);
-    } catch (error) {
-      console.error('Error creating interview:', error);
-    }
-  };
-
-  const handleCloseDialog = () => {
-    setSuccess(false);
-  };
-
-  return (
-    <div className='container'>
-      <h2 className='text-4xl font-bold text-center mt-6'>Add Interview</h2>
-      {success && (
-        <BootstrapDialog onClose={handleCloseDialog} aria-labelledby="customized-dialog-title" open={success}>
-          <DialogTitle sx={{ m: 0, p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }} id="customized-dialog-title">
-            <img className="w-[200px]" src={thumsup} alt="" />
-            Interview Added Successfully...
-          </DialogTitle>
-        </BootstrapDialog>
-      )}
-      <form onSubmit={handleSubmit}>
-        <div className='grid grid-cols-2 gap-3 mt-6 mb-6'>
-          <div>
-            <label>Main Title:</label>
-            <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="title" value={interviewData.title} onChange={(e) => setInterviewData(prevState => ({ ...prevState, title: e.target.value }))} required />
-
-          </div> <div>
-            <label>Photo URL:</label>
-            <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="photourl" value={interviewData.photourl} onChange={(e) => setInterviewData(prevState => ({ ...prevState, photourl: e.target.value }))} />
-          </div>
-
-
-          <div>
-            <label>Date:</label>
-            <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="date" name="date" value={interviewData.date} onChange={(e) => setInterviewData(prevState => ({ ...prevState, date: e.target.value }))} />
-          </div> </div>
-        <label>Content:</label>
-        <ReactQuill theme="snow" formats={formats} modules={modules} value={interviewData.content} onChange={handleChange} className='bg-white h-[400px]' />
-        {interviewData.childObjects.map((child, index) => (
-          <div> <div className='mt-20 grid grid-cols-3 gap-3' key={index}>
-            <div>
-              <label>Child {index + 1} Title:</label>
-              <input className="text-black rounded p-2 mt-2  mb-2 w-full bg-white shadow border" type="text" name={`title-${index}`} value={child.title} onChange={(e) => setInterviewData(prevState => ({ ...prevState, childObjects: prevState.childObjects.map((childObj, i) => i === index ? { ...childObj, title: e.target.value } : childObj) }))} />
-
-            </div>
-            {child.links.map((link, childIndex) => (
-              <div key={childIndex} className=' '>
-                <div>
-                  <label>Question</label>
-                  <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="text" name="text" value={link.text} onChange={(e) => setInterviewData(prevState => ({ ...prevState, childObjects: prevState.childObjects.map((childObj, i) => i === index ? { ...childObj, links: childObj.links.map((linkObj, j) => j === childIndex ? { ...linkObj, text: e.target.value } : linkObj) } : childObj) }))} />
+                <div className='mt-2'>
+                    {interviews.map(interview => (
+                        interview.details.map((data, index) => (
+                            <Accordion key={index}>
+                                <AccordionSummary
+                                    style={{ backgroundColor: '#1E293B', color: '#fff' }}
+                                    expandIcon={<ExpandMoreIcon style={{ color: "#fff" }} />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography className='flex items-center justify-center' onClick={() => handlePyDetailsClick(data.pydetails)}>
+                                        {data.pychild}
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails style={{ backgroundColor: '#1E293A', color: '#fff' }}>
+                                    <Typography>
+                                        <div className='flex flex-col text-slate-200 bg-slate-800 w-full'>
+                                            {data.pydetails.map((link, index) => (
+                                                <Link to={link.to} key={index} className='border-b hover:text-green-500 font-nunito mb-3 border-dotted py-1 hover:bg-slate-800 duration-300'>
+                                                    {link.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        ))
+                    ))}
                 </div>
-              </div>
-            ))}
-          </div>
-            <button type="button" className='border font-bold w-100 p-2 mt-3 rounded bg-green-500 text-white' onClick={() => handleAddLink(index)}>Add Question</button>
-          </div>
-        ))}
-        <button type="button" className='border w-100 font-bold p-2 mt-3 rounded bg-green-500 text-white' onClick={handleAddChild}>Add Child</button>
-        <button type="submit" className="text-white rounded p-2 mt-3 font-bold border w-full bg-blue-500 mb-20" >Submit</button>
-      </form>
-    </div>
-  );
-}
+            </div>
 
-export default AddInterview;
+            <div className='w-[60%] h-full p-2 bg-slate-50 border-1 rounded'>
+                {selectedPyDetails && (
+                    <div className='text-justify pt-4 font-nunito' dangerouslySetInnerHTML={{ __html: selectedPyDetails.content }} />
+                )}
+            </div>
+            <ArticleComponent />
+        </div>
+    );
+};
+
+export default TutorialDetails;

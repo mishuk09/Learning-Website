@@ -21,7 +21,7 @@ import jobs from './img/job.png';
 import Switch from '@mui/material/Switch';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 import app from '../../Firebase/Firebase.init';
@@ -165,6 +165,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
         return () => clearInterval(intervalId);
     }, []);
+    const navigate = useNavigate();
+    const handleRedirect = (name, img) => {
+        navigate(`/language/${name}`, { state: { img } });
+    }
 
     return (
         <div>
@@ -250,15 +254,16 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
             <div className='  w-[100%] flex nav-item   overflow-x-hidden'>
                 {navItem.map((navitem) => (
-                    <Link
+                    <div
                         key={navitem.id}
-                        href={navitem.href}
-                        className=' px-2 py-2 text-slate-200 whitespace-nowrap justify-center items-center'
+                        // to={navitem.href}
+                        onClick={() => handleRedirect(navitem.name, navitem.logo)}
+                        className=' px-2 py-2 cursor-pointer text-slate-200 whitespace-nowrap justify-center items-center'
                     >
 
                         <span className='flex font-verdina flex-row justify-center items-center mx-2'>  <img className='w-4 h-4 me-1' src={navitem.logo} alt="" /> {navitem.name}</span>
 
-                    </Link>
+                    </div>
                 ))}
             </div>
         </div>

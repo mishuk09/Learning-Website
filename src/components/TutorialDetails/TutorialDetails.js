@@ -1,120 +1,97 @@
-import React from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import ArticleComponent from './TutorialsDetailsComponent/ArticleComponent/ArticleComponent';
+import TutorialHeadlineFormat from './TutorialsDetailsComponent/TutorialHeadlineFormat/TutorialHeadlineFormat';
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { RoundedCorner } from '@mui/icons-material';
-import html from './img/html.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faBookSkull, faCube } from '@fortawesome/free-solid-svg-icons';
-import library from './img/library.png';
-import article from './img/article.svg';
-import { Link } from 'react-router-dom';
-
 const TutorialDetails = () => {
-    
+    const { name } = useParams();
+    const [interviews, setInterviews] = useState([]);
+    const location = useLocation();
+    const { state } = location;
+    const img = state ? state.img : null;
+    const [selectedPyDetails, setSelectedPyDetails] = useState(null);
+
+    useEffect(() => {
+
+        const fetchInterviews = async () => {
+            try {
+                const url = 'http://localhost:5000/language/read';
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch interviews');
+                }
+                const data = await response.json();
+                const filteredInterviews = data.filter(interview => interview.title.toLowerCase() === name.toLowerCase());
+                setInterviews(filteredInterviews);
+            } catch (error) {
+                console.error('Error fetching interviews:', error);
+            }
+        };
+
+        fetchInterviews();
+    }, [name]);
+    const handlePyDetailsClick = (pyDetails) => {
+        setSelectedPyDetails(pyDetails);
+    };
 
     return (
-        <div className='container flex mt-10 gap-3 rounded'>
-            <div className='w-[20%] bg-slate-900 rounded h-full     '>
-                <div className='py-6 w-full bg-slate-900 h-full rounded-t  text-center flex flex-col justify-center items-center'>
-                    <img className='w-[100px]' src={html} alt="" />
-                    <p className='text-slate-100 font-nunito font-bold text-2xl'>HTML</p>
-                    <p className='text-slate-100  bg-slate-800 w-full h-10 mt-4 text-center items-center justify-center flex font-nunito'>Programming Language</p>
-                </div>
+        <div className='container interview-div flex mt-10 gap-3 rounded'>
+            <div className='w-[20%] bg-slate-900 rounded h-full'>
+                <TutorialHeadlineFormat logo={img} description={`${name} Tutorial`} />
 
                 <div className='mt-2'>
-                    <Accordion>
-                        <AccordionSummary
-
-                            style={{ backgroundColor: '#1E293B', color: '#fff' }}
-                            expandIcon={<ExpandMoreIcon style={{ color: "#fff" }} />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography className='flex  '> <img className='w-6 me-2' src={library} alt="" />Introduction</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails
-                            style={{ backgroundColor: '#1E293A', color: '#fff', }}>
-                            <Typography>
-                                <div className='flex flex-col bg-slate-700 w-full p-1'>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-
-                                </div>
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion>
-                        <AccordionSummary
-
-                            style={{ backgroundColor: '#1E293B', color: '#fff' }}
-                            expandIcon={<ExpandMoreIcon style={{ color: "#fff" }} />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography className='flex  '> <img className='w-6 me-2' src={library} alt="" />Introduction</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails
-                            style={{ backgroundColor: '#1E293A', color: '#fff', }}>
-                            <Typography>
-                                <div className='flex flex-col bg-slate-700 w-full p-1'>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-
-                                </div>
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion>
-                        <AccordionSummary
-
-                            style={{ backgroundColor: '#1E293B', color: '#fff' }}
-                            expandIcon={<ExpandMoreIcon style={{ color: "#fff" }} />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography className='flex  '> <img className='w-6 me-2' src={library} alt="" />Introduction</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails
-                            style={{ backgroundColor: '#1E293A', color: '#fff', }}>
-                            <Typography>
-                                <div className='flex flex-col bg-slate-700 w-full p-1'>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-                                    <Link href="#" className='border-b border-dotted p-1 hover:bg-green-500 duration-300'>  <FontAwesomeIcon className='me-2' icon={faArrowRight} />What is HTML?</Link>
-
-                                </div>
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-
-
-
+                    {interviews.map(interview => (
+                        interview.details.map((data, index) => (
+                            <Accordion key={index}>
+                                <AccordionSummary
+                                    style={{ backgroundColor: '#1E293B', color: '#fff' }}
+                                    expandIcon={<ExpandMoreIcon style={{ color: "#fff" }} />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography className='flex items-center justify-center' onClick={() => handlePyDetailsClick(data.pydetails)}>
+                                        {/* <img className='w-6 h-6 me-2' src={library} alt="" /> */}
+                                        {data.pychild}
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails style={{ backgroundColor: '#1E293A', color: '#fff' }}>
+                                    <Typography>
+                                        <div className='flex flex-col text-slate-200 bg-slate-800 w-full'>
+                                            {data.pydetails.map((link, index) => (
+                                                <Link to={link.to} key={index} className='border-b hover:text-green-500 font-nunito mb-3 border-dotted py-1 hover:bg-slate-800 duration-300'>
+                                                    {link.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        ))
+                    ))}
                 </div>
             </div>
-            <div className='w-[60%]  h-full   bg-slate-100 border-1 rounded'>Detils</div>
-            <div className='w-[20%]  h-full    border-1 rounded'>
-                <div className='py-6 w-full bg-slate-900 text-slate-200  h-full rounded-t  text-center flex flex-col justify-center items-center'>
-                    <img className='w-[100px]' src={article} alt="" />
-                    <p className=' font-nunito font-bold text-2xl'>Articles</p>
-                    <p className='text-slate-100  bg-slate-800 w-full h-10 mt-4 text-center items-center justify-center flex font-nunito'>Technology & Coding</p>
-                </div>
-                <div className='w-full border-b h-[100px]'> </div>
-                <div className='w-full border-b h-[100px]'> </div>
-                <div className='w-full border-b h-[100px]'> </div>
-                <div className='w-full border-b h-[100px]'> </div>
+
+            <div className='w-[60%] h-full p-2 bg-slate-50 border-1 rounded'>
+                {interviews.map(interview => (
+                    interview.details.map((data, index) => (
+                        data.pydetails.map((unite) => (
+                            // Check if selectedPyDetails is truthy before rendering the content
+                            <> {selectedPyDetails &&
+                                <div key={interview._id}>
+                                    <div className='text-justify pt-4 font-nunito' dangerouslySetInnerHTML={{ __html: unite.content }} />
+                                </div>
+
+                            }
+                            </>
+                        ))
+                    ))
+                ))}
             </div>
 
+            <ArticleComponent />
         </div>
     );
 };
 
 export default TutorialDetails;
-

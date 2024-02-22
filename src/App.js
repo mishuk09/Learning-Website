@@ -50,6 +50,8 @@ import Addinterview from './components/Interview/AddInterview/Addinterview';
 import Manageinterview from './components/Interview/Manageinterview/Manageinterview';
 import Editinter from './components/Interview/Manageinterview/Editinter';
 import Alllanguage from './components/Allcourse/Dashbord/Alllanguage';
+import TutorialDetilsFormat from './components/TutorialDetails/TutorialsDetailsComponent/TutorialDetilsFormat/TutorialDetilsFormat';
+import TutorialDetails from './components/TutorialDetails/TutorialDetails';
 // import SignupForm from './components/LandingPage/Navbar/SignupForm';
 
 function App() {
@@ -122,6 +124,10 @@ function App() {
           <Route path='/managelanguage' element={<RequireAuth>
             <Alllanguage />
           </RequireAuth>}></Route>
+
+          <Route path='/language/:name' element={<TutorialDetails />}>
+
+          </Route>
 
 
 

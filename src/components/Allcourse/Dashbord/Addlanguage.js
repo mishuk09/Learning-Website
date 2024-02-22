@@ -21,10 +21,10 @@ function AddLanguage() {
     const [content, setContent] = useState('');
     const [languageData, setLanguageData] = useState({
         title: '',
-        pythonSchema: [{
+        details: [{
             id: 1,
             pychild: '',
-            pythonDetails: [{
+            pydetails: [{
                 title: '',
                 content: '',
                 photourl: '',
@@ -41,10 +41,10 @@ function AddLanguage() {
     const handleAddChild = () => {
         setLanguageData(prevState => ({
             ...prevState,
-            pythonSchema: [...prevState.pythonSchema, {
-                id: prevState.pythonSchema.length + 1,
+            details: [...prevState.details, {
+                id: prevState.details.length + 1,
                 pychild: '',
-                pythonDetails: [{
+                pydetails: [{
                     title: '',
                     content: '',
                     photourl: '',
@@ -57,10 +57,10 @@ function AddLanguage() {
     const handleAddDetail = (index) => {
         setLanguageData(prevState => ({
             ...prevState,
-            pythonSchema: prevState.pythonSchema.map((childObj, i) =>
+            details: prevState.details.map((childObj, i) =>
                 i === index ? {
                     ...childObj,
-                    pythonDetails: [...childObj.pythonDetails, {
+                    pydetails: [...childObj.pydetails, {
                         title: '',
                         content: '',
                         photourl: '',
@@ -78,10 +78,10 @@ function AddLanguage() {
             console.log('Language created:', response.data);
             setLanguageData({
                 title: '',
-                pythonSchema: [{
+                details: [{
                     id: 1,
                     pychild: '',
-                    pythonDetails: [{
+                    pydetails: [{
                         title: '',
                         content: '',
                         photourl: '',
@@ -118,20 +118,20 @@ function AddLanguage() {
                     </div>
                 </div>
 
-                {languageData.pythonSchema.map((child, index) => (
+                {languageData.details.map((child, index) => (
                     <div key={index}>
                         <div className='mt-20 grid grid-cols-3 gap-3'>
                             <div>
                                 <label>Child {index + 1} Title:</label>
-                                <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={child.pychild} onChange={(e) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pychild: e.target.value } : childObj) }))} />
+                                <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={child.pychild} onChange={(e) => setLanguageData(prevState => ({ ...prevState, details: prevState.details.map((childObj, i) => i === index ? { ...childObj, pychild: e.target.value } : childObj) }))} />
                             </div>
                         </div>
-                        {child.pythonDetails.map((detail, detailIndex) => (
+                        {child.pydetails.map((detail, detailIndex) => (
                             <div key={detailIndex}>
                                 <div className='mt-20 grid grid-cols-3 gap-3'>
                                     <div>
                                         <label>Detail {detailIndex + 1} Title:</label>
-                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={detail.title} onChange={(e) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, title: e.target.value } : detailObj) } : childObj) }))} />
+                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={detail.title} onChange={(e) => setLanguageData(prevState => ({ ...prevState, details: prevState.details.map((childObj, i) => i === index ? { ...childObj, pydetails: childObj.pydetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, title: e.target.value } : detailObj) } : childObj) }))} />
                                     </div>
                                     <div>
                                         <label>Content:</label>
@@ -139,17 +139,17 @@ function AddLanguage() {
                                             ref={editor}
                                             value={detail.content}
                                             tabIndex={1}
-                                            onBlur={(newContent) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, content: newContent } : detailObj) } : childObj) }))}
-                                            onChange={(newContent) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, content: newContent } : detailObj) } : childObj) }))}
+                                            onBlur={(newContent) => setLanguageData(prevState => ({ ...prevState, details: prevState.details.map((childObj, i) => i === index ? { ...childObj, pydetails: childObj.pydetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, content: newContent } : detailObj) } : childObj) }))}
+                                            onChange={(newContent) => setLanguageData(prevState => ({ ...prevState, details: prevState.details.map((childObj, i) => i === index ? { ...childObj, pydetails: childObj.pydetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, content: newContent } : detailObj) } : childObj) }))}
                                         />
                                     </div>
                                     <div>
                                         <label>Photo URL:</label>
-                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={detail.photourl} onChange={(e) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, photourl: e.target.value } : detailObj) } : childObj) }))} />
+                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="text" value={detail.photourl} onChange={(e) => setLanguageData(prevState => ({ ...prevState, details: prevState.details.map((childObj, i) => i === index ? { ...childObj, pydetails: childObj.pydetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, photourl: e.target.value } : detailObj) } : childObj) }))} />
                                     </div>
                                     <div>
                                         <label>Date:</label>
-                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="date" value={detail.date} onChange={(e) => setLanguageData(prevState => ({ ...prevState, pythonSchema: prevState.pythonSchema.map((childObj, i) => i === index ? { ...childObj, pythonDetails: childObj.pythonDetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, date: e.target.value } : detailObj) } : childObj) }))} />
+                                        <input className="text-black rounded p-2 mt-2 mb-2 w-full bg-white shadow border" type="date" value={detail.date} onChange={(e) => setLanguageData(prevState => ({ ...prevState, details: prevState.details.map((childObj, i) => i === index ? { ...childObj, pydetails: childObj.pydetails.map((detailObj, j) => j === detailIndex ? { ...detailObj, date: e.target.value } : detailObj) } : childObj) }))} />
                                     </div>
                                 </div>
                             </div>

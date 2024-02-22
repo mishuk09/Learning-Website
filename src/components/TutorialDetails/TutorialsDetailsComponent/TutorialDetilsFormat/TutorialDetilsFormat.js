@@ -8,12 +8,16 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 const TutorialDetilsFormat = (props) => {
+    const { name } = useParams();
     const { title, icon, links } = props;
     return (
+        // <div>
+        //     {name}
+        // </div>
         <Accordion>
             <AccordionSummary
                 style={{ backgroundColor: '#1E293B', color: '#fff' }}
@@ -31,7 +35,6 @@ const TutorialDetilsFormat = (props) => {
                     <div className='flex flex-col text-slate-200 bg-slate-800 w-full  '>
                         {links.map((link, index) => (
                             <Link to={link.to} key={index} className='border-b hover:text-green-500  font-nunito mb-3 border-dotted  py-1 hover:bg-slate-800 duration-300'>
-
                                 {link.text}
                             </Link>
                         ))}
