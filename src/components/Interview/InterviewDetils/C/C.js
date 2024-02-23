@@ -33,7 +33,7 @@ const C = ({ url, title }) => {
                 const url = 'http://localhost:5000/interview/get';
                 const response = await fetch(url);
                 const data = await response.json();
-                const filteredInterviews = data.filter(interview => interview.title === name);
+                const filteredInterviews = data.filter(interview => interview.title.toLowerCase() === name.toLowerCase());
                 setInterviews(filteredInterviews);
             } catch (error) {
                 console.error('Error fetching interviews:', error);

@@ -145,7 +145,7 @@ const OnlineIDE = () => {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                   
+
                     <div className='text-slate-700 w-[36%] font-bold  overflow-y-auto  rounded font-nunito absolute bg-white top-[250px]  h-auto'>
 
                         {showSearchList &&
@@ -166,10 +166,10 @@ const OnlineIDE = () => {
                         <div className='  '>  <FontAwesomeIcon icon={faBriefcase} className='     text-white' size='1xl' /></div>
                     </div>
                     <div className='grid grid-cols-2 text-start mt-3 gap-2'>
-                        <Link to='/allcourse' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faCode} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Code</Link>
-                        <Link to='/practice' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faGear} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Run</Link>
-                        <Link to='/interview' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faBug} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Find Bug</Link>
-                        <Link to='/onlineide' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faThumbsUp} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' />Get Output</Link>
+                        <Link to='' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faCode} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Code</Link>
+                        <Link to='' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faGear} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Run</Link>
+                        <Link to='' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faBug} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' /> Find Bug</Link>
+                        <Link to='' className='w-[200px] flex items-center text-center px-2 font-bold border-2 rounded py-2  border-purple-400 hover:border-3 hover:border-white duration-100 hover:rounded-full text-white h-auto'> <FontAwesomeIcon icon={faThumbsUp} className=' me-2 bg-white p-2 rounded-full  coding-icon34 text-blue-500' size='1xl' />Get Output</Link>
                     </div>
 
 
@@ -211,13 +211,13 @@ const OnlineIDE = () => {
                         }
                     </div>
                     <button
-                        className='absolute top-1/2 left-2 transform -translate-y-1/2 bg-green-500 text-black p-2 rounded-full'
+                        className='absolute top-1/2 left-2 transform -translate-y-1/2 bg-slate-500 text-white p-2 rounded-full'
                         onClick={() => scroll(-500)}
                     >
                         {'<'}
                     </button>
                     <button
-                        className='absolute top-1/2 right-2 transform -translate-y-1/2 bg-green-500 text-black p-2 rounded-full'
+                        className='absolute top-1/2 right-2 transform -translate-y-1/2 bg-slate-500 text-white p-2 rounded-full'
                         onClick={() => scroll(500)}
                     >
                         {'>'}
@@ -227,8 +227,8 @@ const OnlineIDE = () => {
             <Courses />
             <Dsa />
             <Library />
-            <Article />
             <Dsaproblems />
+            <Article />
 
         </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import Seemore from './Seemore';
+import { Link } from 'react-router-dom';
 
 const Headline = (props) => {
     const { parent, child, short, showSeemore, to } = props;

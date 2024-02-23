@@ -14,22 +14,29 @@
 /* app.css */
 
 
-.ql-syntax {
+.interview-div .ql-syntax {
   background-color: rgb(26, 26, 26);
   padding: 5px;
   color: rgb(208, 208, 208);
   border-radius: 5px;
   position: relative;
+  margin-top: 5px;
 }
 
 .interview-div a {
   color: #10b981;
 }
 
+
 .interview-div h1 {
 
   font-size: 25px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.interview-div ul {
+
+  margin-left: 10px;
 }
 
 .interview-div h2 {

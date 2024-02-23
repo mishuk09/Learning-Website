@@ -90,98 +90,66 @@ function App() {
       <CssBaseline />
       <div className={`App ${bgColorClass}`}>
 
-
-
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <GoToTopButton />
 
-
-
-
-
         <Routes>
+
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
 
-          {/* Authentication */}
-          <Route path='auth' element={<Auth />}></Route>
-          <Route path='user' element={<UserProfile />}></Route>
-          <Route path='userdashbord' element={<UserDashbord />}></Route>
-
-          {/* <Route path='/ss' element={<Ss />}></Route> */}
-          {/* <Route path='/sss' element={<SignupForm />}></Route> */}
-
-          <Route path='/userlogin' element={<Login />}></Route>
-          {/* <Route path='/userdashbord' element={<RequireAuth>
-            <UserDashbord />
-          </RequireAuth>}></Route> */}
-          <Route path='/dashbord' element={<RequireAuth>
-            <Dashbord />
-          </RequireAuth>}></Route>
-          <Route path='/blogbycategory/:selectedCategory' element={<BlogBycategory />}></Route>
 
 
           {/* Allcourse ROUTES */}
+          <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
           <Route path='/managelanguage' element={<RequireAuth>
             <Alllanguage />
           </RequireAuth>}></Route>
-
-          <Route path='/language/:name' element={<TutorialDetails />}>
-
-          </Route>
-
-
-
-
-
-
-
+          <Route path='/language/:name' element={<TutorialDetails />}></Route>
 
 
 
           {/* Blog ROUTES */}
-
-          <Route path='/editblog/:id' element={<Edit />}></Route>
+          <Route path='/editblog/:id' element={<RequireAuth>
+            <Edit />
+          </RequireAuth>}></Route>
           <Route path='/blogs' element={<Blogs />}></Route>
           <Route path='/addblog' element={<RequireAuth>
             <Blog />
           </RequireAuth>}></Route>
-
           <Route path='/blogsdetails/:blogid' element={<BlogDetails />}></Route>
           <Route path='/manageblog' element={
             <RequireAuth>
               <ManageBlog />
             </RequireAuth>
           }></Route>
-
-
           <Route path="/blogss" exact component={BlogMain} />
           <Route path="/category/:categoryName" component={Categorywise} />
 
 
 
-
           {/* Userlogin ROUTES */}
-          {/* <Route path='/userlogin' element={<UserLogin />}></Route> */}
           <Route path='/adminlogin' element={<Signin />}></Route>
           <Route path='/usersignup' element={<Signup />}></Route>
 
-          {/* <Route path='/passlogin' element={<PassLogin />}></Route> */}
-
-
-          {/* ALLCourse ROUTES */}
-          <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
 
           {/* Practice ROUTES */}
           <Route path='/practice' element={<Practice />}></Route>
+
+
+
           {/* Interview ROUTES */}
           <Route path='/interview' element={<InterviewDiv />}></Route>
           <Route path='/interview/:name' element={<C />}></Route>
           <Route path='/c++interview' element={<InterviewDiv />}></Route>
           <Route path='/addimg' element={<Addimg />}></Route>
           <Route path='/imgdisplay' element={<ImageDisplay />}></Route>
-          <Route path='/addinterview' element={<Addinterview />}></Route>
+          <Route path='/addinterview' element={<RequireAuth>
+            <Addinterview />
+          </RequireAuth>}></Route>
           <Route path='/manageinterview' element={<Manageinterview />}></Route>
-          <Route path='/editinterview/:id' element={<Editinter />}></Route>
+          <Route path='/editinterview/:id' element={<RequireAuth>
+            <Editinter />
+          </RequireAuth>}></Route>
 
 
           {/* Online IDE ROUTES */}
@@ -207,7 +175,15 @@ function App() {
           <Route path='/twelveclass' element={<TwelveClass />}></Route>
 
 
-
+          {/* Authentication */}
+          <Route path='auth' element={<Auth />}></Route>
+          <Route path='user' element={<UserProfile />}></Route>
+          <Route path='userdashbord' element={<UserDashbord />}></Route>
+          <Route path='/userlogin' element={<Login />}></Route>
+          <Route path='/dashbord' element={<RequireAuth>
+            <Dashbord />
+          </RequireAuth>}></Route>
+          <Route path='/blogbycategory/:selectedCategory' element={<BlogBycategory />}></Route>
         </Routes>
         <Footer></Footer>
       </div>

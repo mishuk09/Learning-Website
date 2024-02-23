@@ -1,8 +1,13 @@
 import React from 'react';
 import Headline from '../Otherscomponent/Headline';
 import Allcourses from '../Otherscomponent/Allcourses';
+import { useNavigate } from 'react-router-dom';
 
 const Courses = () => {
+    const navigate = useNavigate();
+    const handleChange = (name, img) => {
+        navigate(`/language/${name}`, { state: { img } })
+    }
     return (
         <div id='courses' className='container  bg-white rounded-sm py-6'>
             <Headline className='w-[100%]' parent="Start" child="Learning" short="Course" showSeemore={false}></Headline>
@@ -11,7 +16,8 @@ const Courses = () => {
                     Allcourses.map((tutorial) => (
                         // eslint-disable-next-line jsx-a11y/anchor-is-valid
                         <a key={tutorial.id}
-                            href="#"
+
+                            onClick={() => handleChange(tutorial.title, tutorial.img)}
                             className='shadow-sm rounded  transition ease-in-out delay-50  hover:-translate-y-2 hover:scale-40  duration-400 '
                         >
                             <div className='w-[130px] h-36 rounded bg-slate-900 hover:bg-slate-800 flex flex-col items-center justify-center'>

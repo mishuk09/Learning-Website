@@ -12,28 +12,28 @@ const Shortcourse = () => {
         {
             id: 1,
             img: a,
-            link: 'allcourse',
+            link: '/allcourse',
             name: "LEARNING",
             detils: "DSA, Development"
         },
         {
             id: 2,
             img: b,
-            link: 'practice',
+            link: '/practice',
             name: "PRACTICE",
             detils: "Online IDE,DSA,  Mock"
         },
         {
             id: 3,
             img: c,
-            link: 'interview',
+            link: '/interview',
             name: "INTERVIEW",
             detils: "DSA,Development"
         },
         {
             id: 4,
             img: d,
-            link: 'jobs',
+            link: '/jobs',
             name: "JOBS",
             detils: "SDE,Developer "
         }

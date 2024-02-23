@@ -54,7 +54,7 @@ const Dsa = () => {
 
     return (
         <div id='dsa' className='container mt-16 bg-white rounded-sm py-6'>
-            <Headline parent='DSA' child='Courses' short='Data Structure' showSeemore={true}></Headline>
+            <Headline parent='DSA' child='Courses' short='Data Structure' showSeemore={false}></Headline>
             <div className='px-5 mb-10 relative  '>
                 <div className='  grid grid-flow-col auto-cols-max gap-3 mt-4 overflow-hidden  ' ref={interviewRef}>
                     {dsaData.map((tutorial) => (

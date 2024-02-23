@@ -138,7 +138,7 @@ const InterviewDiv = () => {
                         </button>
                     </div>
 
-                    <div className='text-slate-700 w-[36%] font-bold  overflow-y-auto  rounded font-nunito absolute bg-white top-[300px]  h-auto'>
+                    <div className='text-slate-700 w-[36%] font-bold  overflow-y-auto  rounded font-nunito absolute bg-white top-[250px]  h-auto'>
                         {loading && <p>Loading...</p>}
                         {results.length > 0 && (
                             <>
@@ -249,8 +249,8 @@ const InterviewDiv = () => {
             <Courses />
             <Dsa />
             <Library />
-            <Article />
             <Dsaproblems />
+            <Article />
 
         </div>
     );

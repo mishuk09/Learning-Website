@@ -22,7 +22,7 @@ const Practice = () => {
                     <CodingPractice />
                 </div>
             </div>
-            <div className='container  mt-[250px]'>
+            <div className='container   mt-[250px]'>
 
                 <PracticeComponent />
                 <div className='mt-20 mb-10'>
@@ -33,7 +33,7 @@ const Practice = () => {
 
                     <InterviewObject />
                 </div>
-                <div className='mt-20   '>
+                <div className='mt-[400px]   '>
                     <Dsaproblems />
                 </div>
 

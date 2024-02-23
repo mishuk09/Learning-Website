@@ -31,6 +31,8 @@ function AddInterview() {
     //     },
     //     [placeholder]
     // );
+
+
     const [interviewData, setInterviewData] = useState({
         title: '',
         content: '',
@@ -161,7 +163,7 @@ function AddInterview() {
                         <input className="text-black rounded p-2 mt-2   w-full bg-white shadow border" type="date" name="date" value={interviewData.date} onChange={(e) => setInterviewData(prevState => ({ ...prevState, date: e.target.value }))} />
                     </div> </div>
                 <label>Content:</label>
-                <ReactQuill theme="snow" formats={formats} modules={modules} value={interviewData.content} onChange={handleChange} className='bg-white h-[400px]' />
+                {/* <ReactQuill theme="snow" formats={formats} modules={modules} value={interviewData.content} onChange={handleChange} className='bg-white h-[400px]' /> */}
                 <JoditEditor
                     ref={editor}
                     value={content}
@@ -199,3 +201,15 @@ function AddInterview() {
 }
 
 export default AddInterview;
+
+
+
+// onClick = {(e)=> setEmail(e.target.value)}
+// onClick = {(e)=> setPass(e.target.value)}
+
+
+// onClick = { HandleSubmit }
+
+// const HandleSubmit = () => {
+//     console.log(email, passo)
+// }

@@ -4,7 +4,7 @@ import Jobs from '../../Otherscomponent/Job/Jobs';
 
 const Job = () => {
     return (
-        <div className='container mt-20'>
+        <div className='container mt-20 mb-20'>
             <Headline parent='Geting' child='Jobs' short='Jobs'></Headline>
             <p className=' font-nunito mt-1'>Find Your Dream Company & Get Internships  Part Time/Full Time Jobs.....</p>
             <div className='flex gap-3 mt-4'>

@@ -11,7 +11,7 @@ const Library = () => {
             <Headline parent="Choose" child='Library' short="Tutorial"></Headline>
             <div className='grid grid-cols-2 gap-2 mt-4'>
                 <div className='w-[100%] shadow h-[200px] px-2 py-3 rounded  '>
-                    <ChildHeadline parent='Programming Language'></ChildHeadline>
+                    <ChildHeadline parent='Programming Language' to='/allcourse'></ChildHeadline>
                     <div className='flex flex-nowrap gap-2 justify-start items-center overflow-x-hidden mt-3'>
                         {Tutorials.slice(0, 7).map((tutorial) => (
                             // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -33,7 +33,7 @@ const Library = () => {
                     </div>
                 </div>
                 <div className='w-[100%] shadow h-[200px] px-2 py-3 rounded   border-slate-400'>
-                    <ChildHeadline parent='Web Development'></ChildHeadline>
+                    <ChildHeadline parent='Web Development' to='/allcourse'></ChildHeadline>
                     <div className='flex gap-2 flex-nowrap justify-start items-center overflow-x-hidden mt-3'>
                         {Webdevelopment.slice(0, 7).map((tutorial) => (
                             // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -56,7 +56,7 @@ const Library = () => {
                     </div>
                 </div>
                 <div className='w-[100%] shadow h-[200px] px-2 py-3 rounded   border-slate-400'>
-                    <ChildHeadline parent=' Computer Fundamental'></ChildHeadline>
+                    <ChildHeadline parent=' Computer Fundamental' to='/allcourse'></ChildHeadline>
                     <div className='flex gap-2 flex-nowrap justify-start items-center overflow-x-hidden mt-3'>
                         {BasicComputer.slice(0, 7).map((tutorial) => (
                             // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -79,7 +79,7 @@ const Library = () => {
                     </div>
                 </div>
                 <div className='w-[100%] shadow h-[200px] px-2 py-3 rounded   border-slate-400'>
-                    <ChildHeadline parent=' Computer Fundamental'></ChildHeadline>
+                    <ChildHeadline parent=' Computer Fundamental' to='/allcourse'></ChildHeadline>
                     <div className='flex gap-2 flex-nowrap justify-start items-center overflow-x-hidden mt-3'>
                         {BasicComputer.slice(0, 7).map((tutorial) => (
                             // eslint-disable-next-line jsx-a11y/anchor-is-valid
