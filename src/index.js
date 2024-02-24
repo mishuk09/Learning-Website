@@ -36,7 +36,22 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './components/Authentication/AuthContext';
 // Import AuthProvider
+import i18next from 'i18next';
+import global_en from './components/Multilanguage/en/global.json';
+import global_fr from './components/Multilanguage/fr/global.json';
+import { I18nextProvider } from 'react-i18next';
 
+i18next.init({
+  interpolation: { escapeValue: false },
+  lng: "en",
+  en: {
+    global_en
+  },
+  fr: {
+    global_fr
+  },
+
+})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -50,7 +65,10 @@ root.render(
       >
         {/* Wrap App component with AuthProvider */}
         <AuthProvider>
-          <App />
+          <I18nextProvider i18n={i18next}>
+            <App />
+          </I18nextProvider>
+
         </AuthProvider>
       </Auth0Provider>
     </BrowserRouter>

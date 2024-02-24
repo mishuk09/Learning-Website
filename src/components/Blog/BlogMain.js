@@ -181,7 +181,7 @@ const BlogMain = ({ onSelectCategory }) => {
                                 </div>
                                 <div className='w-[70%]'>
                                     Twitter
-                                </div>
+                                </div>2
                             </Link>
                             <Link className='w-full flex cursor-pointer ps-2 h-10 rounded-sm text-white items-center bg-blue-600'>
                                 <div className='w-[20%] '>

@@ -10,6 +10,7 @@ import { faArrowRight, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import Dsaquestion from '../SideBar/Dsaquestion';
 import Bestside from '../SideBar/Bestside';
 import CompilerDiv from '../CompilerDiv/CompilerDiv';
+import Multilanguage from '../../Multilanguage/Multilanguage';
 
 const Childdiv = () => {
     return (
@@ -19,6 +20,7 @@ const Childdiv = () => {
 
                 <div className='w-[70%]    py-2 pe-2 '>
                     <Picktrack></Picktrack>
+                    <Multilanguage />
                     <CompilerDiv  ></CompilerDiv>
                     <Latesttutorial></Latesttutorial>
 

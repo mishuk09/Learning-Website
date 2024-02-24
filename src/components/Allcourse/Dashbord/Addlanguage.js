@@ -21,6 +21,7 @@ function AddLanguage() {
     const [content, setContent] = useState('');
     const [languageData, setLanguageData] = useState({
         title: '',
+
         details: [{
             id: 1,
             pychild: '',
@@ -31,12 +32,8 @@ function AddLanguage() {
                 date: '',
             }]
         }]
-    });
-    const [success, setSuccess] = useState('');
-
-    const handleChange = (value) => {
-        setLanguageData(prevState => ({ ...prevState, content: value }));
-    };
+    }); 
+    const [success, setSuccess] = useState(false);
 
     const handleAddChild = () => {
         setLanguageData(prevState => ({
@@ -78,6 +75,7 @@ function AddLanguage() {
             console.log('Language created:', response.data);
             setLanguageData({
                 title: '',
+
                 details: [{
                     id: 1,
                     pychild: '',
@@ -116,6 +114,7 @@ function AddLanguage() {
                         <label>Language Title:</label>
                         <input className="text-black rounded p-2 mt-2 w-full bg-white shadow border" type="text" name="title" value={languageData.title} onChange={(e) => setLanguageData(prevState => ({ ...prevState, title: e.target.value }))} required />
                     </div>
+
                 </div>
 
                 {languageData.details.map((child, index) => (
@@ -158,7 +157,7 @@ function AddLanguage() {
                     </div>
                 ))}
                 <button type="button" className='border w-100 font-bold p-2 mt-3 rounded bg-green-500 text-white' onClick={handleAddChild}>Add Child</button>
-                <button type="submit" className="text-white rounded p-2 mt-3 font-bold border w-full bg-blue-500 mb-20" >Submit</button>
+                <button type="submit" className="text-white rounded p-2 mt-3 font-bold border w-full bg-blue-500 mb-20">Submit</button>
             </form>
         </div>
     );
