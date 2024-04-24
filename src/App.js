@@ -97,8 +97,6 @@ function App() {
 
           <Route path='/' element={<InheritApp></InheritApp>}></Route>
 
-
-
           {/* Allcourse ROUTES */}
           <Route path='/allcourse' element={<AllcourseHomePage></AllcourseHomePage>}></Route>
           <Route path='/managelanguage' element={<RequireAuth>
@@ -192,3 +190,4 @@ function App() {
 }
 
 export default App;
+

@@ -76,21 +76,21 @@ const TutorialDetails = () => {
             </div>
 
             <div className='w-[60%] h-full p-2 bg-slate-50 border-1 rounded'>
-               
-               
-               
+
+
+
 
                 {interviews.map(interview =>
                     interview.details.map((data, index) =>
                         data.pydetails.map((unite) => (
                             // Check if selectedPyDetails is truthy and matches the title
-                          
-                          
-                           selectedPyDetails === unite.title &&
+
+
+                            selectedPyDetails === unite.title &&
                             <div key={unite._id}>
                                 <div className='text-justify pt-4 font-nunito' dangerouslySetInnerHTML={{ __html: unite.content }} />
                             </div>
-                          
+
                         ))
                     )
                 )}

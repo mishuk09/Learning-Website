@@ -44,7 +44,6 @@ const BlogBycategory = () => {
     };
     const handleCategoryClick = (selectedCategory) => {
 
-
         // Navigate to the '/blogbycategory' route with the selected category as a parameter
         navigate(`/blogbycategory/${selectedCategory}`);
     };

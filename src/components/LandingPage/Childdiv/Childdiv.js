@@ -20,7 +20,7 @@ const Childdiv = () => {
 
                 <div className='w-[70%]    py-2 pe-2 '>
                     <Picktrack></Picktrack>
-                    <Multilanguage />
+                    {/* <Multilanguage /> */}
                     <CompilerDiv  ></CompilerDiv>
                     <Latesttutorial></Latesttutorial>
 
