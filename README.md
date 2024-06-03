@@ -1,6 +1,6 @@
 <!-- Header -->
 <p align="center">
-  <img src="https://github.com/your-username/your-repository/blob/master/public/logo/your-logo.png" alt="Coding Platform Banner">
+  <img src="https://github.com/mishuk09/Learning-Website/blob/main/csehacks.png" alt="Coding Platform Banner">
 </p>
 
 <!-- Title -->
